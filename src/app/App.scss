@@ -1,0 +1,23 @@
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body {
+  padding-left: 130px;
+  padding-right: 130px;
+  height: 100vh;
+  }
+  
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+  
+  img {
+  max-width: 100%;
+  height: auto;
+  }
