@@ -5,7 +5,7 @@ const Test2: FC = () => {
 
 
     return (
-        <div>test2test2test2test2test2test2test2test2test2test2</div>
+        <div>test2</div>
     )
 }
 

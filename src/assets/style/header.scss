@@ -1,0 +1,18 @@
+.header-menu {
+    background-color: #F7F9FC;
+    padding-left: 130px;  // вынести в отдельный файл
+    padding-right: 130px; // вынести в отдельный файл
+    height: 60px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    a {
+        font-style: normal;
+   font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+color: #20264E
+    }
+}
