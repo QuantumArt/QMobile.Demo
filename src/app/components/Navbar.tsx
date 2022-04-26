@@ -1,20 +1,43 @@
 import React, { FC } from 'react';
+import cn from 'classnames';
 
-import { Link } from 'react-router-dom'
-import NotFound from './NotFound';
+import { Link, useLocation } from 'react-router-dom'
 
+type NavbarProps = {
+  containerName: string;
+}
 
-const Navbar: FC = () => {
+const Navbar: FC<NavbarProps> = ({containerName}) => {
 
+  const {pathname} = useLocation();
+
+const navItemStyles = (linkname: string): string => {
+  return cn(`${containerName}-item`, 
+  {
+    [`${containerName}-item--active`]: linkname === pathname,
+  });
+};
 
   return (
-    <ul className='header-menu'>
-      <li>
-        <Link to="/tariffs">Тарифы</Link>
+    <ul className={`${containerName} ${containerName === 'footer__nav'? 'container container--padding-top' :'container'}`}>
+      <li className={navItemStyles('/tariffs')}>
+        <Link to="/tariffs" className={`${containerName}-link`}>Тарифы</Link>
       </li>
-      <li>
-        <Link to="/services">Услуги</Link>
+      <li className={navItemStyles('/services')}>
+        <Link to="/services" className={`${containerName}-link`}>Услуги</Link>
       </li>
+      <li className={navItemStyles('/devices')}>
+        <Link to="/devices" className={`${containerName}-link`}>Устройства</Link>
+      </li>
+      <li className={navItemStyles('/service_packages')}>
+        <Link to="/service_packages" className={`${containerName}-link`}>Пакеты</Link>
+      </li>
+      <li className={navItemStyles('/about')}>
+        <Link to="/about" className={`${containerName}-link`}>О компании</Link>
+      </li>
+      <li className={navItemStyles('/contacts')}>
+        <Link to="/contacts" className={`${containerName}-link`}>Контакты</Link>
+      </li> 
     </ul>
   )
 }

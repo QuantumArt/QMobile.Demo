@@ -1,0 +1,17 @@
+@mixin font($fontFamily, $type, $weight, $style: "normal") {
+    $fontPath: "../fonts/#{$fontFamily}/#{$fontFamily}-#{$type}.ttf";
+  
+    @font-face {
+      font-family: "#{$fontFamily}";
+      src: local("#{$fontFamily} #{$type}"), local("#{$fontFamily}-#{$type}"), url("#{$fontPath}") format("truetype");
+      font-weight: $weight;
+      font-style: $style;
+      font-display: swap;
+    }
+  }
+  @include font('Montserrat', 'Regular', 400);
+  @include font('Montserrat', 'Medium', 500);
+  @include font('Montserrat', 'Bold', 700);
+  @include font('Montserrat', 'Black', 900);
+  @include font('Montserrat', 'Bold', 700);
+  @include font('Montserrat', 'ExtraBold', 800);

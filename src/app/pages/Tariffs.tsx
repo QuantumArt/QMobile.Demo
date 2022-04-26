@@ -1,12 +1,21 @@
 import React,{ FC } from 'react';
+import CurrentPathInfo from '../components/CurrentPathInfo';
+import Slider from '../components/Slider';
 
 
-const Test2: FC = () => {
+const Tariffs: FC = () => {
 
 
     return (
-        <div>test2</div>
+        <>
+        <Slider 
+        modificatorStyles='slider--tariffs slider--margin-bottom slider--text-paddings' 
+        title='Тарифы “Объединяй”!'
+        description='Единный счет для домашнего интернета, ТВ и связи'
+        />
+        <CurrentPathInfo />
+        </>
     )
 }
 
-export default Test2;
+export default Tariffs;

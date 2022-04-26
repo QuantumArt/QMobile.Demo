@@ -1,10 +1,12 @@
 @import 'header';
+@import 'footer';
+@import "fonts";
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat';
   }
   
   img {
@@ -25,4 +27,70 @@
   ul {
     margin-left: 0;
     padding-left: 0;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 0 30px;
+    width: 100%;
+
+    &--padding-top {
+      padding-top: 44px;
+    }
+  }
+
+  .main {
+    height: 100%;
+  }
+
+  .slider {
+    min-height: 222px;
+    border-radius: 10px;
+    &--tariffs {
+      background: linear-gradient(185.58deg, #73ABEE 5.26%, #70A4F0 50.14%, #6599EF 94.83%), #679AF0;
+    }
+    &--services {
+      background: linear-gradient(174.85deg, #B5A1C4 3.38%, #AB97BC 65.71%, #A08BB1 95.13%), #AF9BC0;
+    }
+    &--margin-bottom {
+      margin-bottom: 20px;
+    }
+    &--text-paddings {
+      padding-top: 80px;
+      padding-left: 100px;
+    }
+    &__title {
+      font-weight: 700;
+      font-size: 27px;
+      line-height: 33px;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+    &__description{
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      color:#FFFFFF
+    }
+  }
+
+
+  .path-info{
+    height: 17px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #6C6C6C;
+    display: flex;
+    &__item {
+      margin-right: 12px;
+      &--active {
+        color: #20264E;
+      }
+    }
+    &__right-arrow {
+      margin-right: 22px;
+    }
   }

@@ -1,18 +1,37 @@
-.header-menu {
-    background-color: #F7F9FC;
-    padding-left: 130px;  // вынести в отдельный файл
-    padding-right: 130px; // вынести в отдельный файл
+
+.header {
+    &__nav{
     height: 60px;
-
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    }
 
-    a {
-        font-style: normal;
-   font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-color: #20264E
+    &__nav-item {
+    height: 52px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     &--active {
+         border-bottom: 2px solid #2C5BDE;         ;
+     }
+    }
+
+    &__nav-link {
+    color: #20264E;
+    }
+
+    &__nav-wrapper {
+        background-color: #F7F9FC;
+    }
+
+    &__logo-container {
+        height: 60px;
+        display: flex;
+        align-items: center;
     }
 }

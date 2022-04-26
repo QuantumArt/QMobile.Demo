@@ -5,19 +5,33 @@ import {
 import './App.scss'
 import Footer from './containers/Footer';
 import Header from './containers/Header';
-import Test1 from './components/Test1';
-import Test2 from './components/Test2';
-import NotFound from './components/Test1';
+import NotFound from './components/NotFound';
+import Tariffs from './pages/Tariffs';
+import {IRoute} from './types'
+import Services from './pages/Services';
+
+const routes: IRoute[] = [
+  {
+    path: '/tariffs',
+    element: <Tariffs />,
+  },
+  {
+    path: '/services',
+    element: <Services />,
+  },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
+]
 
 function App() {
   return (
     <Router>
      <Header />
-     <main>      
+     <main className='main container'>      
        <Routes>
-        <Route path="/tariffs" element={<Test1 />} />
-        <Route path="/services" element={<Test2 />} />
-        <Route path="*" element={<NotFound/>}/>
+        {routes.map(({path, element}) => <Route key={path} path={path} element={element}/>)}
       </Routes>
       </main>
      <Footer />
