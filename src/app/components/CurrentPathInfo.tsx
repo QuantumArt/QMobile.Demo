@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 import RightArrow from '../../assets/icons/Right_arrow.svg'
 
 
-enum PathNames {
-    tariffs = 'Тарифы',
-    services = 'Услуги',
-    constructor = 'Соберите свой тариф'
+class PathNames {
+    static readonly tariffs = 'Тарифы';
+    static readonly services = 'Услуги';
+    static readonly tariffconstructor = 'Соберите свой тариф';
 }
 
 const CurrentPathInfo: FC = () => {
@@ -28,7 +28,7 @@ const CurrentPathInfo: FC = () => {
                 return (
                 <React.Fragment key={el}>
                     <img src={RightArrow} alt="right arrow" className='path-info__right-arrow'/>
-                    <p className={`path-info__item ${key === pathnames[lastElem] ? 'path-info__item--active': ''}`}>{PathNames[key]}</p>
+                    <p className={`path-info__item ${key === pathnames[lastElem] ? 'path-info__item--active': ''}`}>{PathNames[key].toString()}</p>
                 </React.Fragment>
                 )
             })

@@ -44,6 +44,27 @@
     height: 100%;
   }
 
+  .tariffs-page-content {
+    margin-top: 60px;
+  }
+
+  .page-content-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+
+    &--tariffs-nav {
+      margin-bottom: 48px;
+    }
+  }
+.flex-wrapper {
+  display: flex;
+}
+
+.tariffs-nav-wrapper {
+  display: flex;
+  flex-direction: column;
+}
   .slider {
     min-height: 222px;
     border-radius: 10px;
@@ -87,7 +108,7 @@
     &__item {
       margin-right: 12px;
       &--active {
-        color: #20264E;
+        color: #2C5BDE        ;
       }
     }
     &__right-arrow {

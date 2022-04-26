@@ -12,7 +12,7 @@ import Services from './pages/Services';
 
 const routes: IRoute[] = [
   {
-    path: '/tariffs',
+    path: '/tariffs/*',
     element: <Tariffs />,
   },
   {

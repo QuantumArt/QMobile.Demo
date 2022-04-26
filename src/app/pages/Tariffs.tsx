@@ -1,6 +1,7 @@
 import React,{ FC } from 'react';
 import CurrentPathInfo from '../components/CurrentPathInfo';
 import Slider from '../components/Slider';
+import TariffsPageContent from '../containers/TariffsPageContent';
 
 
 const Tariffs: FC = () => {
@@ -14,6 +15,7 @@ const Tariffs: FC = () => {
         description='Единный счет для домашнего интернета, ТВ и связи'
         />
         <CurrentPathInfo />
+        <TariffsPageContent />
         </>
     )
 }
