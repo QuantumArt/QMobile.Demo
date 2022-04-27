@@ -37,6 +37,12 @@
 .tariffs-container {
     padding-left: 20px;
     width: 100%;
+
+    &__cards-container{
+        padding-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 .tariffs-container-header {
@@ -79,7 +85,7 @@
     }
 }
 
-.make-tariff-btn {
+.make-tariff-link {
     background: none;
     padding: 12px 24px;
     font-style: normal;

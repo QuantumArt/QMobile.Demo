@@ -3,7 +3,8 @@ import TariffsFilter from './TariffsFilter';
 import { useObserver } from 'mobx-react-lite';
 import tariffsStore from '../../stores/tariffs/tariffs-store';
 import TariffSearch from '../components/tariffs-search';
-import MakeTariffBtn from '../components/make-tariff-btn';
+import MakeTariffLink from '../components/make-tariff-link';
+import TariffCard from './tariff-card';
 
 
 
@@ -23,7 +24,10 @@ const TariffsPageContent: FC = () => {
             <div className='tariffs-container'>
                 <div className='tariffs-container-header'>
                     <TariffSearch />
-                    <MakeTariffBtn />
+                    <MakeTariffLink />
+                </div>
+                <div className='tariffs-container__cards-container'>
+                <TariffCard />
                 </div>
             </div>
         </div>

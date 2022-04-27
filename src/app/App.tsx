@@ -9,15 +9,20 @@ import NotFound from './components/NotFound';
 import Tariffs from './pages/Tariffs';
 import {IRoute} from './types'
 import Services from './pages/Services';
+import TariffConsructor from './pages/tariff-consructor';
 
 const routes: IRoute[] = [
   {
-    path: '/tariffs/*',
+    path: '/tariffs/',
     element: <Tariffs />,
   },
   {
     path: '/services',
     element: <Services />,
+  },
+  {
+    path: '/tariffs/tariffconstructor',
+    element: <TariffConsructor />,
   },
   {
     path: '*',
