@@ -1,0 +1,29 @@
+.tariffs-filter-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+.tariffs-page-content {
+    margin-top: 60px;
+  }
+
+.tariffs-filter-list{
+    &__item {
+        height: 64px;
+        width: 280px;
+        border-bottom: 1px solid #EFF3FB;
+        padding-top: 32px;
+        display: flex;
+      
+}
+    &__btn{
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #002233;
+        letter-spacing: 0.02em;
+    }
+}

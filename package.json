@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@quantumart/mobx-form-validation-kit": "^2.0.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
@@ -12,7 +13,7 @@
     "@types/react-dom": "^18.0.2",
     "classnames": "^2.3.1",
     "mobx": "^5.15.7",
-    "mobx-react": "^6.3.1",
+    "mobx-react-lite": "^2.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.3.0",

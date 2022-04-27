@@ -1,3 +1,4 @@
+import { useObserver } from 'mobx-react-lite';
 import React,{ FC } from 'react';
 import CurrentPathInfo from '../components/CurrentPathInfo';
 import Slider from '../components/Slider';
@@ -7,7 +8,7 @@ import TariffsPageContent from '../containers/TariffsPageContent';
 const Tariffs: FC = () => {
 
 
-    return (
+    return useObserver(() => (
         <>
         <Slider 
         modificatorStyles='slider--tariffs slider--margin-bottom slider--text-paddings' 
@@ -17,7 +18,8 @@ const Tariffs: FC = () => {
         <CurrentPathInfo />
         <TariffsPageContent />
         </>
-    )
+    ))
+
 }
 
 export default Tariffs;

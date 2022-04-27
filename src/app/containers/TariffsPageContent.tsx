@@ -1,25 +1,26 @@
-import React,{ FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import NavbarTariffs from '../components/NavbarTariffs';
+import React,{ FC, useEffect } from 'react';
+import TariffsFilter from './TariffsFilter';
+import { useObserver } from 'mobx-react-lite';
+import tariffsStore from '../../stores/tariffs/tariffs-store';
 
 
 
 const TariffsPageContent: FC = () => {
 
+    useEffect(() => {
+        tariffsStore.init();
+    }, [])
 
-    return (
-        <div className='tariffs-page-content'>
-            <div className='flex-wrapper'>
-                <div className='tariffs-nav-wrapper'>
-                    <p className='page-content-title page-content-title--tariffs-nav'>Тарифы</p>
-                    <NavbarTariffs />
-                    <Routes>
-                        <Route path='/tariffs/forall' element={<div>Для всех</div>}/>
-                    </Routes>
-                    </div>
+    return useObserver(() => (
+    <div className='tariffs-page-content'>
+        <div className='flex-wrapper'>
+            <div className='tariffs-filter-wrapper'>
+                <p className='page-content-title page-content-title--tariffs-filter'>Тарифы</p>
+                <TariffsFilter bootState={tariffsStore.bootState} />
                 </div>
         </div>
-    )
+    </div>)
+)
 }
 
 export default TariffsPageContent;
