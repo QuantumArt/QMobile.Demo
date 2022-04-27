@@ -12,7 +12,6 @@ export class TariffsStore {
   public get bootState(): BootState {
     return this._bootState;
   }
-
   private _filtersGroups: ITariffFilterGroup[] = [];
   public get filtersGroups(): ITariffFilterGroup[] {
     return this._filtersGroups;
@@ -23,10 +22,25 @@ export class TariffsStore {
     return this._form!;
   }
 
+  @observable
+  private _selectedFilter!: string;
+
+  @computed
+  public get selectedFilter(): string {
+    return this._selectedFilter;
+  }
+
+ @action
+   setFilter(filterAlias: string) {
+   this._selectedFilter = filterAlias;
+  }
+
+
   @action
   public init = async (): Promise<void> => {
     this._bootState = BootState.Loading;
     this._filtersGroups = tariffsFilters;
+    this._selectedFilter = tariffsFilters[0].alias
     this.initForm();
     await this.load();
     this._bootState = BootState.Success;

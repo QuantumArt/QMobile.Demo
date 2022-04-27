@@ -1,19 +1,21 @@
-import React,{ FC, useEffect } from 'react';
+import React,{ FC } from 'react';
 import tariffsStore from '../../stores/tariffs/tariffs-store';
 import TariffsFilterBtn from '../components/TariffsFilterBtn';
 import { BootState } from '../enums/boot-state';
+import RightArrowFilters from '../../assets/icons/RightArrowFilters.svg'
 
 
 type Props = {
-    bootState: BootState
+    bootState: BootState;
+    activeFilter: string;
 }
 
-const TariffsFilter: FC<Props> = ({bootState}) => {
+const TariffsFilter: FC<Props> = ({bootState, activeFilter}) => {
 
-    useEffect(() => {
-        console.log(bootState)
-    })
+    const onClickHandler = (filterAlias:string) => () => {
 
+        tariffsStore.setFilter(filterAlias)
+    }
 
     return (
     bootState === BootState.Loading ? 
@@ -22,7 +24,8 @@ const TariffsFilter: FC<Props> = ({bootState}) => {
     <ul className='tariffs-filter-list'>
         {tariffsStore.filtersGroups.map(({alias, name}) => (
          <li key={alias} className="tariffs-filter-list__item">
-            <TariffsFilterBtn name={name}/>
+            <TariffsFilterBtn name={name} onClickHandler={onClickHandler(alias)}/>
+            {activeFilter === alias ? <img src={RightArrowFilters} alt=">" /> : null}
         </li>))}
     </ul>
     )

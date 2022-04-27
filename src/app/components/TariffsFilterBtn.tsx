@@ -2,7 +2,7 @@ import React,{ FC } from 'react';
 
 type BtnProps = {
     name: string;
-    onClickHandler?: () => void;
+    onClickHandler: () => void;
 }
 
 const TariffsFilterBtn: FC<BtnProps> = ({ name, onClickHandler }) =>{

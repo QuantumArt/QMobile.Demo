@@ -11,21 +11,26 @@ export const tariffsFilters: ITariffFilterGroup[] = [
   {
     alias: 'forall',
     name: 'Для всех',
+
   },
   {
     alias: 'smartphone',
     name: 'Для смартфона',
+
   },
   {
     alias: 'smartdevices',
     name: 'Для умных устройств',
+
   },
   {
     alias: 'devices',
     name: 'Для планшета и компьютера',
+
   },
   {
     alias: 'forcalls',
     name: 'Для звонков',
+
   },
 ];

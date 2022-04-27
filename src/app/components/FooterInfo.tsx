@@ -1,5 +1,5 @@
 import React,{ FC } from 'react';
-import SocialLogos from './SocialLogs';
+import SocialLogos from './SocialLogos';
 
 
 const FooterInfo: FC = () => {
