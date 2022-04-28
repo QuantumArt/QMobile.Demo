@@ -22,7 +22,8 @@ const TariffCard: FC<Props> = ({ image, title }) => {
           Преимущества
         </div>
         <div className='tariff-card__connect-container'>
-
+          <p className='tariff-card__connect-container-price'>500 ₽ <span className='tariff-card__connect-container-days'>За 30 дней</span></p>
+          <p className='tariff-card__connect-container-abon'>Доступен абонемент</p>
         </div>
       </div>
     </div>
