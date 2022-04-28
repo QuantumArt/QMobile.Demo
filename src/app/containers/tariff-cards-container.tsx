@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import TariffCard from '../components/tariff-card';
 import CardDemo from '../../assets/images/Card_Demo.png';
 import { ITariffsCardsGroup } from '../../stores/tariffs/tariffs-cards-group';
