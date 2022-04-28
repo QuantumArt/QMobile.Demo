@@ -6,9 +6,15 @@ import VKIcon from '../../assets/icons/VK_white.svg';
 const SocialLogos: FC = () => {
   return (
     <div className="footer__social-icons">
-      <img src={MailIcon} alt="mail icon" />
-      <img src={VKIcon} alt="vk icon" />
-      <img src={TelegramIcon} alt="telegram icon" />
+      <a href="https://outlook.com" target="_blank" rel="noopener noreferrer">
+        <img src={MailIcon} alt="mail icon" />
+      </a>
+      <a href="https://vk.com" target="_blank" rel="noopener noreferrer">
+        <img src={VKIcon} alt="vk icon" />
+      </a>
+      <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+        <img src={TelegramIcon} alt="telegram icon" />
+      </a>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './app.scss';
 import Footer from './containers/footer';
 import Header from './containers/header';
 import NotFound from './components/not-found';

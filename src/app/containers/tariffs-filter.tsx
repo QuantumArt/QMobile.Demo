@@ -3,6 +3,7 @@ import tariffsStore from '../../stores/tariffs/tariffs-store';
 import TariffsFilterBtn from '../components/tariffs-filter-btn';
 import { BootState } from '../enums/boot-state';
 import RightArrowFilters from '../../assets/icons/RightArrowFilters.svg';
+import Loader from '../components/loader';
 
 type Props = {
   bootState: BootState;
@@ -12,10 +13,11 @@ type Props = {
 const TariffsFilter: FC<Props> = ({ bootState, activeFilter }) => {
   const onClickHandler = (filterAlias: string) => () => {
     tariffsStore.setFilter(filterAlias);
+    tariffsStore.fetchTariffs();
   };
 
   return bootState === BootState.Loading ? (
-    <p>Loading</p>
+    <Loader />
   ) : (
     <ul className="tariffs-filter-list">
       {tariffsStore.filtersGroups.map(({ alias, name }) => (

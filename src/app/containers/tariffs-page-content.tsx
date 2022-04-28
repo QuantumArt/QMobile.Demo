@@ -4,11 +4,14 @@ import { useObserver } from 'mobx-react-lite';
 import tariffsStore from '../../stores/tariffs/tariffs-store';
 import TariffSearch from '../components/tariffs-search';
 import MakeTariffLink from '../components/make-tariff-link';
-import TariffCard from './tariff-card';
+import TariffCardsContainer from './tariff-cards-container';
 
 const TariffsPageContent: FC = () => {
   useEffect(() => {
     tariffsStore.init();
+    return () => {
+      tariffsStore.unmount();
+    };
   }, []);
 
   return useObserver(() => (
@@ -28,9 +31,10 @@ const TariffsPageContent: FC = () => {
             <TariffSearch />
             <MakeTariffLink />
           </div>
-          <div className="tariffs-container__cards-container">
-            <TariffCard />
-          </div>
+          <TariffCardsContainer
+            cardsGroup={tariffsStore.tariffsCardsGroup}
+            bootState={tariffsStore.bootStateTariffCards}
+          />
         </div>
       </div>
     </div>

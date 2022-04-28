@@ -1,7 +1,9 @@
 import { FormControl, FormGroup } from '@quantumart/mobx-form-validation-kit';
-import { action, computed, observable } from 'mobx';
+import { action, computed, observable, runInAction } from 'mobx';
 import { BootState } from '../../app/enums/boot-state';
+import { FilterRoutes } from '../../app/enums/filter-routes';
 import { FormTariffFilter } from './forms';
+import { ITariffsCardsGroup } from './tariffs-cards-group';
 import { ITariffFilterGroup, tariffsFilters } from './tariffs-filters-group';
 
 export class TariffsStore {
@@ -12,6 +14,15 @@ export class TariffsStore {
   public get bootState(): BootState {
     return this._bootState;
   }
+
+  @observable
+  private _bootStateTariffCards: BootState = BootState.None;
+
+  @computed
+  public get bootStateTariffCards(): BootState {
+    return this._bootStateTariffCards;
+  }
+
   private _filtersGroups: ITariffFilterGroup[] = [];
   public get filtersGroups(): ITariffFilterGroup[] {
     return this._filtersGroups;
@@ -30,6 +41,14 @@ export class TariffsStore {
     return this._selectedFilter;
   }
 
+  @observable
+  private _tariffsCardsGroup: ITariffsCardsGroup = [];
+
+  @computed
+  public get tariffsCardsGroup(): ITariffsCardsGroup {
+    return this._tariffsCardsGroup;
+  }
+
   @action
   setFilter(filterAlias: string) {
     this._selectedFilter = filterAlias;
@@ -39,11 +58,18 @@ export class TariffsStore {
   public init = async (): Promise<void> => {
     this._bootState = BootState.Loading;
     this._filtersGroups = tariffsFilters;
-    this._selectedFilter = tariffsFilters[0].alias;
+    this._selectedFilter = tariffsFilters[0].alias as string;
+    await this.fetchTariffs();
     this.initForm();
     await this.load();
     this._bootState = BootState.Success;
   };
+
+  @action
+  unmount() {
+    this._tariffsCardsGroup = [];
+    this._selectedFilter = '';
+  }
 
   public initForm = (): void => {
     this._form = new FormGroup<FormTariffFilter>({
@@ -54,6 +80,24 @@ export class TariffsStore {
 
   public load = async (): Promise<void> => {
     ///fetch
+  };
+
+  @action
+  public fetchTariffs = async (): Promise<void> => {
+    try {
+      this._bootStateTariffCards = BootState.Loading;
+      const response = await fetch(
+        FilterRoutes[this._selectedFilter as keyof typeof FilterRoutes],
+      ); // нужен тайпгард
+      const fetchedData: ITariffsCardsGroup = await response.json();
+      console.log(fetchedData);
+      runInAction(() => {
+        this._tariffsCardsGroup = fetchedData;
+        this._bootStateTariffCards = BootState.Success;
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
