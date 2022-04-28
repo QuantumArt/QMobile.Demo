@@ -38,7 +38,7 @@ exports.common = {
     publicPath: '/',
     path: path.join(__dirname, 'root'),
     chunkFilename: '[name].[contenthash].js',
-    filename: '[hash].js'
+    filename: '[hash].js',
   },
   optimization: {
     chunkIds: 'named',
@@ -91,7 +91,11 @@ exports.common = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true, silent: false, async: false }),
+    new ForkTsCheckerWebpackPlugin({
+      checkSyntacticErrors: true,
+      silent: false,
+      async: false,
+    }),
     // new ForkTsCheckerNotifierWebpackPlugin({
     //   title: 'TypeScript',
     //   excludeWarnings: false,

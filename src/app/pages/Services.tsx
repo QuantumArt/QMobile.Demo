@@ -1,14 +1,9 @@
-import React,{ FC } from 'react';
-import CurrentPathInfo from '../components/CurrentPathInfo';
-import Slider from '../components/Slider';
-
+import React, { FC } from 'react';
+import CurrentPathInfo from '../components/current-path-info';
+import Slider from '../components/slider';
 
 const Services: FC = () => {
-
-
-    return (
-        <CurrentPathInfo />
-    )
-}
+  return <CurrentPathInfo />;
+};
 
 export default Services;

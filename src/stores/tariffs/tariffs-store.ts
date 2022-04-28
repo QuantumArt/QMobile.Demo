@@ -30,17 +30,16 @@ export class TariffsStore {
     return this._selectedFilter;
   }
 
- @action
-   setFilter(filterAlias: string) {
-   this._selectedFilter = filterAlias;
+  @action
+  setFilter(filterAlias: string) {
+    this._selectedFilter = filterAlias;
   }
-
 
   @action
   public init = async (): Promise<void> => {
     this._bootState = BootState.Loading;
     this._filtersGroups = tariffsFilters;
-    this._selectedFilter = tariffsFilters[0].alias
+    this._selectedFilter = tariffsFilters[0].alias;
     this.initForm();
     await this.load();
     this._bootState = BootState.Success;

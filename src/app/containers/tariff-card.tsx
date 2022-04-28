@@ -1,11 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 
 const TariffCard = () => {
+  return <p>test</p>;
+};
 
-
-    return (
-        <p>test</p>
-    )
-}
-
-export default TariffCard 
+export default TariffCard;
