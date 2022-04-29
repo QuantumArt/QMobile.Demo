@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import tariffsStore from '../../../stores/tariffs/tariffs-store';
-import TariffsFilterBtn from '../../components/tariffs-filter-btn';
+import TariffsFilterBtn from './tariffs-filter-btn';
 import { BootState } from '../../enums/boot-state';
 import RightArrowFilters from '../../../assets/icons/RightArrowFilters.svg';
 import Loader from '../../components/loader';
