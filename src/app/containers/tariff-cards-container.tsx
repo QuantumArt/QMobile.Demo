@@ -20,6 +20,7 @@ const TariffCardsContainer: FC<IProps> = ({ cardsGroup, bootState }) => {
           key={el.MarketingProduct.Id}
           title={el.MarketingProduct.Title}
           image={CardDemo}
+          isHit={true}
         />
       ))}
     </div>

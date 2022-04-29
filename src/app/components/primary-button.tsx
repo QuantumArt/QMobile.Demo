@@ -6,7 +6,7 @@ type Props = {
 };
 
 const PrimaryButton: FC<Props> = ({ text, onClickHandler }) => {
-  return <button onClick={onClickHandler}>{text}</button>;
+  return <button className='primary-button' onClick={onClickHandler}>{text}</button>;
 };
 
 export default PrimaryButton;

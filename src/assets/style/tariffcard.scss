@@ -11,6 +11,7 @@
         margin-top: 2px;
         margin-left: 2px;
         margin-right: 2px;
+        position: relative;
     }
 
     &__content {
@@ -36,7 +37,7 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 16px;
-        color: #002233;;
+        color: #2C5BDE;
         display: flex;
         align-items: center;
         gap: 9px;
@@ -76,5 +77,36 @@
         color: #002233;
         text-indent: 9px;
         margin-top: 9px;
+    }
+
+    &__connect-btns-container {
+        margin-top: 20px;
+    }
+
+    &-connect-btns{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__details {
+            font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #2C5BDE;
+        }
+    }
+
+    &__image-hit {
+        position:absolute;
+        top: 5px;
+        right: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        background: #2C5BDE;
+        border-radius: 6px;
+        color: #FFFFFF;
+
+        padding: 4px 13px;
     }
 }
