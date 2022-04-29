@@ -1,8 +1,8 @@
-import { FormControl, FormGroup } from '@quantumart/mobx-form-validation-kit';
+// import { FormControl, FormGroup } from '@quantumart/mobx-form-validation-kit';
 import { action, computed, observable, runInAction } from 'mobx';
 import { filterFetchRoutes } from '../../app/constants/filter-fetch-routes';
 import { BootState } from '../../app/enums/boot-state';
-import { FormTariffFilter } from './forms';
+// import { FormTariffFilter } from './forms';
 import { ITariffsCardsGroup } from './tariffs-cards-group';
 import { ITariffFilterGroup, tariffsFilters } from './tariffs-filters-group';
 
@@ -28,10 +28,10 @@ export class TariffsStore {
     return this._filtersGroups;
   }
 
-  private _form?: FormGroup<FormTariffFilter>;
-  public get form(): FormGroup<FormTariffFilter> {
-    return this._form!;
-  }
+  // private _form?: FormGroup<FormTariffFilter>;
+  // public get form(): FormGroup<FormTariffFilter> {
+  //   return this._form!;
+  // }
 
   @observable
   private _selectedFilter!: string;
@@ -60,7 +60,7 @@ export class TariffsStore {
     this._filtersGroups = tariffsFilters;
     this._selectedFilter = tariffsFilters[0].alias as string;
     await this.fetchTariffs();
-    this.initForm();
+    // this.initForm();
     await this.load();
     this._bootState = BootState.Success;
   };
@@ -71,12 +71,12 @@ export class TariffsStore {
     this._selectedFilter = '';
   }
 
-  public initForm = (): void => {
-    this._form = new FormGroup<FormTariffFilter>({
-      group: new FormControl<ITariffFilterGroup>(tariffsFilters[0]),
-      search: new FormControl<string>(''),
-    });
-  };
+  // public initForm = (): void => {
+  //   this._form = new FormGroup<FormTariffFilter>({
+  //     group: new FormControl<ITariffFilterGroup>(tariffsFilters[0]),
+  //     search: new FormControl<string>(''),
+  //   });
+  // };
 
   public load = async (): Promise<void> => {
     ///fetch
