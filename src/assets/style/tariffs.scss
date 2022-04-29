@@ -55,37 +55,7 @@
 }
 
 .tariff-search{
-    display: flex;
-    align-items: center;
-    width: 622px;
-    position: relative;
-    &__input {
-        flex-grow: 1;
-        height: 48px;
-        border: 1px solid #EFF3FB;
-        border-radius: 6px ;
-        padding-left: 20px;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        padding: 12px 24px;
-        padding-right: 76px;
-
-        &:focus {
-            outline: none;
-            border: 1px solid #679AF0;
-        }
-    
-    }
-
-    &__btn {
-        position: absolute;
-        right: 0px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 11.5px 28px;
-    }
+    width: 622px; //
 }
 
 .make-tariff-link {

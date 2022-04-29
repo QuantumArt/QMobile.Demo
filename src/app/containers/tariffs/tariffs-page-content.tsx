@@ -1,9 +1,9 @@
 import React, { FC, useEffect } from 'react';
 import TariffsFilter from './tariffs-filter';
 import { useObserver } from 'mobx-react-lite';
-import tariffsStore from '../../stores/tariffs/tariffs-store';
-import TariffSearch from '../components/tariffs-search';
-import MakeTariffLink from '../components/make-tariff-link';
+import tariffsStore from '../../../stores/tariffs/tariffs-store';
+import TariffSearch from '../../components/search-input';
+import MakeTariffLink from '../../components/make-tariff-link';
 import TariffCardsContainer from './tariff-cards-container';
 
 const TariffsPageContent: FC = () => {
@@ -13,6 +13,10 @@ const TariffsPageContent: FC = () => {
       tariffsStore.unmount();
     };
   }, []);
+
+  const searchHandler = (value: string) => {
+    alert(value);
+  };
 
   return useObserver(() => (
     <div className="tariffs-page-content">
@@ -28,7 +32,11 @@ const TariffsPageContent: FC = () => {
         </div>
         <div className="tariffs-container">
           <div className="tariffs-container-header">
-            <TariffSearch />
+            <TariffSearch
+              onSubmit={searchHandler}
+              sizeStyles="tariff-search"
+              placeholder="Поиск тарифа"
+            />
             <MakeTariffLink />
           </div>
           <TariffCardsContainer

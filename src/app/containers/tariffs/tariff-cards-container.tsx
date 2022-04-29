@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import TariffCard from '../components/tariff-card';
-import CardDemo from '../../assets/images/Card_Demo.png';
-import { ITariffsCardsGroup } from '../../stores/tariffs/tariffs-cards-group';
-import Loader from '../components/loader';
-import { BootState } from '../enums/boot-state';
+import TariffCard from '../../components/tariff-card';
+import CardDemo from '../../../assets/images/Card_Demo.png';
+import { ITariffsCardsGroup } from '../../../stores/tariffs/tariffs-cards-group';
+import Loader from '../../components/loader';
+import { BootState } from '../../enums/boot-state';
 
 type IProps = {
   cardsGroup: ITariffsCardsGroup;

@@ -3,3 +3,10 @@ export type IRoute = {
   element: JSX.Element;
   exact?: boolean;
 };
+
+type NavigationRoute = {
+  name: string;
+  linkto: string;
+}
+
+export type NavigationRoutesGroup = NavigationRoute[];

@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from '@quantumart/mobx-form-validation-kit';
 import { action, computed, observable, runInAction } from 'mobx';
+import { filterFetchRoutes } from '../../app/constants/filter-fetch-routes';
 import { BootState } from '../../app/enums/boot-state';
-import { FilterRoutes } from '../../app/enums/filter-routes';
 import { FormTariffFilter } from './forms';
 import { ITariffsCardsGroup } from './tariffs-cards-group';
 import { ITariffFilterGroup, tariffsFilters } from './tariffs-filters-group';
@@ -87,7 +87,7 @@ export class TariffsStore {
     try {
       this._bootStateTariffCards = BootState.Loading;
       const response = await fetch(
-        FilterRoutes[this._selectedFilter as keyof typeof FilterRoutes],
+        filterFetchRoutes[this._selectedFilter as keyof typeof filterFetchRoutes],
       ); // нужен тайпгард
       const fetchedData: ITariffsCardsGroup = await response.json();
       console.log(fetchedData);

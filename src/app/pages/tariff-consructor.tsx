@@ -2,6 +2,7 @@ import { useObserver } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
+import ConsructorPageContent from '../containers/constructor-page-content';
 
 const TariffConsructor: FC = () => {
   return useObserver(() => (
@@ -12,6 +13,7 @@ const TariffConsructor: FC = () => {
         description="Будь первым! Собери свой тариф без переплат"
       />
       <CurrentPathInfo />
+      <ConsructorPageContent />
     </>
   ));
 };

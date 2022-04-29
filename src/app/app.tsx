@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Footer from './containers/footer';
+import Footer from './containers/footer/footer';
 import Header from './containers/header';
-import NotFound from './components/not-found';
+import NotFound from './pages/not-found';
 import Tariffs from './pages/tariffs';
 import { IRoute } from './types';
 import Services from './pages/services';

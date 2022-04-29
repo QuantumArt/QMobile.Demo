@@ -1,7 +1,13 @@
 import React, { FC, useState } from 'react';
 import SearchIcon from '../../assets/icons/Search_Icon.svg';
 
-const TariffSearch: FC = () => {
+type Props = {
+  onSubmit: (value: string) => void;
+  placeholder?: string;
+  sizeStyles?: string;
+};
+
+const SeachInput: FC<Props> = ({ onSubmit, placeholder, sizeStyles }) => {
   const [inputValue, setValue] = useState('');
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,24 +16,28 @@ const TariffSearch: FC = () => {
 
   const onSubmitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    alert(inputValue);
+    onSubmit(inputValue);
     setValue('');
   };
 
   return (
-    <form className="tariff-search" onSubmit={onSubmitHandler}>
+    <form className={`${sizeStyles} search-input`} onSubmit={onSubmitHandler}>
       <input
         type="text"
-        placeholder="Поиск тарифа"
-        className="tariff-search__input"
+        placeholder={placeholder}
+        className="search-input__input"
         value={inputValue}
         onChange={onChangeInput}
       />
-      <button type="submit" className="tariff-search__btn">
+      <button type="submit" className="search-input__btn">
         <img src={SearchIcon} alt="search icon" />
       </button>
     </form>
   );
 };
 
-export default TariffSearch;
+SeachInput.defaultProps = {
+  placeholder: 'Поиск',
+};
+
+export default SeachInput;

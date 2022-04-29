@@ -6,6 +6,8 @@
 @import "slider";
 @import "tariffcard";
 @import "buttons";
+@import "constructor";
+@import "inputs";
 
 * {
     margin: 0;
@@ -57,6 +59,10 @@
 
     &--tariffs-filter {
       margin-bottom: 16px;
+    }
+
+    &--constructor {
+      margin-bottom: 56px;
     }
   }
   .flex-wrapper {
