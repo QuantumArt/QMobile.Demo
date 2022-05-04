@@ -8,6 +8,7 @@
 @import "buttons";
 @import "constructor";
 @import "inputs";
+@import "range";
 
 * {
     margin: 0;
@@ -87,5 +88,17 @@
     }
     &__right-arrow {
       margin-right: 22px;
+    }
+  }
+
+  .title {
+    &--sm {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    color: #002233;
     }
   }

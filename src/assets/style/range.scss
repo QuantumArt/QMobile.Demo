@@ -1,0 +1,102 @@
+.range-container {
+
+    &__min-max-container {
+        display: flex;
+        justify-content: space-between;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.02em;
+        color: #20264E;
+        margin-top: 24px;
+    }
+
+    &__title{
+        margin-bottom: 30px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 27px;
+        letter-spacing: 0.02em;
+        color: #2C5BDE;
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        margin-right: 12px;
+    }
+
+    &__range-input {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 8px;
+        background: #E5E5E5;
+        border-radius: 5px;
+        background-image: linear-gradient(#2C5BDE, #2C5BDE);
+        background-repeat: no-repeat;
+    
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            background: white;
+            border: #2C5BDE 7px solid;
+            cursor: ew-resize;
+            box-shadow: 0 0 2px 0 #555;
+            transition: background .3s ease-in-out;
+        }
+        &::-moz-range-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: white;
+            border: #2C5BDE 7px solid;
+            cursor: ew-resize;
+            box-shadow: 0 0 2px 0 #555;
+            transition: background .3s ease-in-out;
+          }
+          &::-ms-thumb {
+            -webkit-appearance: none;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            background: white;
+            border: #2C5BDE 7px solid;
+            cursor: ew-resize;
+            box-shadow: 0 0 2px 0 #555;
+            transition: background .3s ease-in-out;
+          }
+          &::-webkit-slider-thumb:hover {
+            background: #2C5BDE;
+          }
+    
+          &::-moz-range-thumb:hover {
+            background: #2C5BDE;
+          }
+          &::-ms-thumb:hover {
+            background: #2C5BDE;
+          }
+          &::-webkit-slider-runnable-track  {
+            -webkit-appearance: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+          }
+          &::-moz-range-track {
+            -webkit-appearance: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+          }
+          &::-ms-track {
+            -webkit-appearance: none;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+          }
+    }
+}
