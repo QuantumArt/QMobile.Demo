@@ -1,6 +1,62 @@
 .connect-form {
     border: 1px solid #F1F1F1;
     border-radius: 6px;
-    padding: 24px;
-    padding-bottom: 36px;
+    height: fit-content;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: #002233;
+
+
+    &__item {
+        // padding: 24px 32px;
+        padding-left: 24px;
+        padding-right: 24px;
+        border-bottom: 1px solid #F1F1F1;
+        width: 380px;
+        padding-top: 32px;
+    }
+    &__item--header {
+        padding-top: 23px;
+    }
+
+    &__header-constructor {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 24px;
+        color: #002233;
+    }
+
+    &__price {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 16px;
+        color: #002233;
+    }
+
+    &__header-days {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #2C5BDE;
+        display: flex;
+        width: 100%;
+        &--end {
+             justify-content: end;
+        }
+    }
+    
+    &__logo {
+        margin-right: 12px;
+    }
+
+    &__option-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 32px;
+    }
 }

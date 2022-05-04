@@ -3,15 +3,15 @@ import { useObserver } from 'mobx-react-lite';
 import Range from '../components/range';
 import Phone from '../../assets/icons/Phone.svg';
 import Internet from '../../assets/icons/Internet.svg';
-import constructorStore from '../../stores/constuctor-store';
+import connectStore from '../../stores/connect-store';
 
 const ConsructorRanges: FC = () => {
   const onDragMinutes = (value: number) => {
-    constructorStore.setMinutes(value);
+    connectStore.setMinutes(value);
   };
 
   const onDragInternet = (value: number) => {
-    constructorStore.setInternet(value);
+    connectStore.setInternet(value);
   };
 
   return useObserver(() => (
@@ -23,11 +23,11 @@ const ConsructorRanges: FC = () => {
         <Range
           min={150}
           max={1500}
-          value={constructorStore.minutes}
+          value={connectStore.minutes}
           onDragHandler={onDragMinutes}
           valueDesc="мин"
           logosrc={Phone}
-          titleText={`${constructorStore.minutes} мин и 50 смс`}
+          titleText={`${connectStore.minutes} мин и 50 смс`}
         />
       </div>
       <div className="constructor-page-content__ranges-menu-item">
@@ -37,11 +37,11 @@ const ConsructorRanges: FC = () => {
         <Range
           min={3}
           max={30}
-          value={constructorStore.internet}
+          value={connectStore.internet}
           onDragHandler={onDragInternet}
           valueDesc="гб"
           logosrc={Internet}
-          titleText={`${constructorStore.internet} гб`}
+          titleText={`${connectStore.internet} гб`}
         />
       </div>
     </div>

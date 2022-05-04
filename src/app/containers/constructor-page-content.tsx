@@ -8,7 +8,7 @@ const ConsructorPageContent: FC = () => {
       <p className="page-content-title page-content-title--constructor">
         Соберите свой тариф
       </p>
-      <div className="flex-wrapper">
+      <div className="flex-wrapper space-between">
         <div className='constructor-page-content__main-info'>
           <ConsructorRanges />
         </div>
