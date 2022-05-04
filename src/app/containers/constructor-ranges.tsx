@@ -1,52 +1,51 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
+import { useObserver } from 'mobx-react-lite';
 import Range from '../components/range';
 import Phone from '../../assets/icons/Phone.svg';
-import Internet from '../../assets/icons/Internet.svg'
+import Internet from '../../assets/icons/Internet.svg';
+import constructorStore from '../../stores/constuctor-store';
 
 const ConsructorRanges: FC = () => {
-  const [mv, sm] = useState(150);
-  const [gbv, sgbv] = useState(15);
-
   const onDragMinutes = (value: number) => {
-    sm(value);
+    constructorStore.setMinutes(value);
   };
 
-  const onDragGb = (value: number) => {
-    sgbv(value);
+  const onDragInternet = (value: number) => {
+    constructorStore.setInternet(value);
   };
 
-  useEffect(() => {
-    console.log(mv, gbv);
-  });
-
-  return (
+  return useObserver(() => (
     <div className="constructor-page-content__ranges-menu">
       <div className="constructor-page-content__ranges-menu-item">
-        <p className="title--sm constructor-page-content__item-title">Звонки на все номера России</p>
+        <p className="title--sm constructor-page-content__item-title">
+          Звонки на все номера России
+        </p>
         <Range
           min={150}
           max={1500}
-          value={mv}
+          value={constructorStore.minutes}
           onDragHandler={onDragMinutes}
           valueDesc="мин"
           logosrc={Phone}
-          titleText={`${mv} мин и 50 смс`}
+          titleText={`${constructorStore.minutes} мин и 50 смс`}
         />
       </div>
       <div className="constructor-page-content__ranges-menu-item">
-        <p className="title--sm constructor-page-content__item-title">Интернер по России</p>
+        <p className="title--sm constructor-page-content__item-title">
+          Интернер по России
+        </p>
         <Range
           min={3}
           max={30}
-          value={gbv}
-          onDragHandler={onDragGb}
+          value={constructorStore.internet}
+          onDragHandler={onDragInternet}
           valueDesc="гб"
           logosrc={Internet}
-          titleText={`${gbv} гб`}
+          titleText={`${constructorStore.internet} гб`}
         />
       </div>
     </div>
-  );
+  ));
 };
 
 export default ConsructorRanges;

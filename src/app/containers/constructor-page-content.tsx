@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import ConnectForm from './connect-form';
 import ConsructorRanges from './constructor-ranges';
 
 const ConsructorPageContent: FC = () => {
@@ -8,9 +9,10 @@ const ConsructorPageContent: FC = () => {
         Соберите свой тариф
       </p>
       <div className="flex-wrapper">
-        <div>
+        <div className='constructor-page-content__main-info'>
           <ConsructorRanges />
         </div>
+        <ConnectForm />
       </div>
     </div>
   );
