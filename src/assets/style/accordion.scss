@@ -1,0 +1,27 @@
+.accordion {
+
+    &__header {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &--icon-right {
+            justify-content: space-between;
+        }
+
+        &--icon-left {
+            justify-content: flex-end;
+            flex-direction: row-reverse;
+        }
+    }
+
+
+    &__body {
+        word-wrap: break-word;
+        height: 0;
+        overflow: hidden;
+        &--active {
+            height: auto;
+        }
+    }
+}

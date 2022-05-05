@@ -87,12 +87,24 @@ export class TariffsStore {
     try {
       this._bootStateTariffCards = BootState.Loading;
       const response = await fetch(
-        filterFetchRoutes[this._selectedFilter as keyof typeof filterFetchRoutes],
+        filterFetchRoutes[
+          this._selectedFilter as keyof typeof filterFetchRoutes
+        ],
       ); // нужен тайпгард
       const fetchedData: ITariffsCardsGroup = await response.json();
       console.log(fetchedData);
       runInAction(() => {
         this._tariffsCardsGroup = fetchedData;
+        // this._tariffsCardsGroup = [
+        //   {
+        //     MarketingProduct: {
+        //       Title: 'test',
+        //       Alias: 'test',
+        //       Id: 1,
+        //       Type: 'test',
+        //     },
+        //   },
+        // ];
         this._bootStateTariffCards = BootState.Success;
       });
     } catch (error) {

@@ -17,14 +17,24 @@
         border-bottom: 1px solid #F1F1F1;
         width: 380px;
         padding-top: 32px;
+        &--main-header-padding {
+            padding-top: 23px;
+        }
     }
-    &__item--header {
-        padding-top: 23px;
+
+    &__item-header{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        color: #2C5BDE;
+        margin-bottom: 20px;
     }
+
 
     &__header-constructor {
         display: flex;
         justify-content: space-between;
+        align-items: flex-end;
         font-weight: 700;
         font-size: 22px;
         line-height: 24px;
@@ -58,5 +68,26 @@
         display: flex;
         align-items: center;
         margin-bottom: 32px;
+    }
+
+    &__connect-btn {
+        padding: 14px 113px;
+        font-size: 16px;
+        margin-left: 24px;
+        margin-right: 24px;
+        margin-bottom: 36px;
+        margin-top: 28px;
+    }
+
+    &__month-paid-title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__slider-container {
+        display: flex;
+        padding-bottom: 32px;
+        column-gap: 12px;
     }
 }
