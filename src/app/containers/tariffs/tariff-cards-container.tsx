@@ -15,14 +15,16 @@ const TariffCardsContainer: FC<IProps> = ({ cardsGroup, bootState }) => {
     <Loader />
   ) : (
     <div className="tariffs-container__cards-container">
-      {cardsGroup.map(el => (
-        <TariffCard
-          key={el.MarketingProduct.Id}
-          title={el.MarketingProduct.Title}
-          image={CardDemo}
-          isHit={true}
-        />
-      ))}
+      {cardsGroup.map(el => {
+        return (
+          <TariffCard
+            key={el.Id}
+            title={el.MarketingProduct.Category.Title}
+            image={CardDemo}
+            isHit={true}
+          />
+        );
+      })}
     </div>
   );
 };

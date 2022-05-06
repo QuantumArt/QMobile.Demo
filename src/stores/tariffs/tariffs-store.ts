@@ -2,9 +2,10 @@
 import { action, computed, observable, runInAction } from 'mobx';
 import { filterFetchRoutes } from '../../app/constants/filter-fetch-routes';
 import { BootState } from '../../app/enums/boot-state';
+import { IMarketingProduct } from '../../app/types';
 // import { FormTariffFilter } from './forms';
 import { ITariffsCardsGroup } from './tariffs-cards-group';
-import { ITariffFilterGroup, tariffsFilters } from './tariffs-filters-group';
+import { ITariffFilterGroup } from './tariffs-filters-group';
 
 export class TariffsStore {
   @observable
@@ -56,13 +57,33 @@ export class TariffsStore {
 
   @action
   public init = async (): Promise<void> => {
-    this._bootState = BootState.Loading;
-    this._filtersGroups = tariffsFilters;
-    this._selectedFilter = tariffsFilters[0].alias as string;
-    await this.fetchTariffs();
-    // this.initForm();
-    await this.load();
-    this._bootState = BootState.Success;
+    try {
+      this._bootState = BootState.Loading;
+      // this._filtersGroups = tariffsFilters;
+      const response = await fetch(
+        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Tariff?fields=MarketingProduct.Category.Title,MarketingProduct.Category.Alias',
+      );
+      const data: Array<IMarketingProduct> = await response.json();
+
+      data.forEach(el => {
+        const filter: ITariffFilterGroup = {
+          Title: el.MarketingProduct.Category.Title,
+          Alias: el.MarketingProduct.Category.Alias,
+        };
+
+        if (!this._filtersGroups.some(el => el.Alias === filter.Alias))
+          this._filtersGroups.push(filter);
+      });
+
+      this._selectedFilter = this._filtersGroups[0].Alias as string;
+      await this.fetchTariffs();
+      // this.initForm();
+      await this.load();
+      this._bootState = BootState.Success;
+    } catch (error) {
+      console.log(error);
+      this._bootState = BootState.Error;
+    }
   };
 
   @action
@@ -87,14 +108,15 @@ export class TariffsStore {
     try {
       this._bootStateTariffCards = BootState.Loading;
       const response = await fetch(
-        filterFetchRoutes[
-          this._selectedFilter as keyof typeof filterFetchRoutes
-        ],
-      ); // нужен тайпгард
+        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Tariff?fields=Id,MarketingProduct.Category.Title,MarketingProduct.Category.Alias,MarketingProduct.Title,Parameters.Title,Parameters.NumValue,Parameters.BaseParameter,Parameters.Unit&MarketingProduct.Category.Alias=${this._selectedFilter}`,
+      );
       const fetchedData: ITariffsCardsGroup = await response.json();
       console.log(fetchedData);
       runInAction(() => {
         this._tariffsCardsGroup = fetchedData;
+        // this._tariffsCardsGroup.forEach((el)=> {
+        //   el.
+        // })
         this._bootStateTariffCards = BootState.Success;
       });
     } catch (error) {

@@ -1,12 +1,12 @@
-export interface IMarketingProduct {
-  Type: string;
-  Alias: string;
-  Title: string;
-  Id: number;
-}
+import { IMarketingProduct } from '../../app/types';
+import { IParameters } from '../../app/types';
 
-export interface ITariffCard {
-  MarketingProduct: IMarketingProduct;
-}
+export type ITariffPackages = {
+  [key: string]: IParameters;
+};
 
-export type ITariffsCardsGroup = Array<ITariffCard>;
+type TariffCard = IMarketingProduct & {
+  packages?: ITariffPackages;
+};
+
+export type ITariffsCardsGroup = Array<TariffCard>;

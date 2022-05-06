@@ -20,13 +20,13 @@ const TariffsFilter: FC<Props> = ({ bootState, activeFilter }) => {
     <Loader />
   ) : (
     <ul className="tariffs-filter-list">
-      {tariffsStore.filtersGroups.map(({ alias, name }) => (
-        <li key={alias} className="tariffs-filter-list__item">
+      {tariffsStore.filtersGroups.map(({ Alias, Title }) => (
+        <li key={Alias} className="tariffs-filter-list__item">
           <TariffsFilterBtn
-            name={name}
-            onClickHandler={onClickHandler(alias)}
+            title={Title}
+            onClickHandler={onClickHandler(Alias)}
           />
-          {activeFilter === alias ? (
+          {activeFilter === Alias ? (
             <img src={RightArrowFilters} alt=">" />
           ) : null}
         </li>

@@ -12,7 +12,7 @@ type Props = {
 const ConnectForm: FC<Props> = ({ children, headerType }) => {
   const onSubmitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    alert(`${connectStore.minutes} ${connectStore.internet}`);
+    alert(`${connectStore.minutes} ${connectStore.internet} ${connectStore.services.activeServicesIds}`);
   };
 
   return useObserver(() => (

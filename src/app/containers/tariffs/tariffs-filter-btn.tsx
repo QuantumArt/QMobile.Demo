@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 
 type BtnProps = {
-  name: string;
+  title: string;
   onClickHandler: () => void;
 };
 
-const TariffsFilterBtn: FC<BtnProps> = ({ name, onClickHandler }) => {
+const TariffsFilterBtn: FC<BtnProps> = ({ title, onClickHandler }) => {
   return (
     <button
       className="tariffs-filter-list__btn"
       type="button"
       onClick={onClickHandler}
     >
-      {name}
+      {title}
     </button>
   );
 };

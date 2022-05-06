@@ -7,7 +7,9 @@ import PrimaryButton from './primary-button';
 type Props = {
   image: string;
   title: string;
-  isHit?: boolean
+  isHit?: boolean;
+  internetTrafic?: number;
+  mobileTraffic?: number;
 };
 
 const TariffCard: FC<Props> = ({ image, title, isHit }) => {
