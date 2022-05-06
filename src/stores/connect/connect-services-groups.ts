@@ -1,8 +1,9 @@
 
-type ServiceInfo = {
+export type ServiceInfo = {
   id: number;
   alias: string;
   description: string;
+  price: number
 };
 
 export type ServicesList = {

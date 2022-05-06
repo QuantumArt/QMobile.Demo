@@ -95,16 +95,6 @@ export class TariffsStore {
       console.log(fetchedData);
       runInAction(() => {
         this._tariffsCardsGroup = fetchedData;
-        // this._tariffsCardsGroup = [
-        //   {
-        //     MarketingProduct: {
-        //       Title: 'test',
-        //       Alias: 'test',
-        //       Id: 1,
-        //       Type: 'test',
-        //     },
-        //   },
-        // ];
         this._bootStateTariffCards = BootState.Success;
       });
     } catch (error) {
