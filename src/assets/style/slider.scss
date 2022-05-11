@@ -2,10 +2,16 @@
     min-height: 222px;
     border-radius: 10px;
     &--tariffs {
-      background: linear-gradient(185.58deg, #73ABEE 5.26%, #70A4F0 50.14%, #6599EF 94.83%), #679AF0;
+      color: #FFFFFF;
+      background: url('../images/bubbles.png') no-repeat bottom 13px right 184px, linear-gradient(185.58deg, #73ABEE 5.26%, #70A4F0 50.14%, #6599EF 94.83%), #679AF0;
     }
     &--services {
-      background: linear-gradient(174.85deg, #B5A1C4 3.38%, #AB97BC 65.71%, #A08BB1 95.13%), #AF9BC0;
+      background: url('../images/couple.png') no-repeat top 0 right 164px #C6B8D2;
+      color: #FFFFFF;
+    }
+    &--tariff-details {
+      color: #002233;
+      background-color: #F1F1F1;
     }
     &--margin-bottom {
       margin-bottom: 20px;
@@ -19,12 +25,13 @@
       font-size: 27px;
       line-height: 33px;
       margin-bottom: 12px;
-      color: #FFFFFF;
     }
     &__description{
       font-weight: 400;
       font-size: 18px;
       line-height: 22px;
-      color:#FFFFFF
+    }
+    &__info-container {
+      max-width: 511px;
     }
   }

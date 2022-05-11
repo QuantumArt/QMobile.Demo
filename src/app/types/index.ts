@@ -25,6 +25,10 @@ export type IParameters = {
     Display: string;
     QuotaPeriod: string;
   };
+  Group: {
+    Id: number;
+    Title: string;
+  }
 };
 
 export type IMarketingProduct = {
@@ -33,6 +37,10 @@ export type IMarketingProduct = {
       Alias: string;
       Title: string;
     };
+    Title: string;
+    ListImage: string;
+    Description: string;
+    DetailsImage: string;
   };
   Parameters: Array<IParameters>;
   Id: number;

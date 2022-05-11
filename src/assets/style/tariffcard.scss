@@ -12,6 +12,11 @@
         margin-left: 2px;
         margin-right: 2px;
         position: relative;
+        display: flex;
+
+        img {
+            object-fit: cover;
+        }
     }
 
     &__content {

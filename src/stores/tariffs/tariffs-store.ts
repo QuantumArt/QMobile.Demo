@@ -1,6 +1,5 @@
 // import { FormControl, FormGroup } from '@quantumart/mobx-form-validation-kit';
 import { action, computed, observable, runInAction } from 'mobx';
-import { filterFetchRoutes } from '../../app/constants/filter-fetch-routes';
 import { BootState } from '../../app/enums/boot-state';
 import { IMarketingProduct } from '../../app/types';
 // import { FormTariffFilter } from './forms';
@@ -108,15 +107,11 @@ export class TariffsStore {
     try {
       this._bootStateTariffCards = BootState.Loading;
       const response = await fetch(
-        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Tariff?fields=Id,MarketingProduct.Category.Title,MarketingProduct.Category.Alias,MarketingProduct.Title,Parameters.Title,Parameters.NumValue,Parameters.BaseParameter,Parameters.Unit&MarketingProduct.Category.Alias=${this._selectedFilter}`,
+        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Tariff?fields=Id,MarketingProduct.ListImage,MarketingProduct.Category.Title,MarketingProduct.Category.Alias,MarketingProduct.Title,Parameters.Title,Parameters.NumValue,Parameters.BaseParameter,Parameters.Unit&MarketingProduct.Category.Alias=${this._selectedFilter}`,
       );
       const fetchedData: ITariffsCardsGroup = await response.json();
-      console.log(fetchedData);
       runInAction(() => {
         this._tariffsCardsGroup = fetchedData;
-        // this._tariffsCardsGroup.forEach((el)=> {
-        //   el.
-        // })
         this._bootStateTariffCards = BootState.Success;
       });
     } catch (error) {
