@@ -7,6 +7,7 @@ import Tariffs from './pages/tariffs';
 import { IRoute } from './types';
 import Services from './pages/services';
 import TariffConsructor from './pages/tariff-consructor';
+import TariffDetails from './pages/tariff-details';
 
 const routes: IRoute[] = [
   {
@@ -20,6 +21,10 @@ const routes: IRoute[] = [
   {
     path: '/tariffs/tariffconstructor',
     element: <TariffConsructor />,
+  },
+  {
+    path: '/tariffs/*',
+    element: <TariffDetails />,
   },
   {
     path: '*',

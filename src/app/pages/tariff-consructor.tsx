@@ -2,7 +2,7 @@ import { useObserver } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
-import ConsructorPageContent from '../containers/constructor-page-content';
+import ConsructorPageContent from '../containers/constructor-content/constructor-page-content';
 
 const TariffConsructor: FC = () => {
   return useObserver(() => (

@@ -9,17 +9,25 @@ class PathNames {
   static readonly tariffconstructor = 'Соберите свой тариф';
 }
 
-const CurrentPathInfo: FC = () => {
+type Props = {
+  pathNames?: string[];
+};
+
+const CurrentPathInfo: FC<Props> = ({ pathNames }) => {
+  const pathString = pathNames ? pathNames : [''];
   const pathnames = useLocation()
-    .pathname.split('/')
-    .filter(el => el.length > 0);
+    .pathname.concat(...pathString)
+    .split('/')
+    .filter(route => route.length > 0 && !Number(route));
 
   return (
     <div className="path-info">
       <p className="path-info__item">Главная</p>
       {pathnames.map(el => {
-        const key = el as keyof typeof PathNames;
+        const key = el;
         const lastElem = pathnames.length - 1;
+
+        let value = el as keyof typeof PathNames;
 
         return (
           <React.Fragment key={el}>
@@ -33,7 +41,10 @@ const CurrentPathInfo: FC = () => {
                 key === pathnames[lastElem] ? 'path-info__item--active' : ''
               }`}
             >
-              {PathNames[key].toString()}
+              {Object.keys(PathNames).includes(value)
+                ? PathNames[value].toString()
+                : el}
+              {/* {el} */}
             </p>
           </React.Fragment>
         );

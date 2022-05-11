@@ -1,8 +1,8 @@
 import { useObserver } from 'mobx-react-lite';
 import React, { FC, useEffect } from 'react';
-import connectStore from '../../stores/connect/connect-store';
-import ConnectForm from './connect-form/connect-form';
-import ServiceGroupContainer from './connect-form/service-group-container';
+import connectStore from '../../../stores/connect/connect-store';
+import ConnectForm from '../connect-form/connect-form';
+import ServiceGroupContainer from '../connect-form/service-group-container';
 import ConsructorRanges from './constructor-ranges';
 
 const ConsructorPageContent: FC = () => {

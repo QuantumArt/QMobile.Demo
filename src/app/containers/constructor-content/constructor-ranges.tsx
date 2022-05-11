@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useObserver } from 'mobx-react-lite';
-import Range from '../components/range';
-import Phone from '../../assets/icons/Phone.svg';
-import Internet from '../../assets/icons/Internet.svg';
-import connectStore from '../../stores/connect/connect-store';
+import Range from '../../components/range';
+import Phone from '../../../assets/icons/Phone.svg';
+import Internet from '../../../assets/icons/Internet.svg';
+import connectStore from '../../../stores/connect/connect-store';
 
 const ConsructorRanges: FC = () => {
   const onDragMinutes = (value: number) => {

@@ -1,5 +1,6 @@
 import { action, computed, observable, runInAction } from 'mobx';
 import { services } from '../../app/constants/fakeData';
+import { IMarketingProduct, IParameters } from '../../app/types';
 import { IConnectServices, ServiceInfo } from './connect-services-groups';
 
 export class ConnectStore {
@@ -25,6 +26,13 @@ export class ConnectStore {
   @computed
   public get internet(): number {
     return this._internet;
+  }
+
+  @observable
+  private _currentTariff!: IMarketingProduct;
+  @computed
+  public get currentTariff(): IMarketingProduct {
+    return this._currentTariff;
   }
 
   @action setMinutes(value: number) {
@@ -57,6 +65,22 @@ export class ConnectStore {
     return price;
   }
 
+  // @computed
+  // get getParametersByGroup() {
+  //   // const parametersList = new Map<number, IParameters[]>();
+
+  //   // this._currentTariff.Parameters.forEach(parameter => {
+  //   //   const groupId = parameter.Group.Id;
+  //   //   if (parametersList.has(groupId)) {
+  //   //     parametersList.get(groupId)?.push(parameter);
+  //   //   } else {
+  //   //     parametersList.set(groupId, [parameter]);
+  //   //   }
+  //   // });
+
+  //   // return parametersList;
+  // }
+
   @action
   initTariffConstructor() {
     this._services = services;
@@ -80,6 +104,22 @@ export class ConnectStore {
       this.addActiveService(id);
     }
   }
+
+  @action
+  public fetchTariff = async (tariffId: string): Promise<void> => {
+    try {
+      const response = await fetch(
+        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${tariffId}`,
+      );
+      const fetchedData: IMarketingProduct = await response.json();
+      console.log(fetchedData);
+      runInAction(() => {
+        this._currentTariff = fetchedData;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const connectStore = new ConnectStore();
