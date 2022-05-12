@@ -13,7 +13,7 @@ const AdditionalInfo: FC<Props> = ({ paramList }) => {
     <div className="tariff-details-additional-info">
       <p className="page-content-title">Дополнительная информация</p>
       {paramList.map(([groupId, value]) => (
-        <>
+        <React.Fragment key={groupId}>
           {value.map(parameter => (
             <div key={parameter.Id} className="tariff-details-additional-item">
               <Accordion
@@ -25,7 +25,7 @@ const AdditionalInfo: FC<Props> = ({ paramList }) => {
               />
             </div>
           ))}
-        </>
+        </React.Fragment>
       ))}
     </div>
   );
