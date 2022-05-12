@@ -24,7 +24,7 @@ const TariffsFilter: FC<Props> = ({ bootState, activeFilter }) => {
         <li key={Alias} className="tariffs-filter-list__item">
           <TariffsFilterBtn
             title={Title}
-            onClickHandler={onClickHandler(Alias)}
+            onClick={onClickHandler(Alias)}
           />
           {activeFilter === Alias ? (
             <img src={RightArrowFilters} alt=">" />

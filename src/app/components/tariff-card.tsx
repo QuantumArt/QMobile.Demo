@@ -30,11 +30,11 @@ const TariffCard: FC<Props> = ({
         {isHit ? <div className="tariff-card__image-hit">Хит</div> : null}
       </div>
       <div className="tariff-card__content">
-        <p className="tariff-card__title">{title}</p>
-        <p className="tariff-card__trafic-limit">
+        <h2 className="tariff-card__title">{title}</h2>
+        <p className="tariff-card__traffic-limit">
           {internetTrafic ? internetTrafic : '-'} ГБ
         </p>
-        <p className="tariff-card__trafic-limit">
+        <p className="tariff-card__traffic-limit">
           {mobileTraffic ? mobileTraffic : '-'} минут
         </p>
         <div className="tariff-card__benefits">

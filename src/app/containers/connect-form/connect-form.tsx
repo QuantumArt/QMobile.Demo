@@ -5,15 +5,19 @@ import PrimaryButton from '../../components/primary-button';
 import { MonthPaidHeader, PackageHeader } from './connect-header';
 
 type Props = {
-  children?: JSX.Element;
+  children?: React.ReactNode;
   headerType: 'monthPaid' | 'package';
 };
 
-const ConnectForm: FC<Props> = ({ children, headerType }) => {
+const ConnectForm: FC<Props> = ({ children, headerType }): JSX.Element => {
   const onSubmitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    alert(`${connectStore.minutes} ${connectStore.internet} ${connectStore.services.activeServicesIds}`);
+    alert(
+      `${connectStore.minutes} ${connectStore.internet} ${connectStore.services.activeServicesIds}`,
+    );
   };
+
+  headerType = 'monthPaid';
 
   return useObserver(() => (
     <form className="connect-form">

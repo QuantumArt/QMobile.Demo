@@ -6,6 +6,7 @@ import RightArrow from '../../assets/icons/Right_arrow.svg';
 class PathNames {
   static readonly tariffs = 'Тарифы';
   static readonly services = 'Услуги';
+  static readonly devices = 'Устройства';
   static readonly tariffconstructor = 'Соберите свой тариф';
 }
 

@@ -2,15 +2,15 @@ import React, { FC } from 'react';
 
 type BtnProps = {
   title: string;
-  onClickHandler: () => void;
+  onClick: () => void;
 };
 
-const TariffsFilterBtn: FC<BtnProps> = ({ title, onClickHandler }) => {
+const TariffsFilterBtn: FC<BtnProps> = ({ title, onClick }) => {
   return (
     <button
       className="tariffs-filter-list__btn"
       type="button"
-      onClick={onClickHandler}
+      onClick={onClick}
     >
       {title}
     </button>

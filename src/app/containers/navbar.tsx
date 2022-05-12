@@ -7,7 +7,7 @@ import { NavigationRoutesGroup } from '../types';
 type NavbarProps = {
   containerName: string;
   routesList: NavigationRoutesGroup;
-};
+}
 
 const Navbar: FC<NavbarProps> = ({ containerName, routesList }) => {
   const { pathname } = useLocation();
@@ -36,9 +36,9 @@ const Navbar: FC<NavbarProps> = ({ containerName, routesList }) => {
           : 'container'
       }`}
     >
-      {routesList.map(({ name, linkto }) => (
-        <li className={navItemStyles(linkto)} key={name}>
-          <Link to={`/${linkto}`} className={`${containerName}-link`}>
+      {routesList.map(({ name, linkTo }) => (
+        <li className={navItemStyles(linkTo)} key={name}>
+          <Link to={`/${linkTo}`} className={`${containerName}-link`}>
             {name}
           </Link>
         </li>
