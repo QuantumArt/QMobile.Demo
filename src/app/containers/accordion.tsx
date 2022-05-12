@@ -7,6 +7,7 @@ type Props = {
   iconClosed?: JSX.Element;
   body: JSX.Element;
   iconPosition?: 'right' | 'left';
+  headerClasses?: string;
 };
 
 const Accordion: FC<Props> = ({
@@ -15,6 +16,7 @@ const Accordion: FC<Props> = ({
   body,
   iconClosed,
   iconPosition,
+  headerClasses,
 }) => {
   const [isActive, setActive] = useState(false);
 
@@ -25,7 +27,7 @@ const Accordion: FC<Props> = ({
   return (
     <div className="accordion">
       <div
-        className={`accordion__header ${
+        className={`accordion__header ${headerClasses} ${
           iconPosition === 'right'
             ? 'accordion__header--icon-right'
             : 'accordion__header--icon-left'

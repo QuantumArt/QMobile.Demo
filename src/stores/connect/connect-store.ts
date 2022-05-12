@@ -35,6 +35,28 @@ export class ConnectStore {
     return this._currentTariff;
   }
 
+  @observable
+  private _parametersByGroup: Map<number, IParameters[]> = new Map<
+    number,
+    IParameters[]
+  >();
+
+  @computed
+  public get parametersByGroup(): Map<number, IParameters[]> {
+    return this._parametersByGroup;
+  }
+
+  @observable
+  private _additionalInfo: Map<number, IParameters[]> = new Map<
+    number,
+    IParameters[]
+  >();
+
+  @computed
+  public get additionalInfo(): Map<number, IParameters[]> {
+    return this._additionalInfo;
+  }
+
   @action setMinutes(value: number) {
     this._minutes = value;
   }
@@ -115,6 +137,25 @@ export class ConnectStore {
       console.log(fetchedData);
       runInAction(() => {
         this._currentTariff = fetchedData;
+        this._parametersByGroup = new Map();
+        this._additionalInfo = new Map();
+
+        this._currentTariff.Parameters.forEach(parameter => {
+          const groupId = parameter.Group.Id;
+          if (parameter.Group.Title !== 'Дополнительная информация') {
+            if (this._parametersByGroup.has(groupId)) {
+              this._parametersByGroup.get(groupId)?.push(parameter);
+            } else {
+              this._parametersByGroup.set(groupId, [parameter]);
+            }
+          } else if (parameter.Group.Title === 'Дополнительная информация') {
+            if (this._additionalInfo.has(groupId)) {
+              this._additionalInfo.get(groupId)?.push(parameter);
+            } else {
+              this._additionalInfo.set(groupId, [parameter]);
+            }
+          }
+        });
       });
     } catch (error) {
       console.log(error);

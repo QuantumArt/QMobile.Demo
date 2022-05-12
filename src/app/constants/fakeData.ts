@@ -42,11 +42,11 @@ export const services: IConnectServices = {
         ],
       },
       {
-        type: '50 SMS в поездках по миру',
+        type: 'Сообщения',
         services: [
           {
             id: 600,
-            alias: 'Ноль без границ',
+            alias: '50 SMS в поездках по миру',
             price: 90,
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida lacus magna, ultrices ullamcorper sapien mattis eget. Donec volutpat leo enim, nec viverra leo facilisis at.',

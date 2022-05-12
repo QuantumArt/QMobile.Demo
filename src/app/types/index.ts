@@ -19,6 +19,7 @@ export type IParameters = {
     Id: number;
   };
   Title: string;
+  Id: number;
   Unit: {
     Title: string;
     Id: number;
