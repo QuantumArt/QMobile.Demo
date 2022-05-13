@@ -2,9 +2,9 @@ import { useObserver } from 'mobx-react-lite';
 import React from 'react';
 import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
-import ConsructorPageContent from '../containers/constructor-content/constructor-page-content';
+import ConstructorPageContent from '../containers/constructor-content/constructor-page-content';
 
-const TariffConsructor = (): JSX.Element => {
+const TariffConstructor = (): JSX.Element => {
   return useObserver(() => (
     <>
       <Slider
@@ -13,9 +13,9 @@ const TariffConsructor = (): JSX.Element => {
         description="Будь первым! Собери свой тариф без переплат"
       />
       <CurrentPathInfo />
-      <ConsructorPageContent />
+      <ConstructorPageContent />
     </>
   ));
 };
 
-export default TariffConsructor;
+export default TariffConstructor;

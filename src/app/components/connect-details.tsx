@@ -10,7 +10,7 @@ const ConnectDetails = ({ link }: IProps): JSX.Element => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="tariff-card-connect-btns__details"
+      className="tariff-card__connect-btns-details"
     >
       Подробнее
     </a>

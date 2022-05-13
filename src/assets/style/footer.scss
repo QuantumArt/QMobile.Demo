@@ -1,17 +1,14 @@
 @import './variables/variables';
 
 .footer {
-
-    &__wrapper {
-        background-color: $background_dark;
-    }
+    background-color: $background_dark;
 
     &__separator {
         height: 1px;
-        background-color:rgba(239, 243, 251, 0.34);
+        background-color: rgba($light_gray4, 0.34);
     }
 
-    &__nav{
+    &__nav {
         height: 126px;
         display: flex;
         justify-content: space-between;
@@ -19,8 +16,9 @@
         font-size: 16px;
         line-height: 20px;
     }
+
     &__nav-link {
-        color: #FFFFFF;
+        color: white;
     }
 
     &__info {
@@ -36,7 +34,7 @@
         letter-spacing: 0.02em;
         font-size: 16px;
         line-height: 20px;
-        color: #FFFFFF;
+        color: white;
     }
 
     &__social-icons {

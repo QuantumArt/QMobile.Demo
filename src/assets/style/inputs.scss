@@ -1,3 +1,5 @@
+@import './variables/variables';
+
 .search-input {
     display: flex;
     align-items: center;
@@ -6,8 +8,8 @@
     &__input {
         flex-grow: 1;
         height: 48px;
-        border: 1px solid #EFF3FB;
-        border-radius: 6px ;
+        border: 1px solid $light_gray4;
+        border-radius: 6px;
         padding-left: 20px;
         font-weight: 500;
         font-size: 16px;
@@ -17,7 +19,7 @@
 
         &:focus {
             outline: none;
-            border: 1px solid #679AF0;
+            border: 1px solid $light_blue;
         }
     }
 
@@ -27,6 +29,6 @@
         background: none;
         border: none;
         cursor: pointer;
-        padding: 11.5px 28px;
+        padding: 12px 28px;
     }
 }

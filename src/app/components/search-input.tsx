@@ -14,7 +14,7 @@ const SeachInput = ({
 }: Props): JSX.Element => {
   const [inputValue, setValue] = useState('');
 
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
@@ -31,7 +31,7 @@ const SeachInput = ({
         placeholder={placeholder}
         className="search-input__input"
         value={inputValue}
-        onChange={onChangeInput}
+        onChange={onChangeHandler}
       />
       <button type="submit" className="search-input__btn">
         <img src={SearchIcon} alt="search icon" />

@@ -5,13 +5,11 @@ import { footerNavRoutes } from '../../constants/navigation-routes';
 
 const Footer = (): JSX.Element => {
   return (
-    <div className="footer__wrapper">
-      <footer className="footer">
-        <Navbar containerName="footer__nav" routesList={footerNavRoutes}/>
-        <div className="footer__separator" />
-        <FooterInfo />
-      </footer>
-    </div>
+    <footer className="footer">
+      <Navbar containerName="footer__nav" routesList={footerNavRoutes} />
+      <div className="footer__separator" />
+      <FooterInfo />
+    </footer>
   );
 };
 

@@ -1,10 +1,11 @@
+@import './variables/variables';
 @import "fonts";
 @import 'header';
 @import 'footer';
 @import 'loader';
 @import "tariffs";
 @import "slider";
-@import "tariffcard";
+@import "tariff-card";
 @import "buttons";
 @import "constructor";
 @import "inputs";
@@ -16,98 +17,102 @@
 @import "tariff-details";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+  /* Убираем маркеры */
+}
+
+
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 0 30px;
+  width: 100%;
+
+  &--padding-top {
+    padding-top: 44px;
   }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  a {
-    text-decoration: none;
+}
+
+.main {
+  min-height: 100vh;
+}
+
+
+.page-content-title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+
+  &--tariffs-filter {
+    margin-bottom: 16px;
   }
 
-  li {
-    list-style-type: none;
-    /* Убираем маркеры */
+  &--constructor {
+    margin-bottom: 56px;
   }
+}
 
-  
-  ul {
-    margin-left: 0;
-    padding-left: 0;
-  }
+.flex-wrapper {
+  display: flex;
+}
 
-  .container {
-    margin: 0 auto;
-    max-width: 1240px;
-    padding: 0 30px;
-    width: 100%;
+.space-between {
+  justify-content: space-between;
+}
 
-    &--padding-top {
-      padding-top: 44px;
+
+
+.path-info {
+  height: 17px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: $dark_gray1;
+  display: flex;
+
+  &__item {
+    margin-right: 12px;
+
+    &--active {
+      color: $primary_blue;
     }
   }
 
-  .main {
-    min-height: 100vh;
+  &__right-arrow {
+    margin-right: 22px;
   }
+}
 
-
-  .page-content-title {
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 44px;
-
-    &--tariffs-filter {
-      margin-bottom: 16px;
-    }
-
-    &--constructor {
-      margin-bottom: 56px;
-    }
-  }
-  .flex-wrapper {
-    display: flex;
-  }
-
-  .space-between {
-    justify-content: space-between;
-  }
-
-
-
-  .path-info{
-    height: 17px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    color: #6C6C6C;
-    display: flex;
-    &__item {
-      margin-right: 12px;
-      &--active {
-        color: #2C5BDE        ;
-      }
-    }
-    &__right-arrow {
-      margin-right: 22px;
-    }
-  }
-
-  .title {
-    &--sm {
+.title {
+  &--sm {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.02em;
-    color: #002233;
-    }
+    color: $dark_blue;
   }
+}

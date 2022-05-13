@@ -1,32 +1,35 @@
+@import './variables/variables';
 
 .header {
-    &__nav{
-    height: 60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    &__nav {
+        height: 60px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
 
     &__nav-item {
-    height: 52px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-     &--active {
-         border-bottom: 2px solid #2C5BDE;         ;
-     }
+        height: 52px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &--active {
+            border-bottom: 2px solid $primary_blue;
+            ;
+        }
     }
 
     &__nav-link {
-    color: #20264E;
+        color: #20264E;
     }
 
     &__nav-wrapper {
-        background-color: #F7F9FC;
+        background-color: $light_gray3;
     }
 
     &__logo-container {

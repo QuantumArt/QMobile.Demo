@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import tariffsStore from '../../../stores/tariffs/tariffs-store';
 import TariffsFilterBtn from './tariffs-filter-btn';
 import { BootState } from '../../enums/boot-state';
@@ -10,12 +10,7 @@ type Props = {
   activeFilter: string;
 };
 
-const TariffsFilter = (
-  {
-    bootState,
-    activeFilter
-  }: Props
-) => {
+const TariffsFilter = ({ bootState, activeFilter }: Props): JSX.Element => {
   const onClickHandler = (filterAlias: string) => () => {
     tariffsStore.setFilter(filterAlias);
     tariffsStore.fetchTariffs();
@@ -27,10 +22,7 @@ const TariffsFilter = (
     <ul className="tariffs-filter-list">
       {tariffsStore.filtersGroups.map(({ Alias, Title }) => (
         <li key={Alias} className="tariffs-filter-list__item">
-          <TariffsFilterBtn
-            title={Title}
-            onClick={onClickHandler(Alias)}
-          />
+          <TariffsFilterBtn title={Title} onClick={onClickHandler(Alias)} />
           {activeFilter === Alias ? (
             <img src={RightArrowFilters} alt=">" />
           ) : null}

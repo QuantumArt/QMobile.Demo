@@ -17,8 +17,6 @@ const ConnectForm = ({ children, headerType }: Props): JSX.Element => {
     );
   };
 
-  headerType = 'monthPaid';
-
   return useObserver(() => (
     <form className="connect-form">
       {headerType === 'package' ? (
@@ -34,7 +32,7 @@ const ConnectForm = ({ children, headerType }: Props): JSX.Element => {
       <PrimaryButton
         type="submit"
         text="Подключить"
-        onClickHandler={onSubmitHandler}
+        onClick={onSubmitHandler}
         classNames="connect-form__connect-btn"
       />
     </form>

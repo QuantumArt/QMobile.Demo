@@ -1,16 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 type BtnProps = {
   title: string;
   onClick: () => void;
 };
 
-const TariffsFilterBtn = (
-  {
-    title,
-    onClick
-  }: BtnProps
-) => {
+const TariffsFilterBtn = ({ title, onClick }: BtnProps): JSX.Element => {
   return (
     <button
       className="tariffs-filter-list__btn"

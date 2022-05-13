@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import TariffsFilter from './tariffs-filter';
 import { useObserver } from 'mobx-react-lite';
 import tariffsStore from '../../../stores/tariffs/tariffs-store';
@@ -6,7 +6,7 @@ import TariffSearch from '../../components/search-input';
 import MakeTariffLink from '../../components/make-tariff-link';
 import TariffCardsContainer from './tariff-cards-container';
 
-const TariffsPageContent = () => {
+const TariffsPageContent = (): JSX.Element => {
   useEffect(() => {
     tariffsStore.init();
     return () => {

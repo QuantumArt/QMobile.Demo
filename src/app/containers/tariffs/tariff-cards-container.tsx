@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import TariffCard from '../../components/tariff-card';
 import { ITariffsCardsGroup } from '../../../stores/tariffs/tariffs-cards-group';
 import Loader from '../../components/loader';
@@ -20,12 +20,10 @@ type ParametrsList = {
   [key in IParameterNames]?: IParameters;
 };
 
-const TariffCardsContainer = (
-  {
-    cardsGroup,
-    bootState
-  }: IProps
-) => {
+const TariffCardsContainer = ({
+  cardsGroup,
+  bootState,
+}: IProps): JSX.Element => {
   const navigate = useNavigate();
 
   const connectHandler = (tariffId: number) => () => {

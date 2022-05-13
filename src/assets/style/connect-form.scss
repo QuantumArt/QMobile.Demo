@@ -1,5 +1,7 @@
+@import './variables/variables';
+
 .connect-form {
-    border: 1px solid #F1F1F1;
+    border: 1px solid $light_gray2;
     border-radius: 6px;
     height: fit-content;
 
@@ -7,26 +9,27 @@
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.02em;
-    color: #002233;
+    color: $dark_blue;
 
 
     &__item {
         // padding: 24px 32px;
         padding-left: 24px;
         padding-right: 24px;
-        border-bottom: 1px solid #F1F1F1;
+        border-bottom: 1px solid $light_gray2;
         width: 380px;
         padding-top: 32px;
+
         &--main-header-padding {
             padding-top: 23px;
         }
     }
 
-    &__item-header{
+    &__item-header {
         font-weight: 400;
         font-size: 16px;
         line-height: 16px;
-        color: #2C5BDE;
+        color: $primary_blue;
         margin-bottom: 20px;
     }
 
@@ -38,28 +41,29 @@
         font-weight: 700;
         font-size: 22px;
         line-height: 24px;
-        color: #002233;
+        color: $dark_blue;
     }
 
     &__price {
         font-weight: 600;
         font-size: 22px;
         line-height: 16px;
-        color: #002233;
+        color: $dark_blue;
     }
 
     &__header-days {
         font-weight: 400;
         font-size: 14px;
         line-height: 16px;
-        color: #2C5BDE;
+        color: $primary_blue;
         display: flex;
         width: 100%;
+
         &--end {
-             justify-content: end;
+            justify-content: end;
         }
     }
-    
+
     &__logo {
         margin-right: 12px;
     }

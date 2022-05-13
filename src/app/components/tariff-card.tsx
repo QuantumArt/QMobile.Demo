@@ -51,10 +51,10 @@ const TariffCard = ({
           <p className="tariff-card__connect-container-abon">
             Доступен абонемент
           </p>
-          <div className="tariff-card-connect-btns tariff-card__connect-btns-container">
+          <div className="tariff-card__connect-btns-container">
             <PrimaryButton
               text="Подключить"
-              onClickHandler={() =>
+              onClick={() =>
                 onConnectHandler ? onConnectHandler() : console.log('test')
               }
             />
