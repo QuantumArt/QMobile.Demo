@@ -17,6 +17,8 @@ const DevicesPageContent = (props: Props): JSX.Element => {
           price={80000}
           description="Смартфон Apple iPhone 13 128GB 
 с новой комплектацией Black"
+          rating={5}
+          commentsCount={191}
         />
       </div>
     </div>

@@ -1,3 +1,5 @@
+@import './variables/variables';
+
 .device-card {
     min-width: 280px;
     max-width: 280px;
@@ -7,7 +9,7 @@
 
     &__image {
         max-height: 191px;
-        min-height: 191px;
+        min-height: 200px;
         position: relative;
         display: flex;
 
@@ -17,5 +19,63 @@
             object-fit: cover;
             margin: auto;
         }
+    }
+
+    &__container {
+        padding-left: 17px;
+        padding-right: 22px;
+        margin-top: 17px;
+        padding-bottom: 34px;
+    }
+
+    &__info-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+    }
+
+    &__price {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 16px;
+        color: $dark_blue;
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: $dark_blue;
+    }
+
+    &__description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $dark_gray1;
+    }
+
+    &__rating-container {
+        display: flex;
+    }
+
+    &__stars-container {
+        display: flex;
+        gap: 9px;
+        margin-right: 20px;
+    }
+
+    &__comments-count {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    &__connect-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 17px;
+        padding-right: 28px;
     }
 }
