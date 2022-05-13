@@ -40,7 +40,7 @@ const DeviceCard = ({
           <div className="device-card__rating-container">
             <div className="device-card__stars-container">
               {Array.from({ length: rating }, (_, i) => (
-                <img src={Star} alt="star" />
+                <img src={Star} alt="star" key={i} />
               ))}
             </div>
             <p className="device-card__comments-count">({commentsCount})</p>
