@@ -47,12 +47,13 @@ const DeviceCard = ({
           </div>
         </div>
       </div>
-      <div className="device-card__connect-container">
+      <div className="device-card__buy-container">
         <PrimaryButton
           text="Купить"
           onClick={() =>
             onConnectHandler ? onConnectHandler() : console.log('test')
           }
+          classNames="device-card__buy-btn"
         />
         <ConnectDetails link="https://google.com" />
       </div>

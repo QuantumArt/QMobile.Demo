@@ -71,11 +71,15 @@
         line-height: 17px;
     }
 
-    &__connect-container {
+    &__buy-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding-left: 17px;
         padding-right: 28px;
+    }
+
+    &__buy-btn {
+        width: 125px;
     }
 }
