@@ -33,7 +33,7 @@ const TariffCardsContainer = ({
   return bootState === BootState.Loading ? (
     <Loader />
   ) : (
-    <div className="tariffs-container__cards-container">
+    <div className="tariffs-page-content__tariff-cards-container">
       {cardsGroup.map(tariffData => {
         const parameters = tariffData.Parameters.reduce<ParametrsList>(
           (acc, parameterData) => {

@@ -15,6 +15,8 @@
 @import "checkbox";
 @import "parameters-list";
 @import "tariff-details";
+@import "devices-page-content";
+@import "device-card";
 
 * {
   margin: 0;
@@ -71,6 +73,11 @@ ul {
   &--constructor {
     margin-bottom: 56px;
   }
+
+  &--devices {
+    margin-bottom: 22px;
+  }
+
 }
 
 .flex-wrapper {

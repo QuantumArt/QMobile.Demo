@@ -13,9 +13,9 @@ const ConsructorPageContent = (): JSX.Element => {
   return useObserver(() => {
     return (
       <div className="constructor-page-content">
-        <p className="page-content-title page-content-title--constructor">
+        <h1 className="page-content-title page-content-title--constructor">
           Соберите свой тариф
-        </p>
+        </h1>
         <div className="flex-wrapper space-between">
           <div className="constructor-page-content__main-info">
             <ConsructorRanges />

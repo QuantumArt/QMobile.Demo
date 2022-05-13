@@ -8,7 +8,7 @@ type BtnProps = {
 const TariffsFilterBtn = ({ title, onClick }: BtnProps): JSX.Element => {
   return (
     <button
-      className="tariffs-filter-list__btn"
+      className="tariffs-page-content__filter-btn"
       type="button"
       onClick={onClick}
     >

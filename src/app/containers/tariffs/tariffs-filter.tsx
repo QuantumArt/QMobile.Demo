@@ -19,9 +19,9 @@ const TariffsFilter = ({ bootState, activeFilter }: Props): JSX.Element => {
   return bootState === BootState.Loading ? (
     <Loader />
   ) : (
-    <ul className="tariffs-filter-list">
+    <ul>
       {tariffsStore.filtersGroups.map(({ Alias, Title }) => (
-        <li key={Alias} className="tariffs-filter-list__item">
+        <li key={Alias} className="tariffs-page-content__filter-item">
           <TariffsFilterBtn title={Title} onClick={onClickHandler(Alias)} />
           {activeFilter === Alias ? (
             <img src={RightArrowFilters} alt=">" />

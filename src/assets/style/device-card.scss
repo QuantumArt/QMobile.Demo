@@ -1,0 +1,21 @@
+.device-card {
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 460px;
+    border: 1px solid $light_gray4;
+    border-radius: 6px;
+
+    &__image {
+        max-height: 191px;
+        min-height: 191px;
+        position: relative;
+        display: flex;
+
+        img {
+            justify-content: center;
+            align-items: center;
+            object-fit: cover;
+            margin: auto;
+        }
+    }
+}

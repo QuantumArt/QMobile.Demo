@@ -1,18 +1,14 @@
 @import './variables/variables';
 
-.tariffs-filter-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-width: 280px;
-}
-
 .tariffs-page-content {
     margin-top: 60px;
     margin-bottom: 80px;
-}
 
-.tariffs-filter-list {
-    &__item {
+    &__tariffs-filter-container {
+        min-width: 280px;
+    }
+
+    &__filter-item {
         height: 64px;
         width: 280px;
         border-bottom: 1px solid $light_gray4;
@@ -20,10 +16,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
     }
 
-    &__btn {
+    &__filter-btn {
         background: none;
         border: none;
         cursor: pointer;
@@ -34,48 +29,43 @@
         letter-spacing: 0.02em;
     }
 
-    &__right-arrow {
-        width: 12px;
+    &__container {
+        padding-left: 20px;
+        width: 100%;
     }
-}
 
-.tariffs-container {
-    padding-left: 20px;
-    width: 100%;
+    &__form-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
 
-    &__cards-container {
+    &__tariff-cards-container {
         padding-top: 18px;
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
     }
-}
 
-.tariffs-container-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
+    &__tariff-search-input {
+        width: 622px;
+    }
 
-.tariff-search {
-    width: 622px; //
-}
+    &__make-tariff-link {
+        background: none;
+        padding: 12px 24px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: $primary_blue;
+        border: 2px solid $primary_blue;
+        border-radius: 6px;
+        cursor: pointer;
 
-.make-tariff-link {
-    background: none;
-    padding: 12px 24px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: $primary_blue;
-    border: 2px solid $primary_blue;
-    border-radius: 6px;
-    cursor: pointer;
-
-    &:focus,
-    &:hover {
-        background: $primary_blue;
-        color: white;
+        &:hover {
+            background: $primary_blue;
+            color: white;
+        }
     }
 }
