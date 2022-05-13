@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-const NotFound: FC = () => {
+const NotFound = (): JSX.Element => {
   return <p>К сожалению, по Вашему запросу ничего не найдено.</p>;
 };
 

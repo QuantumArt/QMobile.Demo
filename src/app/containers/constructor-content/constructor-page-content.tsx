@@ -1,11 +1,11 @@
 import { useObserver } from 'mobx-react-lite';
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import connectStore from '../../../stores/connect/connect-store';
 import ConnectForm from '../connect-form/connect-form';
 import ServiceGroupContainer from '../connect-form/service-group-container';
 import ConsructorRanges from './constructor-ranges';
 
-const ConsructorPageContent: FC = () => {
+const ConsructorPageContent = (): JSX.Element => {
   useEffect(() => {
     connectStore.initTariffConstructor();
   }, []);
@@ -21,7 +21,9 @@ const ConsructorPageContent: FC = () => {
             <ConsructorRanges />
           </div>
           <ConnectForm headerType="package">
-            <ServiceGroupContainer servicesList={connectStore.services.servicesList} />
+            <ServiceGroupContainer
+              servicesList={connectStore.services.servicesList}
+            />
           </ConnectForm>
         </div>
       </div>

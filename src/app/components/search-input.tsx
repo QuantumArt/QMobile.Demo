@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import SearchIcon from '../../assets/icons/Search_Icon.svg';
 
 type Props = {
@@ -7,7 +7,11 @@ type Props = {
   sizeStyles?: string;
 };
 
-const SeachInput: FC<Props> = ({ onSubmit, placeholder, sizeStyles }) => {
+const SeachInput = ({
+  onSubmit,
+  placeholder,
+  sizeStyles,
+}: Props): JSX.Element => {
   const [inputValue, setValue] = useState('');
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {

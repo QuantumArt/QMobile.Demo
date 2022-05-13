@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 type Props = {
   text: string;
@@ -7,9 +7,18 @@ type Props = {
   classNames?: string;
 };
 
-const PrimaryButton: FC<Props> = ({ text, onClickHandler, type, classNames }) => {
+const PrimaryButton = ({
+  text,
+  onClickHandler,
+  type,
+  classNames,
+}: Props): JSX.Element => {
   return (
-    <button type={type} className={`primary-button ${classNames}`} onClick={onClickHandler}>
+    <button
+      type={type}
+      className={`primary-button ${classNames}`}
+      onClick={onClickHandler}
+    >
       {text}
     </button>
   );

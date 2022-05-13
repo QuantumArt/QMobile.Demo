@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import MailIcon from '../../assets/icons/Mail_white.svg';
 import TelegramIcon from '../../assets/icons/Telegram_white.svg';
 import VKIcon from '../../assets/icons/VK_white.svg';
 
-const SocialLogos: FC = () => {
+const SocialLogos = (): JSX.Element => {
   return (
     <div className="footer__social-icons">
       <a href="https://outlook.com" target="_blank" rel="noopener noreferrer">

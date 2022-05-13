@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useObserver } from 'mobx-react-lite';
 import Range from '../../components/range';
 import Phone from '../../../assets/icons/Phone.svg';
 import Internet from '../../../assets/icons/Internet.svg';
 import connectStore from '../../../stores/connect/connect-store';
 
-const ConsructorRanges: FC = () => {
+const ConsructorRanges = (): JSX.Element => {
   const onDragMinutes = (value: number) => {
     connectStore.setMinutes(value);
   };

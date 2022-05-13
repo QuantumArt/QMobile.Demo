@@ -1,5 +1,5 @@
 import { useObserver } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React from 'react';
 import connectStore from '../../../stores/connect/connect-store';
 import PrimaryButton from '../../components/primary-button';
 import { MonthPaidHeader, PackageHeader } from './connect-header';
@@ -9,7 +9,7 @@ type Props = {
   headerType: 'monthPaid' | 'package';
 };
 
-const ConnectForm: FC<Props> = ({ children, headerType }): JSX.Element => {
+const ConnectForm = ({ children, headerType }: Props): JSX.Element => {
   const onSubmitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     alert(

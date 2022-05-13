@@ -37,7 +37,7 @@ const routes: IRoute[] = [
   },
 ];
 
-function App() {
+function App(): JSX.Element {
   return (
     <Router>
       <Header />

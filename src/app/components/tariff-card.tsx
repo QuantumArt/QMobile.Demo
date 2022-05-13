@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import Benefits from '../../assets/icons/Benefits.svg';
 import ConnectDetails from './connect-details';
@@ -14,7 +14,7 @@ type Props = {
   onConnectHandler?: () => void;
 };
 
-const TariffCard: FC<Props> = ({
+const TariffCard = ({
   image,
   title,
   isHit,
@@ -22,7 +22,7 @@ const TariffCard: FC<Props> = ({
   internetTrafic,
   tariffPrice,
   onConnectHandler,
-}) => {
+}: Props): JSX.Element => {
   return (
     <div className="tariff-card">
       <div className="tariff-card__image">

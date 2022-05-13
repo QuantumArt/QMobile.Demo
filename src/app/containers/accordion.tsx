@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import Arrow from '../../assets/icons/RightArrowFilters.svg';
 
 type Props = {
@@ -10,14 +10,14 @@ type Props = {
   headerClasses?: string;
 };
 
-const Accordion: FC<Props> = ({
+const Accordion = ({
   title,
   iconOpened,
   body,
   iconClosed,
   iconPosition,
   headerClasses,
-}) => {
+}: Props): JSX.Element => {
   const [isActive, setActive] = useState(false);
 
   const onClickHandler = () => {

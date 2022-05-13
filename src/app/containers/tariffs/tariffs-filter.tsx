@@ -10,7 +10,12 @@ type Props = {
   activeFilter: string;
 };
 
-const TariffsFilter: FC<Props> = ({ bootState, activeFilter }) => {
+const TariffsFilter = (
+  {
+    bootState,
+    activeFilter
+  }: Props
+) => {
   const onClickHandler = (filterAlias: string) => () => {
     tariffsStore.setFilter(filterAlias);
     tariffsStore.fetchTariffs();

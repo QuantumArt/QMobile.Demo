@@ -1,5 +1,5 @@
 import { useObserver } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React from 'react';
 import { ServicesList } from '../../../stores/connect/connect-services-groups';
 import connectStore from '../../../stores/connect/connect-store';
 import Checkbox from '../../components/checkbox';
@@ -9,7 +9,7 @@ type Props = {
   servicesList: Array<ServicesList>;
 };
 
-const ServiceGroupContainer: FC<Props> = ({ servicesList }) => {
+const ServiceGroupContainer = ({ servicesList }: Props): JSX.Element => {
   const onChangeCheckbox = (id: number) => () => {
     connectStore.toggleActiveServices(id);
   };

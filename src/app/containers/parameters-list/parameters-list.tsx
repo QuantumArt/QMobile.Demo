@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { IParameters } from '../../types';
 import Accordion from '../accordion';
 import ParametersListItem from './parameters-list-item';
@@ -7,7 +7,11 @@ type Props = {
   paramList: [groupId: number, value: IParameters[]][];
 };
 
-const ParametersList: FC<Props> = ({ paramList }) => {
+const ParametersList = (
+  {
+    paramList
+  }: Props
+): JSX.Element => {
   return (
     <>
       {paramList.map(([groupId, value]) => (

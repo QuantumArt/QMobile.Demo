@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 type Props = {
   isChecked: boolean;
   onChangeHandler: () => void;
 };
 
-const Checkbox: FC<Props> = ({ isChecked, onChangeHandler }) => {
+const Checkbox = ({ isChecked, onChangeHandler }: Props): JSX.Element => {
   return (
     <input
       type="checkbox"

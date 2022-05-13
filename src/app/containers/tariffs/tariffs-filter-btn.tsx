@@ -5,7 +5,12 @@ type BtnProps = {
   onClick: () => void;
 };
 
-const TariffsFilterBtn: FC<BtnProps> = ({ title, onClick }) => {
+const TariffsFilterBtn = (
+  {
+    title,
+    onClick
+  }: BtnProps
+) => {
   return (
     <button
       className="tariffs-filter-list__btn"

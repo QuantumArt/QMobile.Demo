@@ -1,9 +1,9 @@
 import { useObserver } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React from 'react';
 import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
 
-const DevicesPage: FC = () => {
+const DevicesPage = (): JSX.Element => {
   return useObserver(() => (
     <>
       <Slider

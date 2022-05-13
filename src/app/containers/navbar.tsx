@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import cn from 'classnames';
 
 import { Link, useLocation } from 'react-router-dom';
@@ -7,9 +7,9 @@ import { NavigationRoutesGroup } from '../types';
 type NavbarProps = {
   containerName: string;
   routesList: NavigationRoutesGroup;
-}
+};
 
-const Navbar: FC<NavbarProps> = ({ containerName, routesList }) => {
+const Navbar = ({ containerName, routesList }: NavbarProps): JSX.Element => {
   const { pathname } = useLocation();
 
   const firstRoute = pathname.split('/').filter(el => el.length > 0)[0];

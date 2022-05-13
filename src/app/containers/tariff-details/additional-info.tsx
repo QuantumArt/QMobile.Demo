@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { IParameters } from '../../types';
 import Accordion from '../accordion';
 import MinusOpened from '../../../assets/icons/MinusOpened.svg';
@@ -8,7 +8,7 @@ type Props = {
   paramList: [groupId: number, value: IParameters[]][];
 };
 
-const AdditionalInfo: FC<Props> = ({ paramList }) => {
+const AdditionalInfo = ({ paramList }: Props): JSX.Element => {
   return (
     <div className="tariff-details-additional-info">
       <p className="page-content-title">Дополнительная информация</p>

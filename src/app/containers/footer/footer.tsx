@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import FooterInfo from './footer-info';
 import Navbar from '../navbar';
 import { footerNavRoutes } from '../../constants/navigation-routes';
 
-const Footer: FC = () => {
+const Footer = (): JSX.Element => {
   return (
     <div className="footer__wrapper">
       <footer className="footer">

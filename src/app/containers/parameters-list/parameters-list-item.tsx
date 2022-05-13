@@ -1,11 +1,15 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { IParameters } from '../../types';
 
 type Props = {
   parameters: IParameters[];
 };
 
-const ParametersListItem: FC<Props> = ({ parameters }) => {
+const ParametersListItem = (
+  {
+    parameters
+  }: Props
+): JSX.Element => {
   return (
     <>
       {parameters.map(parameter => (

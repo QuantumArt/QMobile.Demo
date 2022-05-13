@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import Phone from '../../../assets/icons/Phone.svg';
 import Internet from '../../../assets/icons/Internet.svg';
 
@@ -8,11 +8,11 @@ type PackageHeaderProps = {
   internet: number;
 };
 
-export const PackageHeader: FC<PackageHeaderProps> = ({
+export const PackageHeader = ({
   currentPrice,
   minutes,
   internet,
-}) => {
+}: PackageHeaderProps): JSX.Element => {
   return (
     <header className="connect-form__item connect-form__item--main-header-padding">
       <div className="connect-form__header-constructor">
@@ -40,7 +40,7 @@ export const PackageHeader: FC<PackageHeaderProps> = ({
 
 type MonthPaidProps = Pick<PackageHeaderProps, 'currentPrice'>;
 
-export const MonthPaidHeader: FC<MonthPaidProps> = ({ currentPrice }) => {
+export const MonthPaidHeader = ({ currentPrice }: MonthPaidProps) => {
   return (
     <header className="connect-form__item connect-form__item--main-header-padding">
       <div className="connect-form__header-constructor">

@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import LogoHeader from '../components/logo-header';
 import Navbar from './navbar';
 import { headerNavRoutes } from '../constants/navigation-routes';
 
-const Header: FC = () => {
+const Header = (): JSX.Element => {
   return (
     <header className="header">
       <LogoHeader />

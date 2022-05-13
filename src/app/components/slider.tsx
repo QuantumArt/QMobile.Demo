@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 type IProps = {
   modificatorStyles?: string;
@@ -7,12 +7,12 @@ type IProps = {
   style?: React.CSSProperties;
 };
 
-const Slider: FC<IProps> = ({
+const Slider = ({
   modificatorStyles,
   title,
   description,
   style,
-}) => {
+}: IProps): JSX.Element => {
   return (
     <div className={`slider ${modificatorStyles}`} style={style}>
       <div className="slider__info-container">

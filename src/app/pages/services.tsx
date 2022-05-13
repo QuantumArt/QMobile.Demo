@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import CurrentPathInfo from '../components/current-path-info';
 
-const Services: FC = () => {
+const Services = (): JSX.Element => {
   return <CurrentPathInfo />;
 };
 

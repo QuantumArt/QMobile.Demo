@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 type Props = {
   min: number;
@@ -10,7 +10,7 @@ type Props = {
   logosrc?: string;
 };
 
-const Range: FC<Props> = ({
+const Range = ({
   min,
   max,
   value,
@@ -18,7 +18,7 @@ const Range: FC<Props> = ({
   valueDesc,
   titleText,
   logosrc,
-}) => {
+}: Props): JSX.Element => {
   const backgroundSize = ((value - min) * 100) / (max - min) + '% 100%';
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

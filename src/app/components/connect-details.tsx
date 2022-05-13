@@ -1,12 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 type IProps = {
   link: string;
 };
 
-const ConnectDetails: FC<IProps> = ({ link }) => {
+const ConnectDetails = ({ link }: IProps): JSX.Element => {
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" className='tariff-card-connect-btns__details'>
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="tariff-card-connect-btns__details"
+    >
       Подробнее
     </a>
   );

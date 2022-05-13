@@ -1,10 +1,10 @@
 import { useObserver } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React from 'react';
 import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
 import TariffsPageContent from '../containers/tariffs/tariffs-page-content';
 
-const Tariffs: FC = () => {
+const Tariffs = (): JSX.Element => {
   return useObserver(() => (
     <>
       <Slider

@@ -1,12 +1,12 @@
 import { useObserver } from 'mobx-react-lite';
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import connectStore from '../../stores/connect/connect-store';
 import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
 import TariffDetailsPageContent from '../containers/tariff-details/tariff-details-page-content';
 
-const TariffDetails: FC = () => {
+const TariffDetails = (): JSX.Element => {
   const location = useLocation();
   useEffect(() => {
     const tariffId = location.pathname.split('/').slice(-1);

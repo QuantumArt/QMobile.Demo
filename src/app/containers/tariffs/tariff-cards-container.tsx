@@ -20,7 +20,12 @@ type ParametrsList = {
   [key in IParameterNames]?: IParameters;
 };
 
-const TariffCardsContainer: FC<IProps> = ({ cardsGroup, bootState }) => {
+const TariffCardsContainer = (
+  {
+    cardsGroup,
+    bootState
+  }: IProps
+) => {
   const navigate = useNavigate();
 
   const connectHandler = (tariffId: number) => () => {

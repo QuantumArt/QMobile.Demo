@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import RightArrow from '../../assets/icons/Right_arrow.svg';
@@ -14,7 +14,7 @@ type Props = {
   pathNames?: string[];
 };
 
-const CurrentPathInfo: FC<Props> = ({ pathNames }) => {
+const CurrentPathInfo = ({ pathNames }: Props): JSX.Element => {
   const pathString = pathNames ? pathNames : [''];
   const pathnames = useLocation()
     .pathname.concat(...pathString)

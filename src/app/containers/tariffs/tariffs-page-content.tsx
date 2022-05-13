@@ -6,7 +6,7 @@ import TariffSearch from '../../components/search-input';
 import MakeTariffLink from '../../components/make-tariff-link';
 import TariffCardsContainer from './tariff-cards-container';
 
-const TariffsPageContent: FC = () => {
+const TariffsPageContent = () => {
   useEffect(() => {
     tariffsStore.init();
     return () => {
