@@ -1,4 +1,3 @@
-
 export type ServiceInfo = {
   id: number;
   alias: string;
