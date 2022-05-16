@@ -21,7 +21,11 @@ const TariffDetails = (): JSX.Element => {
         description={connectStore.currentTariff?.MarketingProduct?.Description}
       />
       <CurrentPathInfo
-        elementName={`${connectStore.currentTariff?.MarketingProduct?.Title}`}
+        elementName={`${
+          connectStore.currentTariff?.MarketingProduct?.Title
+            ? connectStore.currentTariff?.MarketingProduct?.Title
+            : ''
+        }`}
       />
       <TariffDetailsPageContent />
     </>
