@@ -7,7 +7,7 @@ type Props = {
   image: string;
   title: string;
   description: string;
-  price: number;
+  price?: number;
   rating: number;
   commentsCount: number;
   isHit?: boolean;
@@ -33,7 +33,7 @@ const DeviceCard = ({
       <div className="device-card__container">
         <div className="device-card__info-container">
           <p className="device-card__price">
-            {Intl.NumberFormat('ru-RU').format(price)} ₽
+            {price ? Intl.NumberFormat('ru-RU').format(price) : 0} ₽
           </p>
           <p className="device-card__title">{title}</p>
           <p className="device-card__description">{description}</p>

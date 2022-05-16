@@ -17,16 +17,23 @@ const DevicesPageContent = (props: Props): JSX.Element => {
         Устройства
       </h1>
       <div className="devices-page-content__cards-container">
-        {devicesStore.devicesList.map(device => (
-          <DeviceCard
-            image={PhoneDemo}
-            title={device.MarketingProduct.Title}
-            price={999999}
-            description={device.MarketingProduct.Description}
-            rating={5}
-            commentsCount={191}
-          />
-        ))}
+        {devicesStore.devicesList.map(device => {
+          const priceParameter = device.Parameters.find(
+            parameter => parameter.Title === 'Стоимость',
+          );
+
+          return (
+            <DeviceCard
+              key={device.Id}
+              image={PhoneDemo}
+              title={device.MarketingProduct.Title}
+              price={priceParameter?.NumValue}
+              description={device.MarketingProduct.Description}
+              rating={5}
+              commentsCount={191}
+            />
+          );
+        })}
       </div>
     </div>
   ));
