@@ -14,7 +14,7 @@ const DeviceDetails = (): JSX.Element => {
 
   return useObserver(() => (
     <CurrentPathInfo
-      pathNames={[`/${devicesStore.currentDevice?.MarketingProduct?.Title}`]}
+      elementName={`${devicesStore.currentDevice?.MarketingProduct?.Title}`}
     />
   ));
 };

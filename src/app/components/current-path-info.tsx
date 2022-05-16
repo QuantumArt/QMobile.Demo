@@ -11,14 +11,15 @@ class PathNames {
 }
 
 type Props = {
-  pathNames?: string[];
+  elementName?: string;
 };
 
-const CurrentPathInfo = ({ pathNames }: Props): JSX.Element => {
-  const pathString = pathNames ? pathNames : [''];
+const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
+  const lastElementName = elementName ? [elementName] : [];
+
   const pathnames = useLocation()
-    .pathname.concat(...pathString)
-    .split('/')
+    .pathname.split('/')
+    .concat(lastElementName)
     .filter(route => route.length > 0 && !Number(route));
 
   return (
