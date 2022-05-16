@@ -12,6 +12,7 @@ type Props = {
   commentsCount: number;
   isHit?: boolean;
   onConnectHandler?: () => void;
+  aboutLink: string;
 };
 
 const DeviceCard = ({
@@ -22,6 +23,7 @@ const DeviceCard = ({
   isHit,
   rating,
   commentsCount,
+  aboutLink,
   onConnectHandler,
 }: Props): JSX.Element => {
   return (
@@ -55,7 +57,7 @@ const DeviceCard = ({
           }
           classNames="device-card__buy-btn"
         />
-        <ConnectDetails link="https://google.com" />
+        <ConnectDetails link={aboutLink} />
       </div>
     </div>
   );

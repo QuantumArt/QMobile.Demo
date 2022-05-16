@@ -31,6 +31,7 @@ const DevicesPageContent = (props: Props): JSX.Element => {
               description={device.MarketingProduct.Description}
               rating={5}
               commentsCount={191}
+              aboutLink={`/devices/${device.Id}`}
             />
           );
         })}

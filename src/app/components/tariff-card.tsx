@@ -58,7 +58,7 @@ const TariffCard = ({
                 onConnectHandler ? onConnectHandler() : console.log('test')
               }
             />
-            <ConnectDetails link="https://google.com" />
+            <ConnectDetails link='' />
           </div>
         </div>
       </div>

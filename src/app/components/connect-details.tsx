@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type IProps = {
   link: string;
@@ -6,14 +7,13 @@ type IProps = {
 
 const ConnectDetails = ({ link }: IProps): JSX.Element => {
   return (
-    <a
-      href={link}
-      target="_blank"
+    <Link
+      to={link}
       rel="noopener noreferrer"
       className="tariff-card__connect-btns-details"
     >
       Подробнее
-    </a>
+    </Link>
   );
 };
 
