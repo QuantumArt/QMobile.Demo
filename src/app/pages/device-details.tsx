@@ -16,9 +16,7 @@ const DeviceDetails = (): JSX.Element => {
     <div className="device-details__page-container">
       <CurrentPathInfo
         elementName={`${
-          devicesStore.currentDevice?.MarketingProduct?.Title
-            ? devicesStore.currentDevice?.MarketingProduct?.Title
-            : ''
+          devicesStore.currentDevice?.MarketingProduct?.Title ?? ''
         }`}
       />
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-type IProps = {
+export type IProps = {
   modificatorStyles?: string;
   title?: string;
   description?: string;

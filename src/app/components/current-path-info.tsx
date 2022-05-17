@@ -13,7 +13,7 @@ class PathNames {
   static readonly tariffconstructor = 'Соберите свой тариф';
 }
 
-type Props = {
+export type Props = {
   elementName?: string;
 };
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { IRoute } from './types';
+
 import Footer from './containers/footer/footer';
 import Header from './containers/header';
 import NotFound from './pages/not-found';
-import Tariffs from './pages/tariffs';
-import { IRoute } from './types';
 import Services from './pages/services';
-import TariffConsructor from './pages/tariff-consructor';
-import TariffDetails from './pages/tariff-details';
-import DevicesPage from './pages/devices';
 import DeviceDetails from './pages/device-details';
+import TariffDetails from './pages/tariff-details';
+import Tariffs from './pages/tariffs';
+import Devices from './pages/devices';
 
 const routes: IRoute[] = [
   {
@@ -22,11 +22,7 @@ const routes: IRoute[] = [
   },
   {
     path: '/devices',
-    element: <DevicesPage />,
-  },
-  {
-    path: '/tariffs/tariffconstructor',
-    element: <TariffConsructor />,
+    element: <Devices />,
   },
   {
     path: '/devices/*',
@@ -35,10 +31,6 @@ const routes: IRoute[] = [
   {
     path: '/tariffs/*',
     element: <TariffDetails />,
-  },
-  {
-    path: '/devices/*',
-    element: <DeviceDetails />,
   },
   {
     path: '*',

@@ -1,20 +1,17 @@
-import { useObserver } from 'mobx-react-lite';
 import React from 'react';
-import CurrentPathInfo from '../components/current-path-info';
-import Slider from '../components/slider';
+import PageWithSlider from './sub-component/page-with-slider';
 import TariffsPageContent from '../containers/tariffs/tariffs-page-content';
 
-const Tariffs = (): JSX.Element =>
-  useObserver(() => (
-    <>
-      <Slider
-        modificatorStyles="slider--tariffs slider--margin-bottom slider--text-paddings"
-        title="Тарифы “Объединяй”!"
-        description="Единный счет для домашнего интернета, ТВ и связи"
-      />
-      <CurrentPathInfo />
-      <TariffsPageContent />
-    </>
-  ));
+const Tariffs = (): JSX.Element => (
+  <PageWithSlider
+    sliderProps={{
+      modificatorStyles:
+        'slider--tariffs slider--margin-bottom slider--text-paddings',
+      title: 'Тарифы “Объединяй”!',
+      description: 'Единый счет для домашнего интернета, ТВ и связи',
+    }}
+    pageContentElem={<TariffsPageContent />}
+  />
+);
 
 export default Tariffs;

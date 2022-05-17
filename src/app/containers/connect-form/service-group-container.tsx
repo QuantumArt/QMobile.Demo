@@ -19,16 +19,14 @@ const ServiceGroupContainer = ({ servicesList }: Props): JSX.Element => {
       {servicesList.map(listItem => (
         <div className="connect-form__item" key={listItem.type}>
           <header className="connect-form__item-header">{listItem.type}</header>
-          {listItem.services.map(service => (
-            <div className="connect-form__slider-container" key={service.id}>
+          {listItem.services.map(({ id, alias, description }) => (
+            <div className="connect-form__slider-container" key={id}>
               <Checkbox
-                isChecked={connectStore.services.activeServicesIds.includes(
-                  service.id,
-                )}
-                onChangeHandler={onChangeCheckbox(service.id)}
+                isChecked={connectStore.services.activeServicesIds.includes(id)}
+                onChangeHandler={onChangeCheckbox(id)}
               />
               <Accordion
-                title={service.alias}
+                title={alias}
                 body={
                   <p
                     style={{
@@ -36,7 +34,7 @@ const ServiceGroupContainer = ({ servicesList }: Props): JSX.Element => {
                       color: 'grey',
                     }}
                   >
-                    {service.description}
+                    {description}
                   </p>
                 }
               />

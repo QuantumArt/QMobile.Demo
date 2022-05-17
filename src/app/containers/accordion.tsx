@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import Arrow from '../../assets/icons/RightArrowFilters.svg';
 
 type Props = {
@@ -24,14 +25,19 @@ const Accordion = ({
     setActive(!isActive);
   };
 
+  const accordionHeaderStyles = cn('accordion__header', `${headerClasses}`, {
+    'accordion__header--icon-right': iconPosition === 'right',
+    'accordion__header--icon-left': iconPosition === 'left',
+  });
+
+  const accordionBodyStyles = cn('accordion__body', {
+    'accordion__body--active': isActive,
+  });
+
   return (
     <div className="accordion">
       <div
-        className={`accordion__header ${headerClasses} ${
-          iconPosition === 'right'
-            ? 'accordion__header--icon-right'
-            : 'accordion__header--icon-left'
-        }`}
+        className={accordionHeaderStyles}
         role="button"
         onClick={onClickHandler}
         tabIndex={0}
@@ -40,11 +46,7 @@ const Accordion = ({
         <p className="accordion__title">{title}</p>
         {isActive ? iconOpened : iconClosed}
       </div>
-      <div
-        className={`accordion__body ${isActive && 'accordion__body--active'}`}
-      >
-        {body}
-      </div>
+      <div className={accordionBodyStyles}>{body}</div>
     </div>
   );
 };
@@ -73,9 +75,6 @@ Accordion.defaultProps = {
     />
   ),
   iconPosition: 'right',
-};
-
-Accordion.defaultProps = {
   headerClasses: '',
 };
 

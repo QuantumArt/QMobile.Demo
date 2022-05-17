@@ -2,7 +2,8 @@ import { useObserver } from 'mobx-react-lite';
 import React from 'react';
 import connectStore from '../../../stores/connect/connect-store';
 import PrimaryButton from '../../components/primary-button';
-import { MonthPaidHeader, PackageHeader } from './connect-header';
+import PackageHeader from './package-header';
+import MonthPaidHeader from './month-paid-header';
 
 type Props = {
   children?: React.ReactNode;

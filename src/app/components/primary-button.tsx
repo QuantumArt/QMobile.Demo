@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 
 type Props = {
   text: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   classNames?: string;
 };
 

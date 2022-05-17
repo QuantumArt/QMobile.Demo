@@ -32,7 +32,7 @@ const ConsructorRanges = (): JSX.Element => {
       </div>
       <div className="constructor-page-content__ranges-menu-item">
         <p className="title--sm constructor-page-content__item-title">
-          Интернер по России
+          Интернет по России
         </p>
         <Range
           min={3}
