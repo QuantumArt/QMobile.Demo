@@ -5,16 +5,14 @@ type BtnProps = {
   onClick: () => void;
 };
 
-const TariffsFilterBtn = ({ title, onClick }: BtnProps): JSX.Element => {
-  return (
-    <button
-      className="tariffs-page-content__filter-btn"
-      type="button"
-      onClick={onClick}
-    >
-      {title}
-    </button>
-  );
-};
+const TariffsFilterBtn = ({ title, onClick }: BtnProps): JSX.Element => (
+  <button
+    className="tariffs-page-content__filter-btn"
+    type="button"
+    onClick={onClick}
+  >
+    {title}
+  </button>
+);
 
 export default TariffsFilterBtn;

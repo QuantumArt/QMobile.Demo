@@ -10,11 +10,8 @@ type Props = {
 };
 
 const ConnectForm = ({ children, headerType }: Props): JSX.Element => {
-  const onSubmitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onSubmitHandler = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    alert(
-      `${connectStore.minutes} ${connectStore.internet} ${connectStore.services.activeServicesIds}`,
-    );
   };
 
   return useObserver(() => (
@@ -30,7 +27,6 @@ const ConnectForm = ({ children, headerType }: Props): JSX.Element => {
       )}
       {children}
       <PrimaryButton
-        type="submit"
         text="Подключить"
         onClick={onSubmitHandler}
         classNames="connect-form__connect-btn"

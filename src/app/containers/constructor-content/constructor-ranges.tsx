@@ -6,11 +6,11 @@ import Internet from '../../../assets/icons/Internet.svg';
 import connectStore from '../../../stores/connect/connect-store';
 
 const ConsructorRanges = (): JSX.Element => {
-  const onDragMinutes = (value: number) => {
+  const onDragMinutes = (value: number): void => {
     connectStore.setMinutes(value);
   };
 
-  const onDragInternet = (value: number) => {
+  const onDragInternet = (value: number): void => {
     connectStore.setInternet(value);
   };
 

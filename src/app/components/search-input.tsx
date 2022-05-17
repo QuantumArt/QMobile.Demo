@@ -14,11 +14,11 @@ const SeachInput = ({
 }: Props): JSX.Element => {
   const [inputValue, setValue] = useState('');
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
 
-  const onSubmitHandler = (e: React.FormEvent<EventTarget>) => {
+  const onSubmitHandler = (e: React.FormEvent<EventTarget>): void => {
     e.preventDefault();
     onSubmit(inputValue);
     setValue('');
@@ -42,6 +42,7 @@ const SeachInput = ({
 
 SeachInput.defaultProps = {
   placeholder: 'Поиск',
+  sizeStyles: '',
 };
 
 export default SeachInput;

@@ -19,10 +19,10 @@ const Range = ({
   titleText,
   logosrc,
 }: Props): JSX.Element => {
-  const backgroundSize = ((value - min) * 100) / (max - min) + '% 100%';
+  const backgroundSize = `${((value - min) * 100) / (max - min)}% 100%`;
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const numberValue = parseInt(e.target.value);
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const numberValue = parseInt(e.target.value, 10);
     onDragHandler(numberValue);
   };
 
@@ -55,6 +55,12 @@ const Range = ({
       </div>
     </div>
   );
+};
+
+Range.defaultProps = {
+  valueDesc: '',
+  titleText: '',
+  logosrc: '',
 };
 
 export default Range;

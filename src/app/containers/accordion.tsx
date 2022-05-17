@@ -20,7 +20,7 @@ const Accordion = ({
 }: Props): JSX.Element => {
   const [isActive, setActive] = useState(false);
 
-  const onClickHandler = () => {
+  const onClickHandler = (): void => {
     setActive(!isActive);
   };
 
@@ -32,7 +32,10 @@ const Accordion = ({
             ? 'accordion__header--icon-right'
             : 'accordion__header--icon-left'
         }`}
+        role="button"
         onClick={onClickHandler}
+        tabIndex={0}
+        onKeyPress={onClickHandler}
       >
         <p className="accordion__title">{title}</p>
         {isActive ? iconOpened : iconClosed}
@@ -70,6 +73,10 @@ Accordion.defaultProps = {
     />
   ),
   iconPosition: 'right',
+};
+
+Accordion.defaultProps = {
+  headerClasses: '',
 };
 
 export default Accordion;

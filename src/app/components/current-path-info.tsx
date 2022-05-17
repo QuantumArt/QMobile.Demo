@@ -5,8 +5,11 @@ import RightArrow from '../../assets/icons/Right_arrow.svg';
 
 class PathNames {
   static readonly tariffs = 'Тарифы';
+
   static readonly services = 'Услуги';
+
   static readonly devices = 'Устройства';
+
   static readonly tariffconstructor = 'Соберите свой тариф';
 }
 
@@ -15,7 +18,7 @@ type Props = {
 };
 
 const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
-  const lastElementName = elementName ? [elementName] : [];
+  const lastElementName = elementName ? [elementName] : [''];
 
   const pathnames = useLocation()
     .pathname.split('/')
@@ -29,7 +32,7 @@ const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
         const key = el;
         const lastElem = pathnames.length - 1;
 
-        let value = el as keyof typeof PathNames;
+        const value = el as keyof typeof PathNames;
 
         return (
           <React.Fragment key={el}>
@@ -53,6 +56,10 @@ const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
       })}
     </div>
   );
+};
+
+CurrentPathInfo.defaultProps = {
+  elementName: '',
 };
 
 export default CurrentPathInfo;

@@ -2,7 +2,7 @@ export type ServiceInfo = {
   id: number;
   alias: string;
   description: string;
-  price: number
+  price: number;
 };
 
 export type ServicesList = {
@@ -12,5 +12,5 @@ export type ServicesList = {
 
 export type IConnectServices = {
   servicesList: Array<ServicesList>;
-  activeServicesIds: Array<number>
-}
+  activeServicesIds: Array<number>;
+};

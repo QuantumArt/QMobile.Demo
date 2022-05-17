@@ -4,8 +4,8 @@ import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
 import DevicesPageContent from '../containers/devices/devices-page-content';
 
-const DevicesPage = (): JSX.Element => {
-  return useObserver(() => (
+const DevicesPage = (): JSX.Element =>
+  useObserver(() => (
     <>
       <Slider
         modificatorStyles="slider--devices slider--margin-bottom slider--text-paddings"
@@ -16,6 +16,5 @@ const DevicesPage = (): JSX.Element => {
       <DevicesPageContent />
     </>
   ));
-};
 
 export default DevicesPage;

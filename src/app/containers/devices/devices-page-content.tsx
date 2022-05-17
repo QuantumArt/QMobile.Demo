@@ -4,9 +4,7 @@ import PhoneDemo from '../../../assets/images/phonedemo.png';
 import devicesStore from '../../../stores/devices/devices-store';
 import DeviceCard from '../../components/device-card';
 
-type Props = {};
-
-const DevicesPageContent = (props: Props): JSX.Element => {
+const DevicesPageContent = (): JSX.Element => {
   useEffect(() => {
     devicesStore.init();
   }, []);
@@ -32,6 +30,9 @@ const DevicesPageContent = (props: Props): JSX.Element => {
               rating={5}
               commentsCount={191}
               aboutLink={`/devices/${device.Id}`}
+              onConnectHandler={() => {
+                console.log('Заглушка');
+              }}
             />
           );
         })}

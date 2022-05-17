@@ -14,11 +14,10 @@ const Navbar = ({ containerName, routesList }: NavbarProps): JSX.Element => {
 
   const firstRoute = pathname.split('/').filter(el => el.length > 0)[0];
 
-  const navItemStyles = (linkname: string): string => {
-    return cn(`${containerName}-item`, {
+  const navItemStyles = (linkname: string): string =>
+    cn(`${containerName}-item`, {
       [`${containerName}-item--active`]: linkname === firstRoute,
     });
-  };
 
   // {
   //   /* <li className={navItemStyles('tariffs')}>

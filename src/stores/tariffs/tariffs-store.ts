@@ -24,6 +24,7 @@ export class TariffsStore {
   }
 
   private _filtersGroups: ITariffFilterGroup[] = [];
+
   public get filtersGroups(): ITariffFilterGroup[] {
     return this._filtersGroups;
   }
@@ -50,7 +51,7 @@ export class TariffsStore {
   }
 
   @action
-  setFilter(filterAlias: string) {
+  setFilter(filterAlias: string): void {
     this._selectedFilter = filterAlias;
   }
 
@@ -64,20 +65,21 @@ export class TariffsStore {
       );
       const data: Array<IMarketingProduct> = await response.json();
 
-      data.forEach(el => {
+      data.forEach(product => {
         const filter: ITariffFilterGroup = {
-          Title: el.MarketingProduct.Category.Title,
-          Alias: el.MarketingProduct.Category.Alias,
+          Title: product.MarketingProduct.Category.Title,
+          Alias: product.MarketingProduct.Category.Alias,
         };
 
-        if (!this._filtersGroups.some(el => el.Alias === filter.Alias))
+        if (!this._filtersGroups.some(el => el.Alias === filter.Alias)) {
           this._filtersGroups.push(filter);
+        }
       });
 
       this._selectedFilter = this._filtersGroups[0].Alias as string;
       await this.fetchTariffs();
       // this.initForm();
-      await this.load();
+      // await this.load();
       this._bootState = BootState.Success;
     } catch (error) {
       console.log(error);
@@ -86,7 +88,7 @@ export class TariffsStore {
   };
 
   @action
-  unmount() {
+  unmount(): void {
     this._tariffsCardsGroup = [];
     this._selectedFilter = '';
   }
@@ -98,9 +100,9 @@ export class TariffsStore {
   //   });
   // };
 
-  public load = async (): Promise<void> => {
-    ///fetch
-  };
+  // public load = async (): Promise<void> => {
+  //   /// fetch
+  // };
 
   @action
   public fetchTariffs = async (): Promise<void> => {

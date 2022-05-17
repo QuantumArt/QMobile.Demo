@@ -10,25 +10,23 @@ const ConsructorPageContent = (): JSX.Element => {
     connectStore.initTariffConstructor();
   }, []);
 
-  return useObserver(() => {
-    return (
-      <div className="constructor-page-content">
-        <h1 className="page-content-title page-content-title--constructor">
-          Соберите свой тариф
-        </h1>
-        <div className="flex-wrapper space-between">
-          <div className="constructor-page-content__main-info">
-            <ConsructorRanges />
-          </div>
-          <ConnectForm headerType="package">
-            <ServiceGroupContainer
-              servicesList={connectStore.services.servicesList}
-            />
-          </ConnectForm>
+  return useObserver(() => (
+    <div className="constructor-page-content">
+      <h1 className="page-content-title page-content-title--constructor">
+        Соберите свой тариф
+      </h1>
+      <div className="flex-wrapper space-between">
+        <div className="constructor-page-content__main-info">
+          <ConsructorRanges />
         </div>
+        <ConnectForm headerType="package">
+          <ServiceGroupContainer
+            servicesList={connectStore.services.servicesList}
+          />
+        </ConnectForm>
       </div>
-    );
-  });
+    </div>
+  ));
 };
 
 export default ConsructorPageContent;

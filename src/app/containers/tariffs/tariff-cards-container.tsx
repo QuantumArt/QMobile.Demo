@@ -1,10 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import TariffCard from '../../components/tariff-card';
 import { ITariffsCardsGroup } from '../../../stores/tariffs/tariffs-cards-group';
 import Loader from '../../components/loader';
 import { BootState } from '../../enums/boot-state';
 import { IParameters } from '../../types';
-import { useNavigate } from 'react-router-dom';
 
 type IProps = {
   cardsGroup: ITariffsCardsGroup;

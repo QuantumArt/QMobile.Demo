@@ -8,27 +8,25 @@ type Props = {
   paramList: [groupId: number, value: IParameters[]][];
 };
 
-const AdditionalInfo = ({ paramList }: Props): JSX.Element => {
-  return (
-    <div className="tariff-details-additional-info">
-      <p className="page-content-title">Дополнительная информация</p>
-      {paramList.map(([groupId, value]) => (
-        <React.Fragment key={groupId}>
-          {value.map(parameter => (
-            <div key={parameter.Id} className="tariff-details-additional-item">
-              <Accordion
-                title={parameter.Title}
-                iconPosition={'left'}
-                iconOpened={<img src={MinusOpened} alt="opened" />}
-                iconClosed={<img src={PlusClosed} alt="closed" />}
-                body={<div></div>}
-              />
-            </div>
-          ))}
-        </React.Fragment>
-      ))}
-    </div>
-  );
-};
+const AdditionalInfo = ({ paramList }: Props): JSX.Element => (
+  <div className="tariff-details-additional-info">
+    <p className="page-content-title">Дополнительная информация</p>
+    {paramList.map(([groupId, value]) => (
+      <React.Fragment key={groupId}>
+        {value.map(parameter => (
+          <div key={parameter.Id} className="tariff-details-additional-item">
+            <Accordion
+              title={parameter.Title}
+              iconPosition="left"
+              iconOpened={<img src={MinusOpened} alt="opened" />}
+              iconClosed={<img src={PlusClosed} alt="closed" />}
+              body={<div />}
+            />
+          </div>
+        ))}
+      </React.Fragment>
+    ))}
+  </div>
+);
 
 export default AdditionalInfo;

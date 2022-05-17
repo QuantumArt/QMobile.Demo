@@ -4,8 +4,8 @@ import CurrentPathInfo from '../components/current-path-info';
 import Slider from '../components/slider';
 import ConstructorPageContent from '../containers/constructor-content/constructor-page-content';
 
-const TariffConstructor = (): JSX.Element => {
-  return useObserver(() => (
+const TariffConstructor = (): JSX.Element =>
+  useObserver(() => (
     <>
       <Slider
         modificatorStyles="slider--services slider--margin-bottom slider--text-paddings"
@@ -16,6 +16,5 @@ const TariffConstructor = (): JSX.Element => {
       <ConstructorPageContent />
     </>
   ));
-};
 
 export default TariffConstructor;

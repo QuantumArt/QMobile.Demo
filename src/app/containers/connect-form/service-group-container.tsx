@@ -14,42 +14,38 @@ const ServiceGroupContainer = ({ servicesList }: Props): JSX.Element => {
     connectStore.toggleActiveServices(id);
   };
 
-  return useObserver(() => {
-    return (
-      <>
-        {servicesList.map(el => {
-          return (
-            <div className="connect-form__item" key={el.type}>
-              <header className="connect-form__item-header">{el.type}</header>
-              {el.services.map(el => (
-                <div className="connect-form__slider-container" key={el.id}>
-                  <Checkbox
-                    isChecked={connectStore.services.activeServicesIds.includes(
-                      el.id,
-                    )}
-                    onChangeHandler={onChangeCheckbox(el.id)}
-                  />
-                  <Accordion
-                    title={el.alias}
-                    body={
-                      <p
-                        style={{
-                          fontSize: '12px',
-                          color: 'grey',
-                        }}
-                      >
-                        {el.description}
-                      </p>
-                    }
-                  />
-                </div>
-              ))}
+  return useObserver(() => (
+    <>
+      {servicesList.map(listItem => (
+        <div className="connect-form__item" key={listItem.type}>
+          <header className="connect-form__item-header">{listItem.type}</header>
+          {listItem.services.map(service => (
+            <div className="connect-form__slider-container" key={service.id}>
+              <Checkbox
+                isChecked={connectStore.services.activeServicesIds.includes(
+                  service.id,
+                )}
+                onChangeHandler={onChangeCheckbox(service.id)}
+              />
+              <Accordion
+                title={service.alias}
+                body={
+                  <p
+                    style={{
+                      fontSize: '12px',
+                      color: 'grey',
+                    }}
+                  >
+                    {service.description}
+                  </p>
+                }
+              />
             </div>
-          );
-        })}
-      </>
-    );
-  });
+          ))}
+        </div>
+      ))}
+    </>
+  ));
 };
 
 export default ServiceGroupContainer;

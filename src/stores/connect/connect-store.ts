@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import { action, computed, observable, runInAction } from 'mobx';
 import { services } from '../../app/constants/fakeData';
 import { IMarketingProduct, IParameters } from '../../app/types';
@@ -9,20 +10,23 @@ export class ConnectStore {
     servicesList: [],
     activeServicesIds: [],
   };
+
   @computed
-  public get services() {
+  public get services(): IConnectServices {
     return this._services;
   }
 
   @observable
-  private _minutes: number = 150;
+  private _minutes = 150;
+
   @computed
   public get minutes(): number {
     return this._minutes;
   }
 
   @observable
-  private _internet: number = 15;
+  private _internet = 15;
+
   @computed
   public get internet(): number {
     return this._internet;
@@ -30,6 +34,7 @@ export class ConnectStore {
 
   @observable
   private _currentTariff!: IMarketingProduct;
+
   @computed
   public get currentTariff(): IMarketingProduct {
     return this._currentTariff;
@@ -57,28 +62,28 @@ export class ConnectStore {
     return this._additionalInfo;
   }
 
-  @action setMinutes(value: number) {
+  @action setMinutes(value: number): void {
     this._minutes = value;
   }
 
-  @action setInternet(value: number) {
+  @action setInternet(value: number): void {
     this._internet = value;
   }
 
   @computed
-  get getPrice() {
+  get getPrice(): number {
     const minutesPrice = this._minutes;
     const internetPrice = this._internet * 25;
     const activeServicesPrice = this.services.activeServicesIds.reduce(
       (acc, id) => {
-        let service: ServiceInfo | undefined;
+        let serviceInfo: ServiceInfo | undefined;
 
         for (const el of this._services.servicesList) {
-          if (service) break;
-          service = el.services.find(service => service.id === id);
+          if (serviceInfo) break;
+          serviceInfo = el.services.find(service => service.id === id);
         }
 
-        return service ? acc + service.price : acc;
+        return serviceInfo ? acc + serviceInfo.price : acc;
       },
       0,
     );
@@ -104,22 +109,22 @@ export class ConnectStore {
   // }
 
   @action
-  initTariffConstructor() {
+  initTariffConstructor(): void {
     this._services = services;
   }
 
-  private addActiveService(id: number) {
+  private addActiveService(id: number): void {
     this._services.activeServicesIds.push(id);
   }
 
-  private removeActiveService(id: number) {
+  private removeActiveService(id: number): void {
     this._services.activeServicesIds = this._services.activeServicesIds.filter(
       el => el !== id,
     );
   }
 
   @action
-  toggleActiveServices(id: number) {
+  toggleActiveServices(id: number): void {
     if (this._services.activeServicesIds.includes(id)) {
       this.removeActiveService(id);
     } else {

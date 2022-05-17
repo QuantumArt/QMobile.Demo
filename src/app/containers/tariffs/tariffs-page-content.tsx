@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import TariffsFilter from './tariffs-filter';
 import { useObserver } from 'mobx-react-lite';
+import TariffsFilter from './tariffs-filter';
 import tariffsStore from '../../../stores/tariffs/tariffs-store';
 import TariffSearch from '../../components/search-input';
 import MakeTariffLink from './make-tariff-link';
@@ -14,8 +14,8 @@ const TariffsPageContent = (): JSX.Element => {
     };
   }, []);
 
-  const searchHandler = (value: string) => {
-    alert(value);
+  const searchHandler = (value: string): void => {
+    alert(value); // Заглушка
   };
 
   return useObserver(() => (
