@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-syntax */
 import { action, computed, observable, runInAction } from 'mobx';
-import { services } from '../../app/constants/fakeData';
 import { IMarketingProduct, IParameters } from '../../app/types';
 import { ITariffPackageParameter } from '../../app/types/marketing-product';
 import { ITariffPackages } from '../tariffs/tariffs-cards-group';
@@ -9,7 +8,8 @@ import { IConnectServices, ServiceInfo } from './connect-services-groups';
 export class ConnectStore {
   @observable
   private _services: IConnectServices = {
-    servicesList: [],
+    servicesGroup: {},
+    servicesIds: [],
     activeServicesIds: [],
   };
 
@@ -101,8 +101,21 @@ export class ConnectStore {
   @computed
   get getPrice(): number {
     const rangesAlias = `${this._internet}${this._minutes}`;
+    let rangesPrice = this._rangesPrice[rangesAlias];
 
-    return this._rangesPrice[rangesAlias];
+    let subscriptionPrice = 0;
+
+    if (!rangesPrice) {
+      const paramWithSubcriptionPrice = this._currentTariff?.Parameters?.find(
+        parameter => {
+          return parameter?.BaseParameter?.Alias === 'SubscriptionFee';
+        },
+      );
+      rangesPrice = 0;
+      subscriptionPrice = paramWithSubcriptionPrice?.NumValue ?? 0;
+    }
+
+    return rangesPrice + subscriptionPrice;
   }
 
   // @computed
@@ -121,9 +134,21 @@ export class ConnectStore {
   //   // return parametersList;
   // }
 
-  @action
-  initTariffConstructor(): void {
-    this._services = services;
+  initServices(): void {
+    this._services = {
+      servicesGroup: {},
+      servicesIds: [],
+      activeServicesIds: [],
+    };
+    this._currentTariff?.ServicesOnTariff?.forEach(service => {
+      this._services.servicesGroup[service.Id] = {
+        id: service.Id,
+        alias: service.Service.MarketingProduct.Title,
+        description: service.Service.Description,
+        price: 0,
+      };
+      this._services.servicesIds.push(service.Id);
+    });
   }
 
   private addActiveService(id: number): void {
@@ -155,6 +180,7 @@ export class ConnectStore {
       console.log(fetchedData);
       runInAction(() => {
         this._currentTariff = fetchedData;
+        this.initServices();
         this._parametersByGroup = new Map();
         this._additionalInfo = new Map();
         const minutes = this.findTariffPackageParameterValues('MinutesPackage');
@@ -162,18 +188,14 @@ export class ConnectStore {
           this.findTariffPackageParameterValues('InternetPackage');
 
         if (minutes) {
-          this._rangeMinutesValues = minutes
-            .filter((value, index, arr) => arr.indexOf(value) === index)
-            .sort();
+          this._rangeMinutesValues = minutes;
 
           const [minValue] = this._rangeMinutesValues;
           this._minutes = minValue;
         }
 
         if (gigabytes) {
-          this._rangeInternetValues = gigabytes
-            .filter((value, index, arr) => arr.indexOf(value) === index)
-            .sort();
+          this._rangeInternetValues = gigabytes;
 
           const [minValue] = this._rangeInternetValues;
           this._internet = minValue;
@@ -243,8 +265,22 @@ export class ConnectStore {
       },
       [],
     );
-    return values;
+    return values
+      ? values
+          .filter((value, index, arr) => arr.indexOf(value) === index)
+          .sort()
+      : [];
   }
+
+  // @action
+  // unmount(): void {
+  //   this._minutes = 0;
+  //   this._internet = 0;
+  //   this._rangeInternetValues = [];
+  //   this._rangeInternetValues = [];
+  //   this._rangesPrice = {};
+  //   this._services = [];
+  // }
 }
 
 const connectStore = new ConnectStore();

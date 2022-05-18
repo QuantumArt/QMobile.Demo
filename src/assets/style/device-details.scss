@@ -1,5 +1,40 @@
+@import './variables/variables';
+
 .device-details {
-    &__page-container {
+    &__path-wrapper {
         padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    &__main-container {
+        border: 1px solid #F1F1F1;
+        border-radius: 6px;
+        display: flex;
+    }
+
+    &__images-container {
+        width: 580px;
+        border-right: 1px solid #F1F1F1;
+    }
+
+    &__main-info-container {
+        flex-grow: 1;
+    }
+
+    &__main-info-title {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 27px;
+        color: $dark_blue;
+        height: 54px;
+        padding: 19px 0 20px 20px;
+        border-bottom: 1px solid #F1F1F1;
+        margin-bottom: 20px;
+    }
+
+    &__price-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
     }
 }

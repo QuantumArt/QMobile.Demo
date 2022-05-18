@@ -38,6 +38,31 @@ export type ITariffPackages = {
   };
 };
 
+export type IModifier = {
+  Id: number;
+  Title: string;
+  Alias: string;
+};
+
+export type IServiceOnTariff = {
+  Id: number;
+  Service: {
+    Id: number;
+    MarketingProduct: {
+      Id: number;
+      Title: string;
+      Alias: string;
+    };
+    Description: string;
+    Modifiers: Array<IModifier>;
+  };
+  Parent: {
+    Id: number;
+    Title: string;
+    Type: number;
+  };
+};
+
 export type IMarketingProduct = {
   MarketingProduct: {
     Category: {
@@ -52,4 +77,5 @@ export type IMarketingProduct = {
   Parameters: Array<IParameters>;
   Id: number;
   TariffPackages?: Array<ITariffPackages>;
+  ServicesOnTariff?: Array<IServiceOnTariff>;
 };

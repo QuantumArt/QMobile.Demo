@@ -5,12 +5,10 @@ export type ServiceInfo = {
   price: number;
 };
 
-export type ServicesList = {
-  type: string;
-  services: Array<ServiceInfo>;
-};
-
 export type IConnectServices = {
-  servicesList: Array<ServicesList>;
+  servicesIds: Array<number>;
+  servicesGroup: {
+    [key: number]: ServiceInfo;
+  };
   activeServicesIds: Array<number>;
 };

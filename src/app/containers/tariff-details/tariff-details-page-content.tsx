@@ -32,7 +32,7 @@ const TariffDetailsPageContent = (): JSX.Element =>
           }
         >
           <ServiceGroupContainer
-            servicesList={connectStore.services.servicesList}
+            servicesIds={connectStore.services.servicesIds}
           />
         </ConnectForm>
       </div>
