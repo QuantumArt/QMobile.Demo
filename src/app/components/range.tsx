@@ -8,6 +8,7 @@ type Props = {
   onDragHandler: (value: number) => void;
   titleText?: string;
   logosrc?: string;
+  step?: number;
 };
 
 const Range = ({
@@ -18,6 +19,7 @@ const Range = ({
   valueDesc,
   titleText,
   logosrc,
+  step,
 }: Props): JSX.Element => {
   const backgroundSize = `${((value - min) * 100) / (max - min)}% 100%`;
 
@@ -44,6 +46,7 @@ const Range = ({
         value={value}
         onChange={onChangeHandler}
         style={{ backgroundSize }}
+        step={step}
       />
       <div className="range-container__min-max-container">
         <p>
@@ -61,6 +64,7 @@ Range.defaultProps = {
   valueDesc: '',
   titleText: '',
   logosrc: '',
+  step: 1,
 };
 
 export default Range;

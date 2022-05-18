@@ -19,6 +19,25 @@ export type IParameters = {
   };
 };
 
+export type ITariffPackageParameter = {
+  Id: number;
+  Title: string;
+  NumValue: number;
+  BaseParameter: {
+    Id: number;
+    Title: string;
+    Alias: 'InternetPackage' | 'MinutesPackage' | 'SubscriptionFee';
+  };
+};
+
+export type ITariffPackages = {
+  Id: number;
+  Alias: string;
+  Parent: {
+    Parameters: Array<ITariffPackageParameter>;
+  };
+};
+
 export type IMarketingProduct = {
   MarketingProduct: {
     Category: {
@@ -32,4 +51,5 @@ export type IMarketingProduct = {
   };
   Parameters: Array<IParameters>;
   Id: number;
+  TariffPackages?: Array<ITariffPackages>;
 };
