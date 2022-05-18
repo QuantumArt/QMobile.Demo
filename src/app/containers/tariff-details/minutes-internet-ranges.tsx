@@ -61,7 +61,7 @@ const MinutesInternetRanges = (): JSX.Element => {
               connectStore.rangeMinutesValues.length - 1
             ]
           }
-          value={connectStore.minutes}
+          value={connectStore.rangeMinutes}
           onDragHandler={onDragMinutes}
           valueDesc="мин"
           logosrc={Phone}
@@ -80,7 +80,7 @@ const MinutesInternetRanges = (): JSX.Element => {
               connectStore.rangeInternetValues.length - 1
             ]
           }
-          value={connectStore.internet}
+          value={connectStore.rangeInternet}
           onDragHandler={onDragInternet}
           valueDesc="гб"
           logosrc={Internet}

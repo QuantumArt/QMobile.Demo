@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import { action, computed, observable, runInAction } from 'mobx';
+import { stringify } from 'querystring';
 import { IMarketingProduct, IParameters } from '../../app/types';
 import { ITariffPackageParameter } from '../../app/types/marketing-product';
 import { ITariffPackages } from '../tariffs/tariffs-cards-group';
@@ -23,6 +24,17 @@ export class ConnectStore {
 
   @computed
   public get minutes(): number {
+    const fromServices = this._services.activeServicesIds
+      .filter(id => this._services.servicesGroup[id].type === 'MinutesPackage')
+      .reduce<number>(
+        (acc, id) => acc + this._services.servicesGroup[id].value,
+        0,
+      );
+    return this._minutes + fromServices;
+  }
+
+  @computed
+  public get rangeMinutes(): number {
     return this._minutes;
   }
 
@@ -31,6 +43,17 @@ export class ConnectStore {
 
   @computed
   public get internet(): number {
+    const fromServices = this._services.activeServicesIds
+      .filter(id => this._services.servicesGroup[id].type === 'InternetPackage')
+      .reduce<number>(
+        (acc, id) => acc + this._services.servicesGroup[id].value,
+        0,
+      );
+    return this._internet + fromServices;
+  }
+
+  @computed
+  public get rangeInternet(): number {
     return this._internet;
   }
 
@@ -115,24 +138,16 @@ export class ConnectStore {
       subscriptionPrice = paramWithSubcriptionPrice?.NumValue ?? 0;
     }
 
-    return rangesPrice + subscriptionPrice;
+    const servicesPrice = this._services.activeServicesIds.reduce<number>(
+      (acc, id) => {
+        const { price } = this.services.servicesGroup[id];
+        return acc + price;
+      },
+      0,
+    );
+
+    return rangesPrice + subscriptionPrice + servicesPrice;
   }
-
-  // @computed
-  // get getParametersByGroup() {
-  //   // const parametersList = new Map<number, IParameters[]>();
-
-  //   // this._currentTariff.Parameters.forEach(parameter => {
-  //   //   const groupId = parameter.Group.Id;
-  //   //   if (parametersList.has(groupId)) {
-  //   //     parametersList.get(groupId)?.push(parameter);
-  //   //   } else {
-  //   //     parametersList.set(groupId, [parameter]);
-  //   //   }
-  //   // });
-
-  //   // return parametersList;
-  // }
 
   initServices(): void {
     this._services = {
@@ -141,12 +156,36 @@ export class ConnectStore {
       activeServicesIds: [],
     };
     this._currentTariff?.ServicesOnTariff?.forEach(service => {
+      const parametersValues = {
+        price: 0,
+        value: 0,
+        type: '',
+      };
+
+      service.Parent.Parameters.forEach(parameter => {
+        switch (parameter?.BaseParameter?.Alias) {
+          case 'SubscriptionFee':
+            parametersValues.price = parameter.NumValue;
+            break;
+          case 'InternetPackage':
+            parametersValues.type = 'InternetPackage';
+            parametersValues.value = parameter.NumValue;
+            break;
+          case 'MinutesPackage':
+            parametersValues.type = 'MinutesPackage';
+            parametersValues.value = parameter.NumValue;
+            break;
+          default:
+        }
+      });
+
       this._services.servicesGroup[service.Id] = {
         id: service.Id,
         alias: service.Service.MarketingProduct.Title,
         description: service.Service.Description,
-        price: 0,
+        ...parametersValues,
       };
+
       this._services.servicesIds.push(service.Id);
     });
   }
@@ -271,16 +310,6 @@ export class ConnectStore {
           .sort()
       : [];
   }
-
-  // @action
-  // unmount(): void {
-  //   this._minutes = 0;
-  //   this._internet = 0;
-  //   this._rangeInternetValues = [];
-  //   this._rangeInternetValues = [];
-  //   this._rangesPrice = {};
-  //   this._services = [];
-  // }
 }
 
 const connectStore = new ConnectStore();

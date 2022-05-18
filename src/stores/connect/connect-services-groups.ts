@@ -3,6 +3,8 @@ export type ServiceInfo = {
   alias: string;
   description: string;
   price: number;
+  type: string;
+  value: number;
 };
 
 export type IConnectServices = {

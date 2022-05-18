@@ -60,6 +60,7 @@ export type IServiceOnTariff = {
     Id: number;
     Title: string;
     Type: number;
+    Parameters: Array<ITariffPackageParameter>;
   };
 };
 

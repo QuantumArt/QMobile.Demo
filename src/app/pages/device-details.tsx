@@ -22,7 +22,9 @@ const DeviceDetails = (): JSX.Element => {
           }`}
         />
       </div>
-      <DeviceDetailsPageContent />
+      <DeviceDetailsPageContent
+        currentDeviceStore={devicesStore.currentDevice}
+      />
     </>
   ));
 };
