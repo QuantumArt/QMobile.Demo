@@ -1,6 +1,6 @@
 import { action, computed, observable, runInAction } from 'mobx';
 import { BootState } from '../../app/enums/boot-state';
-import { IMarketingProduct } from '../../app/types';
+import { IFeatureItem, IMarketingProduct } from '../../app/types';
 
 class DevicesStore {
   @observable
@@ -25,6 +25,36 @@ class DevicesStore {
   @computed
   public get currentDevice(): IMarketingProduct {
     return this._currentDevice;
+  }
+
+  @computed
+  public get description(): string | undefined {
+    return this._currentDevice?.Parameters.find(
+      parameter => parameter.Group.Title === 'Описание',
+    )?.Title;
+  }
+
+  @computed
+  public get featuresList(): Map<string, IFeatureItem[]> {
+    const featuresListByTabs = new Map<string, IFeatureItem[]>();
+
+    this._currentDevice?.Parameters.forEach(parameter => {
+      if (parameter?.Group?.Title === 'Характеристики' && parameter?.Parent) {
+        const feature = {
+          id: parameter.Id,
+          property: parameter.Title,
+          value: parameter?.Value ?? '',
+        };
+
+        if (featuresListByTabs.has(parameter?.Parent.Title)) {
+          featuresListByTabs.get(parameter?.Parent.Title)?.push(feature);
+        } else {
+          featuresListByTabs.set(parameter?.Parent.Title, [feature]);
+        }
+      }
+    });
+
+    return featuresListByTabs;
   }
 
   @action

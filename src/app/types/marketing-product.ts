@@ -1,5 +1,6 @@
 export type IParameters = {
   NumValue: number;
+  Value?: string;
   BaseParameter: {
     Alias: string;
     Title: string;
@@ -14,6 +15,11 @@ export type IParameters = {
     QuotaPeriod: string;
   };
   Group: {
+    Id: number;
+    Title: string;
+  };
+
+  Parent?: {
     Id: number;
     Title: string;
   };

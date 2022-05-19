@@ -162,7 +162,7 @@ export class ConnectStore {
         type: '',
       };
 
-      service.Parent.Parameters.forEach(parameter => {
+      service.Parent.Parameters?.forEach(parameter => {
         switch (parameter?.BaseParameter?.Alias) {
           case 'SubscriptionFee':
             parametersValues.price = parameter.NumValue;

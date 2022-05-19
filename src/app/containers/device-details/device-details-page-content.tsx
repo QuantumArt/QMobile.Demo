@@ -2,6 +2,7 @@ import React from 'react';
 import { IMarketingProduct } from '../../types';
 import Images from './images';
 import MainInfo from './main-info';
+import DeviceDetailsTabs from './tabs/device-tabs';
 
 type Props = {
   currentDeviceStore: IMarketingProduct;
@@ -24,6 +25,9 @@ const parseDeviceStore = (store: IMarketingProduct): InfoDataType => {
     if (parameter.Title === 'Стоимость') {
       infoData.price = parameter.NumValue;
     }
+    if (parameter.Group.Title === 'Краткие характеристики') {
+      infoData.shortFeatures.push(parameter.Title);
+    }
   });
 
   return infoData;
@@ -34,10 +38,13 @@ const DeviceDetailsPageContent = ({
 }: Props): JSX.Element => {
   const infoData = parseDeviceStore(currentDeviceStore);
   return (
-    <div className="device-details__main-container">
-      <Images />
-      <MainInfo data={infoData} />
-    </div>
+    <>
+      <div className="device-details__main-container">
+        <Images />
+        <MainInfo data={infoData} />
+      </div>
+      <DeviceDetailsTabs />
+    </>
   );
 };
 
