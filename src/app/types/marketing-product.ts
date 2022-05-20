@@ -70,6 +70,16 @@ export type IServiceOnTariff = {
   };
 };
 
+type Image = {
+  Type: {
+    Alias: 'details' | 'list';
+    Title: string;
+    Id: number;
+  };
+  Id: number;
+  Image: string;
+};
+
 export type IMarketingProduct = {
   MarketingProduct: {
     Category: {
@@ -85,4 +95,5 @@ export type IMarketingProduct = {
   Id: number;
   TariffPackages?: Array<ITariffPackages>;
   ServicesOnTariff?: Array<IServiceOnTariff>;
+  Images?: Array<Image>;
 };

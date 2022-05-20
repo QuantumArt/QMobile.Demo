@@ -1,0 +1,31 @@
+@import './variables/variables';
+
+.page-with-cards {
+
+    &__path-wrapper {
+        padding-top: 32px;
+        margin-bottom: 40px;
+    }
+
+    &__page-title {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 44px;
+        color: $dark_blue;
+        margin-bottom: 10px;
+    }
+
+    &__cards-background {
+        background: #F7F9FC;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+    &__сards-container {
+        display: flex;
+        min-height: 825px;
+        padding: 22px 134px 0 134px;
+
+    }
+}

@@ -1,0 +1,45 @@
+@import './variables/variables';
+
+
+.service-card {
+    &__container {
+        padding-top: 23px;
+        padding-left: 38px;
+        width: 380px;
+        height: 257px;
+        background-color: white;
+    }
+
+    &__title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: $dark_blue;
+        margin-bottom: 20px;
+    }
+
+    &__description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $dark_blue;
+        margin-bottom: 20px;
+    }
+
+    &__flex-container {
+        display: flex;
+        height: 138px;
+    }
+
+    &__image {
+        margin-left: auto;
+    }
+
+    &__advantage {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #2C5BDE;
+    }
+}
