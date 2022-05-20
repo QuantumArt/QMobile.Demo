@@ -24,8 +24,13 @@
 
     &__сards-container {
         display: flex;
+        flex-wrap: wrap;
         min-height: 825px;
-        padding: 22px 134px 0 134px;
-
+        align-content: flex-start;
+        padding: 0 30px;
+        padding-top: 22px;
+        margin: 0 auto;
+        max-width: 1240px;
+        gap: 20px;
     }
 }

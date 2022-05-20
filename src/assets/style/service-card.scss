@@ -5,12 +5,19 @@
     &__container {
         padding-top: 23px;
         padding-left: 38px;
-        width: 380px;
-        height: 257px;
+        padding-right: 26px;
+        min-width: 380px;
+        max-width: 380px;
+        min-height: 257px;
+        max-height: 257px;
         background-color: white;
+
+        cursor: pointer;
     }
 
     &__title {
+        max-height: 24px;
+        overflow: hidden;
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
@@ -20,6 +27,8 @@
     }
 
     &__description {
+        height: 34px;
+        overflow: hidden;
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;
@@ -29,11 +38,21 @@
 
     &__flex-container {
         display: flex;
-        height: 138px;
+        max-height: 137px;
     }
 
     &__image {
+        display: flex;
+        max-height: 121px;
+        min-height: 121px;
+        min-width: 194px;
+        max-width: 194px;
         margin-left: auto;
+        flex-grow: 0;
+
+        img {
+            object-fit: cover;
+        }
     }
 
     &__advantage {
