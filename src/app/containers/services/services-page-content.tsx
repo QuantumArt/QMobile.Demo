@@ -17,6 +17,7 @@ const ServicePageContent = (): JSX.Element => {
           description={service.MarketingProduct.Description}
           image={service.MarketingProduct.ListImage}
           isNew={Math.random() > 0.5}
+          onClick={() => console.log('Заглушка')}
         />
       ))}
     </>

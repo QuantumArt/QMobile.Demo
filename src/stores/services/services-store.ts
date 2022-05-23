@@ -1,6 +1,6 @@
 import { action, computed, observable, runInAction } from 'mobx';
 import { BootState } from '../../app/enums/boot-state';
-import { IMarketingProduct } from '../../app/types';
+import { IMarketingProduct, IParameters } from '../../app/types';
 
 class ServiceStore {
   @observable
@@ -19,6 +19,25 @@ class ServiceStore {
     return this._servicesList;
   }
 
+  @observable
+  private _currentService!: IMarketingProduct;
+
+  @computed
+  public get currentTariff(): IMarketingProduct {
+    return this._currentService;
+  }
+
+  @observable
+  private _parametersByGroup: Map<number, IParameters[]> = new Map<
+    number,
+    IParameters[]
+  >();
+
+  @computed
+  public get parametersByGroup(): Map<number, IParameters[]> {
+    return this._parametersByGroup;
+  }
+
   @action
   async init(): Promise<void> {
     try {
@@ -29,6 +48,21 @@ class ServiceStore {
       runInAction(() => {
         this._servicesList = fetchedData;
       });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @action
+  async fetchService(serviceId: string): Promise<void> {
+    try {
+      const response = await fetch(
+        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${serviceId}`,
+      );
+      const fetchedData: IMarketingProduct = await response.json();
+      console.log(fetchedData);
+
+      this._currentService = fetchedData;
     } catch (error) {
       console.log(error);
     }

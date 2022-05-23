@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import NewService from '../../assets/images/NewService.png';
 
 type Props = {
   title: string;
   description: string;
-  adventage?: string;
+  advantage?: string;
   image: string;
   isNew?: boolean;
+  onClick: (e: MouseEvent<HTMLDivElement>) => void;
 };
 
 const ServiceCard = ({
   title,
   description,
   image,
-  adventage,
+  advantage,
   isNew,
+  onClick,
 }: Props): JSX.Element => {
   return (
-    <div className="service-card__container">
+    <div
+      className="service-card__container"
+      onClick={onClick}
+      role="presentation"
+    >
       <h5 className="service-card__title">{title}</h5>
       <p className="service-card__description">{description}</p>
       <div className="service-card__flex-container">
@@ -31,7 +37,7 @@ const ServiceCard = ({
 };
 
 ServiceCard.defaultProps = {
-  adventage: '',
+  advantage: '',
   isNew: false,
 };
 

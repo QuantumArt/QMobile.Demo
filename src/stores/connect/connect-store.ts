@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-syntax */
 import { action, computed, observable, runInAction } from 'mobx';
-import { stringify } from 'querystring';
 import { IMarketingProduct, IParameters } from '../../app/types';
 import { ITariffPackageParameter } from '../../app/types/marketing-product';
 import { ITariffPackages } from '../tariffs/tariffs-cards-group';
