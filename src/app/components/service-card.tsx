@@ -7,7 +7,7 @@ type Props = {
   advantage?: string;
   image: string;
   isNew?: boolean;
-  onClick: (e: MouseEvent<HTMLDivElement>) => void;
+  onClickHandler: () => void;
 };
 
 const ServiceCard = ({
@@ -16,12 +16,12 @@ const ServiceCard = ({
   image,
   advantage,
   isNew,
-  onClick,
+  onClickHandler,
 }: Props): JSX.Element => {
   return (
     <div
       className="service-card__container"
-      onClick={onClick}
+      onClick={onClickHandler}
       role="presentation"
     >
       <h5 className="service-card__title">{title}</h5>

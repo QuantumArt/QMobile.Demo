@@ -1,0 +1,26 @@
+@import './variables/variables';
+
+.image-slider {
+    &__main-container {
+        padding: 19px 22px;
+        display: flex;
+    }
+
+    &__photos-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &-item {
+            width: 132px;
+            height: 112px;
+            border: 1px solid $light_gray2;
+            border-radius: 6px;
+            cursor: pointer;
+
+            img {
+                object-fit: cover;
+            }
+        }
+    }
+}

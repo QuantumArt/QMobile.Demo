@@ -23,7 +23,7 @@ class ServiceStore {
   private _currentService!: IMarketingProduct;
 
   @computed
-  public get currentTariff(): IMarketingProduct {
+  public get currentService(): IMarketingProduct {
     return this._currentService;
   }
 
@@ -36,6 +36,24 @@ class ServiceStore {
   @computed
   public get parametersByGroup(): Map<number, IParameters[]> {
     return this._parametersByGroup;
+  }
+
+  @computed
+  public get getPrice(): number {
+    let subscriptionPrice = NaN;
+
+    Array.from(this._parametersByGroup).forEach(([_, value]) => {
+      const parameterWithSubscription = value
+        .flat()
+        .find(
+          parameter => parameter?.BaseParameter?.Alias === 'SubscriptionFee',
+        );
+
+      subscriptionPrice =
+        parameterWithSubscription?.NumValue ?? subscriptionPrice;
+    });
+
+    return subscriptionPrice;
   }
 
   @action
@@ -56,13 +74,22 @@ class ServiceStore {
   @action
   async fetchService(serviceId: string): Promise<void> {
     try {
+      this._parametersByGroup = new Map();
       const response = await fetch(
         `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${serviceId}`,
       );
       const fetchedData: IMarketingProduct = await response.json();
-      console.log(fetchedData);
 
       this._currentService = fetchedData;
+
+      this._currentService.Parameters?.forEach(parameter => {
+        const groupId = parameter.Group.Id;
+        if (this._parametersByGroup.has(groupId)) {
+          this._parametersByGroup.get(groupId)?.push(parameter);
+        } else {
+          this._parametersByGroup.set(groupId, [parameter]);
+        }
+      });
     } catch (error) {
       console.log(error);
     }

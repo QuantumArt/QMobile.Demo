@@ -1,5 +1,5 @@
 import { IRoute, NavigationRoutesGroup } from './navigation-route';
-import { IParameters, IMarketingProduct } from './marketing-product';
+import { IParameters, IMarketingProduct, Image } from './marketing-product';
 import { IFeatureItem } from './device-tab';
 
 export type {
@@ -8,4 +8,5 @@ export type {
   IParameters,
   IMarketingProduct,
   IFeatureItem,
+  Image,
 };

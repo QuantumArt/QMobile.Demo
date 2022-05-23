@@ -70,7 +70,7 @@ export type IServiceOnTariff = {
   };
 };
 
-type Image = {
+export type Image = {
   Type: {
     Alias: 'details' | 'list';
     Title: string;
@@ -90,6 +90,7 @@ export type IMarketingProduct = {
     ListImage: string;
     Description: string;
     DetailsImage: string;
+    Parameters?: Array<IParameters>;
   };
   Parameters: Array<IParameters>;
   Id: number;

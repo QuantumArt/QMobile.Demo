@@ -1,6 +1,8 @@
+import { useObserver } from 'mobx-react-lite';
 import React from 'react';
+import devicesStore from '../../../stores/devices/devices-store';
 import { IMarketingProduct } from '../../types';
-import Images from './images';
+import ImagesSlider from './images-slider';
 import MainInfo from './main-info';
 import DeviceDetailsTabs from './tabs/device-tabs';
 
@@ -37,15 +39,15 @@ const DeviceDetailsPageContent = ({
   currentDeviceStore,
 }: Props): JSX.Element => {
   const infoData = parseDeviceStore(currentDeviceStore);
-  return (
+  return useObserver(() => (
     <>
       <div className="device-details__main-container">
-        <Images />
+        <ImagesSlider imagesList={devicesStore.currentDevice?.Images} />
         <MainInfo data={infoData} />
       </div>
       <DeviceDetailsTabs />
     </>
-  );
+  ));
 };
 
 export default DeviceDetailsPageContent;

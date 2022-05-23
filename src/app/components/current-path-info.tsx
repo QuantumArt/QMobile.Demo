@@ -11,6 +11,8 @@ class PathNames {
   static readonly devices = 'Устройства';
 
   static readonly tariffconstructor = 'Соберите свой тариф';
+
+  static readonly tariff_packages = 'Пакеты';
 }
 
 export type Props = {

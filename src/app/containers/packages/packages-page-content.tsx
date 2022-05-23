@@ -17,7 +17,7 @@ const PackagesPageContent = (): JSX.Element => {
           description={packageItem.MarketingProduct.Description}
           image={packageItem.MarketingProduct.ListImage}
           isNew={Math.random() > 0.5}
-          onClick={() => console.log('Заглушка')}
+          onClickHandler={() => console.log('Заглушка')}
         />
       ))}
     </>

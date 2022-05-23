@@ -1,5 +1,5 @@
 import { useObserver } from 'mobx-react-lite';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 import Slider, { IProps as ISliderProps } from '../../components/slider';
 import CurrentPathInfo, {
@@ -10,6 +10,7 @@ type Props = {
   pageContentElem: JSX.Element;
   sliderProps?: ISliderProps;
   currentPathProps?: ICurrentPathProps;
+  styles?: CSSProperties;
 };
 
 const PageWithSlider = ({
@@ -17,7 +18,7 @@ const PageWithSlider = ({
   sliderProps,
   currentPathProps,
 }: Props): JSX.Element => {
-  const { description, title, modificatorStyles } =
+  const { description, title, modificatorStyles, styles } =
     sliderProps ?? Slider.defaultProps;
 
   const pathProps = currentPathProps ?? CurrentPathInfo.defaultProps;
@@ -27,6 +28,7 @@ const PageWithSlider = ({
         description={description}
         title={title}
         modificatorStyles={modificatorStyles}
+        styles={styles}
       />
       <CurrentPathInfo elementName={pathProps.elementName} />
       {pageContentElem}

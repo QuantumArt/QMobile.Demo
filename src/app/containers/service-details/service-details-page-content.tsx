@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useObserver } from 'mobx-react-lite';
 
 import Present from '../../../assets/images/present.png';
 import Infinity from '../../../assets/images/infinity.png';
@@ -6,6 +7,7 @@ import MusicIcon from '../../../assets/images/music_icon.png';
 import AdvantageCard from './advantage-card';
 import ServiceConnectForm from './service-connect-form';
 import ParametersList from '../parameters-list/parameters-list';
+import servicesStore from '../../../stores/services/services-store';
 
 const advantagesList = [
   {
@@ -22,10 +24,14 @@ const advantagesList = [
   },
 ];
 
-const ServiceDetailsPageContent = (): JSX.Element => {
-  return (
+type Props = {
+  title?: string;
+};
+
+const ServiceDetailsPageContent = ({ title }: Props): JSX.Element => {
+  return useObserver(() => (
     <div className="service-details__content-container">
-      <h1 className="service-details__main-title">Заголовок</h1>
+      <h1 className="service-details__main-title">{title}</h1>
       <div className="service-details__advantages-container">
         {advantagesList.map(({ description, image }) => (
           <AdvantageCard
@@ -38,13 +44,17 @@ const ServiceDetailsPageContent = (): JSX.Element => {
       <div className="flex-wrapper space-between">
         <div className="constructor-page-content__main-info parameters-list-container">
           <ParametersList
-            paramList={}
+            paramList={Array.from(servicesStore.parametersByGroup)}
           />
         </div>
-        <ServiceConnectForm />
+        <ServiceConnectForm price={servicesStore.getPrice} />
       </div>
     </div>
-  );
+  ));
+};
+
+ServiceDetailsPageContent.defaultProps = {
+  title: 'Заголовок',
 };
 
 export default ServiceDetailsPageContent;
