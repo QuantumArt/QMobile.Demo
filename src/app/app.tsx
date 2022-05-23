@@ -12,6 +12,7 @@ import Tariffs from './pages/tariffs';
 import Devices from './pages/devices';
 import Packages from './pages/packages';
 import ServiceDetails from './pages/service-details';
+import PackageDetails from './pages/package-details';
 
 const routes: IRoute[] = [
   {
@@ -41,6 +42,10 @@ const routes: IRoute[] = [
   {
     path: '/services/*',
     element: <ServiceDetails />,
+  },
+  {
+    path: '/tariff_packages/*',
+    element: <PackageDetails />,
   },
   {
     path: '*',

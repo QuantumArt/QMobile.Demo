@@ -262,7 +262,7 @@ export class ConnectStore {
         this._currentTariff.TariffPackages?.forEach(tariffPackage => {
           let alias = '';
           let subscriptionPrice = 0;
-          tariffPackage.Parent.Parameters.forEach(parameter => {
+          tariffPackage?.Parent?.Parameters?.forEach(parameter => {
             if (parameter.BaseParameter.Alias === 'InternetPackage') {
               alias += parameter.NumValue;
             }
@@ -285,11 +285,11 @@ export class ConnectStore {
   private findTariffPackageParameterValues(
     parameterName: 'InternetPackage' | 'MinutesPackage',
   ): number[] | undefined {
-    const values = this._currentTariff.TariffPackages?.reduce<Array<number>>(
+    const values = this._currentTariff?.TariffPackages?.reduce<Array<number>>(
       (acc, tariffPackage) => {
         const minutesParameters: ITariffPackageParameter[] = [];
 
-        tariffPackage.Parent.Parameters.forEach(parameter => {
+        tariffPackage?.Parent?.Parameters?.forEach(parameter => {
           if (parameter.BaseParameter.Alias === parameterName)
             minutesParameters.push(parameter);
         });
@@ -306,7 +306,7 @@ export class ConnectStore {
     return values
       ? values
           .filter((value, index, arr) => arr.indexOf(value) === index)
-          .sort()
+          .sort((a, b) => a - b)
       : [];
   }
 }

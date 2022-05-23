@@ -1,0 +1,17 @@
+@import './variables/variables';
+
+
+.package-details {
+    &__path-wrapper {
+        padding-top: 20px;
+        padding-bottom: 60px;
+    }
+
+    &__main-title {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 44px;
+        color: $dark_blue;
+        margin-bottom: 22px;
+    }
+}

@@ -23,6 +23,9 @@ const ServiceDetails = (): JSX.Element => {
           background: `url(${servicesStore.currentService?.MarketingProduct.DetailsImage}) no-repeat bottom 0 right 0 #F1F1F1`,
         },
       }}
+      currentPathProps={{
+        elementName: servicesStore.currentService?.MarketingProduct.Title,
+      }}
       pageContentElem={
         <ServiceDetailsPageContent
           title={servicesStore.currentService?.MarketingProduct.Title}
