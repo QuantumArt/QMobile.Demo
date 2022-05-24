@@ -1,7 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import TariffCard from '../../components/tariff-card';
-import { ITariffsCardsGroup } from '../../../stores/tariffs/tariffs-cards-group';
+import {
+  ITariffsCardsGroup,
+  TariffCard as TariffCardType,
+} from '../../../stores/tariffs/tariffs-cards-group';
 import Loader from '../../components/loader';
 import { BootState } from '../../enums/boot-state';
 import { IParameters } from '../../types';
@@ -16,9 +19,20 @@ type IParameterNames =
   | 'Звонки на номера Qmobile минут в месяц'
   | 'Пакет интернета гигабайт в месяц';
 
-type ParametrsList = {
+export type ParametersList = {
   [key in IParameterNames]?: IParameters;
 };
+
+export const getParametersByNames = (
+  tariffData: TariffCardType,
+): ParametersList =>
+  tariffData.Parameters.reduce<ParametersList>((acc, parameterData) => {
+    const parameterName = `${parameterData.Title} ${parameterData?.Unit?.Title}`;
+    return {
+      ...acc,
+      [parameterName]: parameterData,
+    };
+  }, {});
 
 const TariffCardsContainer = ({
   cardsGroup,
@@ -35,16 +49,7 @@ const TariffCardsContainer = ({
   ) : (
     <div className="tariffs-page-content__tariff-cards-container">
       {cardsGroup.map(tariffData => {
-        const parameters = tariffData.Parameters.reduce<ParametrsList>(
-          (acc, parameterData) => {
-            const parameterName = `${parameterData.Title} ${parameterData?.Unit?.Title}`;
-            return {
-              ...acc,
-              [parameterName]: parameterData,
-            };
-          },
-          {},
-        );
+        const parameters = getParametersByNames(tariffData);
 
         return (
           <TariffCard

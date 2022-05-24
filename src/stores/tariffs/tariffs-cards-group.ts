@@ -4,7 +4,7 @@ export type ITariffPackages = {
   [key: string]: IParameters;
 };
 
-type TariffCard = IMarketingProduct & {
+export type TariffCard = IMarketingProduct & {
   packages?: ITariffPackages;
 };
 

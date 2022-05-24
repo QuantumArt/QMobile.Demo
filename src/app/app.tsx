@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
 import { IRoute } from './types';
 
 import Footer from './containers/footer/footer';
@@ -28,7 +33,7 @@ const routes: IRoute[] = [
     element: <Devices />,
   },
   {
-    path: '/tariff_packages',
+    path: '/packages',
     element: <Packages />,
   },
   {
@@ -44,7 +49,7 @@ const routes: IRoute[] = [
     element: <ServiceDetails />,
   },
   {
-    path: '/tariff_packages/*',
+    path: '/packages/*',
     element: <PackageDetails />,
   },
   {
@@ -62,6 +67,7 @@ function App(): JSX.Element {
           {routes.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
+          <Route path="/" element={<Navigate to="/tariffs" replace />} />
         </Routes>
       </main>
       <Footer />

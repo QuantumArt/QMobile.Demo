@@ -97,4 +97,5 @@ export type IMarketingProduct = {
   TariffPackages?: Array<ITariffPackages>;
   ServicesOnTariff?: Array<IServiceOnTariff>;
   Images?: Array<Image>;
+  Type: 'Tariff' | 'Device' | 'Kit' | 'Service';
 };

@@ -41,6 +41,10 @@
 
     &__traffic-limit {
         height: 40px;
+
+        &--editable {
+            font-weight: 400;
+        }
     }
 
     &__benefits {

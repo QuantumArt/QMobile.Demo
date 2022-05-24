@@ -6,7 +6,7 @@ import DeviceCard from '../../components/device-card';
 import TestImage from '../../../assets/images/Card_Demo.png';
 import TestDeviceImage from '../../../assets/images/phonedemo.png';
 import { ItemsInPackage } from '../../types';
-import { ParametersList } from '../tariffs/tariff-cards-container';
+import { getParametersByNames } from '../tariffs/tariff-cards-container';
 
 type Props = {
   itemsList: ItemsInPackage;
@@ -21,17 +21,8 @@ const PackagesItemsContainer = ({ itemsList }: Props): JSX.Element => {
   return (
     <div className="package-details__package-items-container">
       {itemsList.map(item => {
-        const parameters = item.Parameters.reduce<ParametersList>(
-          (acc, parameterData) => {
-            const parameterName = `${parameterData.Title} ${parameterData?.Unit?.Title}`;
-            return {
-              ...acc,
-              [parameterName]: parameterData,
-            };
-          },
-          {},
-        );
         if (item.Type === 'Tariff') {
+          const parameters = getParametersByNames(item);
           return (
             <TariffCard
               key={item.Id}

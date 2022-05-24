@@ -1,6 +1,7 @@
 import { IRoute, NavigationRoutesGroup } from './navigation-route';
 import { IParameters, IMarketingProduct, Image } from './marketing-product';
 import { IFeatureItem } from './device-tab';
+import { IPackage, ItemsInPackage } from './package-types';
 
 export type {
   IRoute,
@@ -9,4 +10,6 @@ export type {
   IMarketingProduct,
   IFeatureItem,
   Image,
+  IPackage,
+  ItemsInPackage,
 };

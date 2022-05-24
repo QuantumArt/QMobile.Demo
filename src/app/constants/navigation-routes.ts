@@ -15,7 +15,7 @@ export const headerNavRoutes: NavigationRoutesGroup = [
   },
   {
     name: 'Пакеты',
-    linkTo: 'tariff_packages',
+    linkTo: 'packages',
   },
 ];
 
