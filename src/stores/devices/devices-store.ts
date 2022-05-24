@@ -85,7 +85,6 @@ export class DevicesStore {
         `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${deviceId}`,
       );
       const fetchedData: IMarketingProduct = await response.json();
-      console.log(fetchedData);
 
       this._currentDevice = fetchedData;
     } catch (error) {

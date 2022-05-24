@@ -215,7 +215,6 @@ export class ConnectStore {
         `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${tariffId}`,
       );
       const fetchedData: IMarketingProduct = await response.json();
-      console.log(fetchedData);
       runInAction(() => {
         this._currentTariff = fetchedData;
         this.initServices();

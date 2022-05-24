@@ -89,7 +89,6 @@ export class PackagesStore {
           : [],
       );
       this._itemsInPackage = items;
-      console.log(fetchedData);
     } catch (error) {
       console.log(error);
     }
