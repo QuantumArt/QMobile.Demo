@@ -14,20 +14,17 @@ type IProps = {
   bootState: BootState;
 };
 
-type IParameterNames =
-  | 'Абонентская плата рублей в месяц'
-  | 'Звонки на номера Qmobile минут в месяц'
-  | 'Пакет интернета гигабайт в месяц';
+type IParameterIds = '8476' | '8488' | '8487';
 
 export type ParametersList = {
-  [key in IParameterNames]?: IParameters;
+  [key in IParameterIds]?: IParameters;
 };
 
 export const getParametersByNames = (
   tariffData: TariffCardType,
 ): ParametersList =>
   tariffData.Parameters.reduce<ParametersList>((acc, parameterData) => {
-    const parameterName = `${parameterData.Title} ${parameterData?.Unit?.Title}`;
+    const parameterName = `${parameterData.BaseParameter?.Id}`;
     return {
       ...acc,
       [parameterName]: parameterData,
@@ -57,15 +54,9 @@ const TariffCardsContainer = ({
             title={tariffData.MarketingProduct.Title}
             image={tariffData.MarketingProduct.ListImage}
             isHit={Math.random() > 0.5}
-            mobileTraffic={
-              parameters?.['Звонки на номера Qmobile минут в месяц']?.NumValue
-            }
-            internetTrafic={
-              parameters?.['Пакет интернета гигабайт в месяц']?.NumValue
-            }
-            tariffPrice={
-              parameters?.['Абонентская плата рублей в месяц']?.NumValue
-            }
+            mobileTraffic={parameters?.['8488']?.NumValue}
+            internetTrafic={parameters?.['8487']?.NumValue}
+            tariffPrice={parameters?.['8476']?.NumValue}
             onConnectHandler={connectHandler(tariffData.Id)}
           />
         );

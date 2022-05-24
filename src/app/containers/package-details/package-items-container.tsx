@@ -29,15 +29,9 @@ const PackageItemsContainer = ({ itemsList }: Props): JSX.Element => {
               title={item.MarketingProduct.Title}
               image={item.MarketingProduct.ListImage}
               isHit={Math.random() > 0.5}
-              mobileTraffic={
-                parameters?.['Звонки на номера Qmobile минут в месяц']?.NumValue
-              }
-              internetTrafic={
-                parameters?.['Пакет интернета гигабайт в месяц']?.NumValue
-              }
-              tariffPrice={
-                parameters?.['Абонентская плата рублей в месяц']?.NumValue
-              }
+              mobileTraffic={parameters?.['8488']?.NumValue}
+              internetTrafic={parameters?.['8487']?.NumValue}
+              tariffPrice={parameters?.['8476']?.NumValue}
               onConnectHandler={tariffConnectHandler(item.Id)}
             />
           );
