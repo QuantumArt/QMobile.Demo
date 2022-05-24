@@ -1,8 +1,13 @@
 import { action, computed, observable, runInAction } from 'mobx';
 import { BootState } from '../../app/enums/boot-state';
-import { IMarketingProduct, IPackage, ItemsInPackage } from '../../app/types';
+import {
+  IMarketingProduct,
+  IPackage,
+  IParameters,
+  ItemsInPackage,
+} from '../../app/types';
 
-class PackagesStore {
+export class PackagesStore {
   @observable
   private _bootState: BootState = BootState.None;
 
@@ -88,6 +93,28 @@ class PackagesStore {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  static generateParametersByGroup(
+    item: IMarketingProduct,
+  ): Map<number, IParameters[]> {
+    const parametersByGroup = new Map<number, IParameters[]>();
+
+    item.Parameters.forEach(parameter => {
+      const groupId = parameter.Group.Id;
+      if (
+        parameter.Group.Title !== 'Дополнительная информация' &&
+        parameter.Group.Title !== 'Преимущества'
+      ) {
+        if (parametersByGroup.has(groupId)) {
+          parametersByGroup.get(groupId)?.push(parameter);
+        } else {
+          parametersByGroup.set(groupId, [parameter]);
+        }
+      }
+    });
+
+    return parametersByGroup;
   }
 }
 

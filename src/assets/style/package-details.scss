@@ -24,4 +24,12 @@
         flex-wrap: wrap;
         gap: 22px
     }
+
+    &__package-items-details-container {
+        padding-top: 20px;
+    }
+
+    &__package-items-details-title {
+        margin-bottom: 10px;
+    }
 }

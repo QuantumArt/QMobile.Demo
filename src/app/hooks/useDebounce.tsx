@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 const useDebounce = <T,>(
   callback: (...args: Array<T>) => void,

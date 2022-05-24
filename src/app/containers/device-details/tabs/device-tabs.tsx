@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useObserver } from 'mobx-react-lite';
 import classNames from 'classnames';
 import DeviceDescriptionTab from './device-description-tab';
 import DeviceFeaturesTab from './device-features-tab';
+import devicesStore from '../../../../stores/devices/devices-store';
 
 type TabId = 'description' | 'features' | 'showrooms';
 

@@ -2,7 +2,7 @@ import { action, computed, observable, runInAction } from 'mobx';
 import { BootState } from '../../app/enums/boot-state';
 import { IFeatureItem, IMarketingProduct } from '../../app/types';
 
-class DevicesStore {
+export class DevicesStore {
   @observable
   private _bootState: BootState = BootState.None;
 
@@ -36,9 +36,15 @@ class DevicesStore {
 
   @computed
   public get featuresList(): Map<string, IFeatureItem[]> {
+    return DevicesStore.generateFeaturesList(this._currentDevice);
+  }
+
+  static generateFeaturesList(
+    device: IMarketingProduct,
+  ): Map<string, IFeatureItem[]> {
     const featuresListByTabs = new Map<string, IFeatureItem[]>();
 
-    this._currentDevice?.Parameters.forEach(parameter => {
+    device?.Parameters.forEach(parameter => {
       if (parameter?.Group?.Title === 'Характеристики' && parameter?.Parent) {
         const feature = {
           id: parameter.Id,

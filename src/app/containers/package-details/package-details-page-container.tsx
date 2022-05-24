@@ -1,9 +1,9 @@
 import { useObserver } from 'mobx-react-lite';
 import React from 'react';
 import packagesStore from '../../../stores/packages/packages-store';
-import ParametersList from '../parameters-list/parameters-list';
 import PackageConnectForm from './package-connect-form';
-import PackagesItemsContainer from './packages-items-container';
+import PackageItemsContainer from './package-items-container';
+import PackageItemsDetails from './package-items-details';
 
 const PackageDetailsPageContainer = (): JSX.Element => {
   return useObserver(() => (
@@ -13,8 +13,8 @@ const PackageDetailsPageContainer = (): JSX.Element => {
       </h1>
       <div className="flex-wrapper space-between">
         <div className="package-details__package-info-container">
-          <PackagesItemsContainer itemsList={packagesStore.itemsInPackage} />
-          {/* <ParametersList /> */}
+          <PackageItemsContainer itemsList={packagesStore.itemsInPackage} />
+          <PackageItemsDetails itemsList={packagesStore.itemsInPackage} />
         </div>
         <PackageConnectForm price={packagesStore.packagePrice} />
       </div>

@@ -12,7 +12,7 @@ type Props = {
   itemsList: ItemsInPackage;
 };
 
-const PackagesItemsContainer = ({ itemsList }: Props): JSX.Element => {
+const PackageItemsContainer = ({ itemsList }: Props): JSX.Element => {
   const navigate = useNavigate();
 
   const tariffConnectHandler = (tariffId: number) => () => {
@@ -69,4 +69,4 @@ const PackagesItemsContainer = ({ itemsList }: Props): JSX.Element => {
   );
 };
 
-export default PackagesItemsContainer;
+export default PackageItemsContainer;
