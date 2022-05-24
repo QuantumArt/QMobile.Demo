@@ -14,7 +14,7 @@ const PackageConnectForm = ({ price }: Props): JSX.Element => {
   return (
     <form className="connect-form">
       <MonthPaidHeader
-        title="Цена стратового комплекта"
+        title="Цена комплекта"
         currentPrice={price ?? PackageConnectForm.defaultProps.price}
       />
       <PrimaryButton

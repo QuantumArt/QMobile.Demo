@@ -31,9 +31,11 @@ const TariffDetailsPageContent = (): JSX.Element =>
               : 'monthPaid'
           }
         >
-          <ServiceGroupContainer
-            servicesIds={connectStore.services.servicesIds}
-          />
+          {!connectStore.currentTariff?.TariffPackages?.length && (
+            <ServiceGroupContainer
+              servicesIds={connectStore.services.servicesIds}
+            />
+          )}
         </ConnectForm>
       </div>
       {connectStore.additionalInfo.size > 0 && (

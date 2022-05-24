@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useObserver } from 'mobx-react-lite';
 
 import Range from '../../components/range';
@@ -18,29 +18,35 @@ const MinutesInternetRanges = (): JSX.Element => {
   );
 
   const onDragMinutes = (value: number): void => {
+    let computedValue = 0;
     if (value > minutesStep) {
-      const afterValue = findAfter(connectStore.rangeMinutesValues, value);
-      setMinutesStep(afterValue);
+      computedValue = findAfter(connectStore.rangeMinutesValues, value);
+
+      setMinutesStep(computedValue);
     }
 
     if (value < minutesStep) {
-      const beforeValue = findBefore(connectStore.rangeMinutesValues, value);
-      setMinutesStep(beforeValue ?? minutesStep);
+      computedValue =
+        findBefore(connectStore.rangeMinutesValues, value) ?? minutesStep;
+
+      setMinutesStep(computedValue);
     }
-    connectStore.setMinutes(minutesStep);
+    connectStore.setMinutes(computedValue);
   };
 
   const onDragInternet = (value: number): void => {
+    let computedValue = 0;
     if (value > internetStep) {
-      const afterValue = findAfter(connectStore.rangeInternetValues, value);
-      setInternetStep(afterValue);
+      computedValue = findAfter(connectStore.rangeInternetValues, value);
+      setInternetStep(computedValue);
     }
 
     if (value < internetStep) {
-      const beforeValue = findBefore(connectStore.rangeInternetValues, value);
-      setInternetStep(beforeValue ?? internetStep);
+      computedValue =
+        findBefore(connectStore.rangeInternetValues, value) ?? internetStep;
+      setInternetStep(computedValue);
     }
-    connectStore.setInternet(internetStep);
+    connectStore.setInternet(computedValue);
   };
 
   const debouncedDragMinutes = useDebounce(onDragMinutes, 100);
