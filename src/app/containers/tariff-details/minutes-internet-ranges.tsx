@@ -6,12 +6,7 @@ import Phone from '../../../assets/icons/Phone.svg';
 import Internet from '../../../assets/icons/Internet.svg';
 import connectStore from '../../../stores/connect/connect-store';
 import useDebounce from '../../hooks/useDebounce';
-
-const findAfter = (arr: Array<number>, value: number): number =>
-  arr.filter(elem => elem >= value)[0];
-
-const findBefore = (arr: Array<number>, value: number): number | undefined =>
-  arr.filter(elem => elem <= value).pop();
+import { findBefore, findAfter } from '../../utils';
 
 const MinutesInternetRanges = (): JSX.Element => {
   const [minutesStep, setMinutesStep] = useState(
@@ -19,63 +14,36 @@ const MinutesInternetRanges = (): JSX.Element => {
   );
 
   const [internetStep, setInternetStep] = useState(
-    connectStore.rangeMinutesValues[0],
+    connectStore.rangeInternetValues[0],
   );
 
   const onDragMinutes = (value: number): void => {
     if (value > minutesStep) {
-      const currStepIndex =
-        connectStore.rangeMinutesValues.indexOf(minutesStep);
-      const nextStep = connectStore.rangeMinutesValues[currStepIndex + 1];
-      setMinutesStep(nextStep - minutesStep);
+      const afterValue = findAfter(connectStore.rangeMinutesValues, value);
+      setMinutesStep(afterValue);
     }
 
     if (value < minutesStep) {
-      const currStepIndex =
-        connectStore.rangeMinutesValues.indexOf(minutesStep);
-      const nextStep = connectStore.rangeMinutesValues[currStepIndex - 1];
-      setMinutesStep(minutesStep - nextStep);
+      const beforeValue = findBefore(connectStore.rangeMinutesValues, value);
+      setMinutesStep(beforeValue ?? minutesStep);
     }
-    connectStore.setMinutes(value);
+    connectStore.setMinutes(minutesStep);
   };
 
   const onDragInternet = (value: number): void => {
     if (value > internetStep) {
-      const currStepIndex =
-        connectStore.rangeInternetValues.indexOf(internetStep);
-      const nextStep = connectStore.rangeMinutesValues[currStepIndex + 1];
-      setInternetStep(nextStep - internetStep);
+      const afterValue = findAfter(connectStore.rangeInternetValues, value);
+      setInternetStep(afterValue);
     }
 
     if (value < internetStep) {
-      const currStepIndex =
-        connectStore.rangeInternetValues.indexOf(internetStep);
-      const nextStep = connectStore.rangeInternetValues[currStepIndex - 1];
-      setInternetStep(internetStep - nextStep);
+      const beforeValue = findBefore(connectStore.rangeInternetValues, value);
+      setInternetStep(beforeValue ?? internetStep);
     }
-    connectStore.setInternet(value);
+    connectStore.setInternet(internetStep);
   };
 
-  const abc = [150, 300, 600, 1000];
-
-  const [v, setv] = useState(abc[0]);
-  const onDragTest = (e: number): void => {
-    // connectStore.setMinutes(value);
-
-    if (e > v) {
-      // const truev = abc[abc.indexOf(v) + 1];
-      const truev = findAfter(abc, e);
-      setv(truev);
-    }
-
-    if (e < v) {
-      // const truev = abc[abc.indexOf(v) - 1];
-      const truev = findBefore(abc, e);
-      setv(truev ?? v);
-    }
-  };
-
-  const debouncedTest = useDebounce(onDragTest, 100);
+  const debouncedDragMinutes = useDebounce(onDragMinutes, 100);
 
   return useObserver(() => (
     <div className="constructor-page-content__ranges-menu">
@@ -86,22 +54,13 @@ const MinutesInternetRanges = (): JSX.Element => {
         <Range
           min={150}
           max={1000}
-          value={v}
-          onDragHandler={debouncedTest}
+          value={minutesStep}
+          onDragHandler={debouncedDragMinutes}
           valueDesc="мин"
           logosrc={Phone}
-          titleText={`${v} мин и 50 смс`}
+          titleText={`${minutesStep} мин и 50 смс`}
         />
       </div>
-
-      {/* <input
-        type="range"
-        min={150}
-        max={1000}
-        onChange={onDragTest}
-        ref={inputRef}
-        value={v}
-      /> */}
       <div className="constructor-page-content__ranges-menu-item">
         <p className="title--sm constructor-page-content__item-title">
           Интернет по России
