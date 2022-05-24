@@ -53,7 +53,7 @@ export class PackagesStore {
   async init(): Promise<void> {
     try {
       const response = await fetch(
-        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Kit?fields=Id,MarketingProduct.Title,MarketingProduct.Description,MarketingProduct.ListImage',
+        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Kit?fields=Id,MarketingProduct.Title,MarketingProduct.Description,Images',
       );
       const fetchedData = await response.json();
 
