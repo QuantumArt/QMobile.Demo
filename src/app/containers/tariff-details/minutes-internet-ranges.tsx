@@ -49,7 +49,7 @@ const MinutesInternetRanges = (): JSX.Element => {
     connectStore.setInternet(computedValue);
   };
 
-  const debouncedDragMinutes = useDebounce(onDragMinutes, 100);
+  const debouncedDragMinutes = useDebounce<number>(onDragMinutes, 100);
 
   return useObserver(() => (
     <div className="constructor-page-content__ranges-menu">

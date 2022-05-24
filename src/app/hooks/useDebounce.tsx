@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-nocheck
-
 import React, { useCallback, useRef } from 'react';
 
-const useDebounce = (callback, delay): (() => void) => {
+const useDebounce = <T,>(
+  callback: (...args: Array<T>) => void,
+  delay: number,
+): (() => void) => {
   const timer = useRef(null);
 
   const debouncedCallback = useCallback(
@@ -11,7 +11,8 @@ const useDebounce = (callback, delay): (() => void) => {
       if (timer.current) {
         clearTimeout(timer.current);
       }
-
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       timer.current = setTimeout(() => {
         callback(...args);
       }, delay);
