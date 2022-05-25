@@ -12,6 +12,10 @@ const TariffDetails = (): JSX.Element => {
     connectStore.fetchTariff(tariffId[0]);
   }, [location.pathname]);
 
+  useEffect(() => () => {
+    connectStore.unmount();
+  });
+
   return useObserver(() => (
     <PageWithSlider
       sliderProps={{

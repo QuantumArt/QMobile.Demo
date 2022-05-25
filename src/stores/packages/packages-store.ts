@@ -76,17 +76,14 @@ export class PackagesStore {
       this._currentPackage = fetchedData;
 
       const items = await Promise.all(
-        this._currentPackage?.ProductsInKit
-          ? this._currentPackage.ProductsInKit.map(async ({ Id }) => {
-              const itemResponse = await fetch(
-                `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${Id}`,
-              );
+        this._currentPackage.ProductsInKit.map(async ({ Id }) => {
+          const itemResponse = await fetch(
+            `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${Id}`,
+          );
 
-              const responseToJson: IMarketingProduct =
-                await itemResponse.json();
-              return responseToJson;
-            })
-          : [],
+          const responseToJson: IMarketingProduct = await itemResponse.json();
+          return responseToJson;
+        }),
       );
       this._itemsInPackage = items;
     } catch (error) {

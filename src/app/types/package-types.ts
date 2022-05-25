@@ -6,7 +6,7 @@ type IProductsInKit = {
 };
 
 export type IPackage = IMarketingProduct & {
-  ProductsInKit?: Array<IProductsInKit>;
+  ProductsInKit: Array<IProductsInKit>;
 };
 
 export type ItemsInPackage = Array<IMarketingProduct>;

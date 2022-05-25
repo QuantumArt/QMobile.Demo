@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import Arrow from '../../assets/icons/RightArrowFilters.svg';
 
@@ -9,6 +9,7 @@ type Props = {
   body: JSX.Element;
   iconPosition?: 'right' | 'left';
   headerClasses?: string;
+  active?: boolean;
 };
 
 const Accordion = ({
@@ -18,12 +19,17 @@ const Accordion = ({
   iconClosed,
   iconPosition,
   headerClasses,
+  active,
 }: Props): JSX.Element => {
-  const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(active);
 
   const onClickHandler = (): void => {
     setActive(!isActive);
   };
+
+  useEffect(() => {
+    setActive(active);
+  }, [active]);
 
   const accordionHeaderStyles = cn('accordion__header', `${headerClasses}`, {
     'accordion__header--icon-right': iconPosition === 'right',
@@ -76,6 +82,7 @@ Accordion.defaultProps = {
   ),
   iconPosition: 'right',
   headerClasses: '',
+  active: false,
 };
 
 export default Accordion;

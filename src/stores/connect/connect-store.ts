@@ -1,9 +1,13 @@
 /* eslint-disable no-restricted-syntax */
-import { action, computed, observable, runInAction } from 'mobx';
+import { action, computed, observable, runInAction, autorun } from 'mobx';
 import { IMarketingProduct, IParameters } from '../../app/types';
 import { ITariffPackageParameter } from '../../app/types/marketing-product';
 import { ITariffPackages } from '../tariffs/tariffs-cards-group';
-import { IConnectServices, ServiceInfo } from './connect-services-groups';
+import {
+  BaseParameter,
+  IConnectServices,
+  ServiceInfo,
+} from './connect-services-groups';
 
 export class ConnectStore {
   @observable
@@ -148,6 +152,27 @@ export class ConnectStore {
     return rangesPrice + subscriptionPrice + servicesPrice;
   }
 
+  @observable
+  private _activeBaseParameters: BaseParameter[] = [];
+
+  @computed
+  public get activeBaseParameters(): BaseParameter[] {
+    return this._activeBaseParameters;
+  }
+
+  @observable
+  private _activeParametersGroups: number[] = [];
+
+  @computed
+  public get activeParametersGroups(): number[] {
+    return this._activeParametersGroups;
+  }
+
+  @action
+  setActiveParametersGroups(arr: number[]): void {
+    this._activeParametersGroups = arr;
+  }
+
   initServices(): void {
     this._services = {
       servicesGroup: {},
@@ -155,13 +180,19 @@ export class ConnectStore {
       activeServicesIds: [],
     };
     this._currentTariff?.ServicesOnTariff?.forEach(service => {
-      const parametersValues = {
-        price: 0,
-        value: 0,
-        type: '',
-      };
+      const parametersValues: {
+        price: number;
+        value: number;
+        type: string;
+        baseParameters: BaseParameter[];
+      } = { price: 0, value: 0, type: '', baseParameters: [] };
 
       service.Parent.Parameters?.forEach(parameter => {
+        parametersValues.baseParameters.push({
+          ...parameter?.BaseParameter,
+          Value: parameter.NumValue,
+          ServiceId: service.Id,
+        });
         switch (parameter?.BaseParameter?.Alias) {
           case 'SubscriptionFee':
             parametersValues.price = parameter.NumValue;
@@ -191,11 +222,22 @@ export class ConnectStore {
 
   private addActiveService(id: number): void {
     this._services.activeServicesIds.push(id);
+    const baseParameters =
+      this._services.servicesGroup[id].baseParameters ?? [];
+
+    this._activeBaseParameters = [
+      ...this._activeBaseParameters,
+      ...baseParameters,
+    ];
   }
 
   private removeActiveService(id: number): void {
     this._services.activeServicesIds = this._services.activeServicesIds.filter(
       el => el !== id,
+    );
+
+    this._activeBaseParameters = this._activeBaseParameters.filter(
+      parameter => parameter.ServiceId !== id,
     );
   }
 
@@ -308,8 +350,28 @@ export class ConnectStore {
           .sort((a, b) => a - b)
       : [];
   }
+
+  @action unmount(): void {
+    this._activeBaseParameters = [];
+  }
 }
 
 const connectStore = new ConnectStore();
 
 export default connectStore;
+
+autorun(() => {
+  const groupsWithActiveParameter = Array.from(
+    connectStore.parametersByGroup,
+  ).reduce<number[]>((acc, [groupId, parameters]) => {
+    const activesParameters = parameters.find(parameter => {
+      const active = connectStore.activeBaseParameters.find(
+        baseparam => baseparam.Id === parameter?.BaseParameter?.Id,
+      );
+      return active;
+    });
+    return activesParameters ? [...acc, groupId] : acc;
+  }, []);
+
+  connectStore.setActiveParametersGroups(groupsWithActiveParameter);
+});

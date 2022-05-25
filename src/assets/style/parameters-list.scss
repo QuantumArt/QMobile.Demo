@@ -23,9 +23,19 @@
         margin-top: 11px;
         margin-bottom: 11px;
 
+        &--active {
+            color: $primary_blue
+        }
+
         &-price {
+            &--crossed {
+                color: $dark_gray1;
+                text-decoration: line-through;
+            }
+        }
+
+        &-new-price {
             font-size: 18px;
-            line-height: 16px;
         }
     }
 }

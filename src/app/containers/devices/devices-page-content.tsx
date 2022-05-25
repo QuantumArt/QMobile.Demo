@@ -23,7 +23,10 @@ const DevicesPageContent = (): JSX.Element => {
           return (
             <DeviceCard
               key={device.Id}
-              image={PhoneDemo}
+              image={
+                device.Images?.find(image => image.Type.Alias === 'list')
+                  ?.Image ?? ''
+              }
               title={device.MarketingProduct.Title}
               price={priceParameter?.NumValue}
               description={device.MarketingProduct.Description}

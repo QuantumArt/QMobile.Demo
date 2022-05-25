@@ -1,21 +1,34 @@
+import { useObserver } from 'mobx-react-lite';
 import React from 'react';
+import connectStore from '../../../stores/connect/connect-store';
 import { IParameters } from '../../types';
+import Parameter from './parameter';
 
 type Props = {
   parameters: IParameters[];
 };
 
-const ParametersListItem = ({ parameters }: Props): JSX.Element => (
-  <>
-    {parameters.map(parameter => (
-      <div className="parameters-list-container__parameter" key={parameter.Id}>
-        <p>{parameter.Title}</p>
-        <p className="parameters-list-container__parameter-price">
-          {parameter.NumValue} ₽
-        </p>
-      </div>
-    ))}
-  </>
-);
+const ParametersListItem = ({ parameters }: Props): JSX.Element => {
+  return useObserver(() => (
+    <>
+      {parameters.map(parameter => {
+        const priceFromServices = connectStore.activeBaseParameters
+          .filter(baseParam => baseParam.Id === parameter?.BaseParameter?.Id)
+          .reduce<number>((acc, baseParam) => acc + baseParam.Value, 0);
+        return (
+          <Parameter
+            key={parameter.Id}
+            parameter={parameter}
+            newPrice={
+              priceFromServices > 0
+                ? priceFromServices + parameter.NumValue
+                : undefined
+            }
+          />
+        );
+      })}
+    </>
+  ));
+};
 
 export default ParametersListItem;

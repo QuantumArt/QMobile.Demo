@@ -28,6 +28,9 @@ const ServiceGroupContainer = ({ servicesIds }: Props): JSX.Element => {
               />
               <div className="connect-form__accordion-wrapper">
                 <Accordion
+                  active={connectStore.services.activeServicesIds.includes(
+                    serviceId,
+                  )}
                   title={alias}
                   body={
                     <p

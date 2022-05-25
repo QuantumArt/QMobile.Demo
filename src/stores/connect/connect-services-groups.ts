@@ -1,3 +1,11 @@
+export type BaseParameter = {
+  Id: number;
+  Title: string;
+  Alias: string;
+  Value: number;
+  ServiceId: number;
+};
+
 export type ServiceInfo = {
   id: number;
   alias: string;
@@ -5,6 +13,7 @@ export type ServiceInfo = {
   price: number;
   type: string;
   value: number;
+  baseParameters?: BaseParameter[];
 };
 
 export type IConnectServices = {
