@@ -1,3 +1,4 @@
+import delay from 'delay';
 import { action, computed, observable, runInAction } from 'mobx';
 import { BootState } from '../../app/enums/boot-state';
 import {
@@ -75,17 +76,21 @@ export class PackagesStore {
 
       this._currentPackage = fetchedData;
 
-      const items = await Promise.all(
-        this._currentPackage.ProductsInKit.map(async ({ Id }) => {
-          const itemResponse = await fetch(
-            `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${Id}`,
-          );
+      // ! Can't use Promise.all because of  "API rate limit exceeded for 172.16.4.125" error
+      // eslint-disable-next-line no-restricted-syntax
+      for (const product of this._currentPackage.ProductsInKit) {
+        // eslint-disable-next-line no-await-in-loop
+        const itemResponse = await fetch(
+          `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${product.Id}`,
+        );
 
-          const responseToJson: IMarketingProduct = await itemResponse.json();
-          return responseToJson;
-        }),
-      );
-      this._itemsInPackage = items;
+        // eslint-disable-next-line no-await-in-loop
+        const item: IMarketingProduct = await itemResponse.json();
+        this._itemsInPackage = [...this._itemsInPackage, item];
+        console.log(this._itemsInPackage);
+        // eslint-disable-next-line no-await-in-loop
+        await delay(500);
+      }
     } catch (error) {
       console.log(error);
     }
