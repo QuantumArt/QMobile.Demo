@@ -12,7 +12,7 @@ class PathNames {
 
   static readonly tariffconstructor = 'Соберите свой тариф';
 
-  static readonly tariff_packages = 'Пакеты';
+  static readonly packages = 'Пакеты';
 }
 
 export type Props = {

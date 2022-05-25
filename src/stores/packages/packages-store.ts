@@ -89,8 +89,6 @@ export class PackagesStore {
         // eslint-disable-next-line no-await-in-loop
         const item: IMarketingProduct = await itemResponse.json();
         this._itemsInPackage = [...this._itemsInPackage, item];
-        console.log(this._itemsInPackage);
-        // eslint-disable-next-line no-await-in-loop
       }
     } catch (error) {
       console.log(error);

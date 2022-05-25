@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useObserver } from 'mobx-react-lite';
 
 import PackageDetailsPageContainer from '../containers/package-details/package-details-page-container';
 import CurrentPathInfo from '../components/current-path-info';
@@ -16,16 +17,18 @@ const PackageDetails = (): JSX.Element => {
     packagesStore.unmount();
   });
 
-  return (
+  return useObserver(() => (
     <>
       <div className="package-details__path-wrapper">
-        <CurrentPathInfo />
+        <CurrentPathInfo
+          elementName={packagesStore.currentPackage?.MarketingProduct.Title}
+        />
       </div>
       <div>
         <PackageDetailsPageContainer />
       </div>
     </>
-  );
+  ));
 };
 
 export default PackageDetails;
