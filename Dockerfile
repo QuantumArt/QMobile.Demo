@@ -3,7 +3,6 @@ LABEL stage=intermediate
 WORKDIR /app
 COPY /package.json ./
 COPY /package-lock.json ./
-COPY /.npmrc ./
 RUN npm ci
 COPY / /app
 RUN npm run build
