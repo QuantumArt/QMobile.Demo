@@ -32,9 +32,6 @@ spec:
           requests:
             memory: "16Mi"
       volumes:
-      - name: qa-report-upload-volume-||env||
-        persistentVolumeClaim:
-          claimName: qa-report-upload-||env||
       - hostPath:
           path: /usr/share/zoneinfo/Europe/Moscow
           type: ""
