@@ -11,6 +11,11 @@ const PackageDetails = (): JSX.Element => {
     const packageId = location.pathname.split('/').slice(-1);
     packagesStore.fetchPackage(packageId[0]);
   }, [location.pathname]);
+
+  useEffect(() => () => {
+    packagesStore.unmount();
+  });
+
   return (
     <>
       <div className="package-details__path-wrapper">

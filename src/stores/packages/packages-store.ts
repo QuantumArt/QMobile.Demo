@@ -80,6 +80,8 @@ export class PackagesStore {
       // eslint-disable-next-line no-restricted-syntax
       for (const product of this._currentPackage.ProductsInKit) {
         // eslint-disable-next-line no-await-in-loop
+        await delay(500);
+        // eslint-disable-next-line no-await-in-loop
         const itemResponse = await fetch(
           `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${product.Id}`,
         );
@@ -89,7 +91,6 @@ export class PackagesStore {
         this._itemsInPackage = [...this._itemsInPackage, item];
         console.log(this._itemsInPackage);
         // eslint-disable-next-line no-await-in-loop
-        await delay(500);
       }
     } catch (error) {
       console.log(error);
@@ -116,6 +117,11 @@ export class PackagesStore {
     });
 
     return parametersByGroup;
+  }
+
+  @action
+  unmount(): void {
+    this._itemsInPackage = [];
   }
 }
 
