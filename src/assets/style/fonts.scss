@@ -8,13 +8,16 @@
     url("#{$fontPath}") format("truetype");
     font-weight: $weight;
     font-style: $style;
-    font-display: swap;
   }
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
 }
 
 @include font('Montserrat', 'Regular', 400);
 @include font('Montserrat', 'Medium', 500);
+@include font('Montserrat', 'Bold', 600);
 @include font('Montserrat', 'Bold', 700);
-@include font('Montserrat', 'Black', 900);
-@include font('Montserrat', 'Bold', 700);
-@include font('Montserrat', 'ExtraBold', 800);

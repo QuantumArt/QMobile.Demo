@@ -9,6 +9,11 @@
     flex-direction: column;
     justify-content: space-between;
 
+    &:hover,
+    &:focus {
+        border: 1px solid #2C5BDE
+    }
+
     &__image {
         max-height: 134px;
         min-height: 134px;
