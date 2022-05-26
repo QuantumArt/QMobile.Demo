@@ -31,7 +31,7 @@ export class DevicesStore {
   public get description(): string | undefined {
     return this._currentDevice?.Parameters.find(
       parameter => parameter.Group.Title === 'Описание',
-    )?.Title;
+    )?.Value;
   }
 
   @computed
