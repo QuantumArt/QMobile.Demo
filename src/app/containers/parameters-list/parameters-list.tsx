@@ -8,9 +8,14 @@ import ParametersListItem from './parameters-list-item';
 type Props = {
   paramList: [groupId: number, value: IParameters[]][];
   contentType: 'numbers' | 'text';
+  accordionsIsActive?: boolean;
 };
 
-const ParametersList = ({ paramList, contentType }: Props): JSX.Element => {
+const ParametersList = ({
+  paramList,
+  contentType,
+  accordionsIsActive,
+}: Props): JSX.Element => {
   return useObserver(() => (
     <>
       {paramList.map(([groupId, value]) => {
@@ -25,7 +30,10 @@ const ParametersList = ({ paramList, contentType }: Props): JSX.Element => {
                   contentType={contentType}
                 />
               }
-              active={connectStore.activeParametersGroups.includes(groupId)}
+              active={
+                connectStore.activeParametersGroups.includes(groupId) ||
+                accordionsIsActive
+              }
             />
           </div>
         );

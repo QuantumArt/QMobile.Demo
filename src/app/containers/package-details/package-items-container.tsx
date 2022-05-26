@@ -43,7 +43,10 @@ const PackageItemsContainer = ({ itemsList }: Props): JSX.Element => {
           return (
             <DeviceCard
               key={item.Id}
-              image={TestDeviceImage}
+              image={
+                item.Images?.find(image => image.Type.Alias === 'list')
+                  ?.Image ?? ''
+              }
               title={item.MarketingProduct.Title}
               description={item.MarketingProduct.Description}
               price={priceParameter?.NumValue}

@@ -112,6 +112,7 @@ main {
 
   &__item {
     margin-right: 12px;
+    cursor: pointer;
 
     &--active {
       color: $primary_blue;

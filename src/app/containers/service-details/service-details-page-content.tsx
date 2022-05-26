@@ -46,6 +46,7 @@ const ServiceDetailsPageContent = ({ title }: Props): JSX.Element => {
           <ParametersList
             paramList={Array.from(servicesStore.parametersByGroup)}
             contentType="text"
+            accordionsIsActive
           />
         </div>
         <ServiceConnectForm price={servicesStore.getPrice} />
