@@ -84,10 +84,12 @@ class ServiceStore {
 
       this._currentService.Parameters?.forEach(parameter => {
         const groupId = parameter.Group.Id;
-        if (this._parametersByGroup.has(groupId)) {
-          this._parametersByGroup.get(groupId)?.push(parameter);
-        } else {
-          this._parametersByGroup.set(groupId, [parameter]);
+        if (parameter.Group.Title !== 'Системная') {
+          if (this._parametersByGroup.has(groupId)) {
+            this._parametersByGroup.get(groupId)?.push(parameter);
+          } else {
+            this._parametersByGroup.set(groupId, [parameter]);
+          }
         }
       });
     } catch (error) {

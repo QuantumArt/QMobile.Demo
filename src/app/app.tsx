@@ -62,7 +62,7 @@ function App(): JSX.Element {
   return (
     <Router>
       <Header />
-      <main className="main container">
+      <main className="main">
         <Routes>
           {routes.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />

@@ -18,7 +18,7 @@ const PackageDetails = (): JSX.Element => {
   });
 
   return useObserver(() => (
-    <>
+    <div className="container">
       <div className="package-details__path-wrapper">
         <CurrentPathInfo
           elementName={packagesStore.currentPackage?.MarketingProduct.Title}
@@ -27,7 +27,7 @@ const PackageDetails = (): JSX.Element => {
       <div>
         <PackageDetailsPageContainer />
       </div>
-    </>
+    </div>
   ));
 };
 

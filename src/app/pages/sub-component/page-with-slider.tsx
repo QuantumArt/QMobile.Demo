@@ -23,7 +23,7 @@ const PageWithSlider = ({
 
   const pathProps = currentPathProps ?? CurrentPathInfo.defaultProps;
   return useObserver(() => (
-    <>
+    <div className="container">
       <Slider
         description={description}
         title={title}
@@ -32,7 +32,7 @@ const PageWithSlider = ({
       />
       <CurrentPathInfo elementName={pathProps.elementName} />
       {pageContentElem}
-    </>
+    </div>
   ));
 };
 

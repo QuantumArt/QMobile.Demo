@@ -9,12 +9,16 @@ type Props = {
 const PageWithCardsList = ({ pageTitle, cardsJsxElem }: Props): JSX.Element => {
   return (
     <>
-      <div className="page-with-cards__path-wrapper">
-        <CurrentPathInfo />
+      <div className="container">
+        <div className="page-with-cards__path-wrapper">
+          <CurrentPathInfo />
+        </div>
+        <h1 className="page-with-cards__page-title">{pageTitle}</h1>
       </div>
-      <h1 className="page-with-cards__page-title">{pageTitle}</h1>
-      <div className="page-with-cards__cards-background">
-        <div className="page-with-cards__сards-container">{cardsJsxElem}</div>
+      <div className="page-with-cards__card-background">
+        <div className="container">
+          <div className="page-with-cards__сards-container">{cardsJsxElem}</div>
+        </div>
       </div>
     </>
   );
