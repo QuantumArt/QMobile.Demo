@@ -45,6 +45,7 @@ const ServiceDetailsPageContent = ({ title }: Props): JSX.Element => {
         <div className="constructor-page-content__main-info parameters-list-container">
           <ParametersList
             paramList={Array.from(servicesStore.parametersByGroup)}
+            contentType="text"
           />
         </div>
         <ServiceConnectForm price={servicesStore.getPrice} />

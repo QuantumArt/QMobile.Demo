@@ -23,7 +23,10 @@ const PackageItemsDetails = ({ itemsList }: Props): JSX.Element => {
               <h2 className="package-details__package-items-details-title">
                 {item.MarketingProduct?.Title}
               </h2>
-              <ParametersList paramList={Array.from(paramList)} />
+              <ParametersList
+                paramList={Array.from(paramList)}
+                contentType="numbers"
+              />
             </div>
           );
         }

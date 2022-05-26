@@ -6,9 +6,13 @@ import Parameter from './parameter';
 
 type Props = {
   parameters: IParameters[];
+  contentType: 'numbers' | 'text';
 };
 
-const ParametersListItem = ({ parameters }: Props): JSX.Element => {
+const ParametersListItem = ({
+  parameters,
+  contentType,
+}: Props): JSX.Element => {
   return useObserver(() => (
     <>
       {parameters.map(parameter => {
@@ -17,6 +21,7 @@ const ParametersListItem = ({ parameters }: Props): JSX.Element => {
           .reduce<number>((acc, baseParam) => acc + baseParam.Value, 0);
         return (
           <Parameter
+            contentType={contentType}
             key={parameter.Id}
             parameter={parameter}
             newPrice={

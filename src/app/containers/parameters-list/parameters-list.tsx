@@ -7,9 +7,10 @@ import ParametersListItem from './parameters-list-item';
 
 type Props = {
   paramList: [groupId: number, value: IParameters[]][];
+  contentType: 'numbers' | 'text';
 };
 
-const ParametersList = ({ paramList }: Props): JSX.Element => {
+const ParametersList = ({ paramList, contentType }: Props): JSX.Element => {
   return useObserver(() => (
     <>
       {paramList.map(([groupId, value]) => {
@@ -18,7 +19,12 @@ const ParametersList = ({ paramList }: Props): JSX.Element => {
             <Accordion
               title={value[0].Group.Title}
               iconPosition="left"
-              body={<ParametersListItem parameters={value} />}
+              body={
+                <ParametersListItem
+                  parameters={value}
+                  contentType={contentType}
+                />
+              }
               active={connectStore.activeParametersGroups.includes(groupId)}
             />
           </div>

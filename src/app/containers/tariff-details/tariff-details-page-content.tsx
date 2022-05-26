@@ -21,6 +21,7 @@ const TariffDetailsPageContent = (): JSX.Element =>
           <div className="constructor-page-content__main-info parameters-list-container">
             <ParametersList
               paramList={Array.from(connectStore.parametersByGroup)}
+              contentType="numbers"
             />
           </div>
         </div>
