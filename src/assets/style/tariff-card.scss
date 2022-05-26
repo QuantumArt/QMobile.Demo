@@ -5,6 +5,9 @@
     max-width: 280px;
     border: 1px solid $light_gray4;
     border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &__image {
         max-height: 134px;

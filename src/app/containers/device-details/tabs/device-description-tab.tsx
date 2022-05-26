@@ -5,7 +5,7 @@ import devicesStore from '../../../../stores/devices/devices-store';
 const DeviceDescriptionTab = (): JSX.Element => {
   return useObserver(() => (
     <div>
-      <h3>Описание</h3>
+      <h3 className="device-details__description-tab-title">Описание</h3>
       <p>{devicesStore.description}</p>
     </div>
   ));

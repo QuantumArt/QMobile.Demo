@@ -144,4 +144,14 @@
             color: $dark_blue;
         }
     }
+
+    &__description-tab {
+        &-title {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 27px;
+            color: black;
+            margin-bottom: 32px;
+        }
+    }
 }

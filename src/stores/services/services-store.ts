@@ -38,6 +38,17 @@ class ServiceStore {
     return this._parametersByGroup;
   }
 
+  @observable
+  private _advantages: {
+    text: string;
+    image?: string;
+  }[] = [];
+
+  @computed
+  public get advantages(): typeof this._advantages {
+    return this._advantages;
+  }
+
   @computed
   public get getPrice(): number {
     let subscriptionPrice = NaN;
@@ -91,10 +102,22 @@ class ServiceStore {
             this._parametersByGroup.set(groupId, [parameter]);
           }
         }
+
+        if (parameter.Group.Title === 'Системная') {
+          this._advantages.push({
+            text: parameter.Title,
+            image: parameter?.Image,
+          });
+        }
       });
     } catch (error) {
       console.log(error);
     }
+  }
+
+  @action
+  unmount(): void {
+    this._advantages = [];
   }
 }
 

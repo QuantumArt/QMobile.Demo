@@ -14,10 +14,6 @@ const TariffsPageContent = (): JSX.Element => {
     };
   }, []);
 
-  const searchHandler = (value: string): void => {
-    alert(value); // Заглушка
-  };
-
   return useObserver(() => (
     <div className="tariffs-page-content">
       <div className="flex-wrapper">

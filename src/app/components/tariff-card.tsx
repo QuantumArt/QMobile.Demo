@@ -2,7 +2,6 @@ import React from 'react';
 import cn from 'classnames';
 
 import Benefits from '../../assets/icons/Benefits.svg';
-import ConnectDetails from './connect-details';
 import PrimaryButton from './primary-button';
 
 type Props = {

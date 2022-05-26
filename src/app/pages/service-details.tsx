@@ -11,6 +11,10 @@ const ServiceDetails = (): JSX.Element => {
     const serviceId = location.pathname.split('/').slice(-1);
     servicesStore.fetchService(serviceId[0]);
   }, [location.pathname]);
+
+  useEffect(() => () => {
+    servicesStore.unmount();
+  });
   return useObserver(() => (
     <PageWithSlider
       sliderProps={{

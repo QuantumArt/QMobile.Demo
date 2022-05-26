@@ -33,12 +33,8 @@ const ServiceDetailsPageContent = ({ title }: Props): JSX.Element => {
     <div className="service-details__content-container">
       <h1 className="service-details__main-title">{title}</h1>
       <div className="service-details__advantages-container">
-        {advantagesList.map(({ description, image }) => (
-          <AdvantageCard
-            key={description}
-            description={description}
-            image={image}
-          />
+        {servicesStore.advantages.map(({ text, image }) => (
+          <AdvantageCard key={text} description={text} image={image} />
         ))}
       </div>
       <div className="flex-wrapper space-between">

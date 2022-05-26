@@ -1,6 +1,7 @@
 export type IParameters = {
   NumValue: number;
   Value?: string;
+  Image?: string;
   BaseParameter: {
     Alias: string;
     Title: string;

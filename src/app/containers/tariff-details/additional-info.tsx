@@ -20,7 +20,11 @@ const AdditionalInfo = ({ paramList }: Props): JSX.Element => (
               iconPosition="left"
               iconOpened={<img src={MinusOpened} alt="opened" />}
               iconClosed={<img src={PlusClosed} alt="closed" />}
-              body={<div />}
+              body={
+                <p className="tariff-details__additional-value">
+                  {parameter.Value}
+                </p>
+              }
             />
           </div>
         ))}
