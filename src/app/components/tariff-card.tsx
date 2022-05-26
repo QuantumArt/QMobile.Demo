@@ -33,12 +33,22 @@ const TariffCard = ({
 
   return (
     <div className="tariff-card">
-      <div className="tariff-card__image">
+      <div
+        className="tariff-card__image"
+        role="presentation"
+        onClick={() => onConnectHandler()}
+      >
         <img src={image} alt="card_image" />
         {isHit ? <div className="tariff-card__image-hit">Хит</div> : null}
       </div>
       <div className="tariff-card__content">
-        <h2 className="tariff-card__title">{title}</h2>
+        <h2
+          className="tariff-card__title"
+          role="presentation"
+          onClick={() => onConnectHandler()}
+        >
+          {title}
+        </h2>
         <p className={internetTrafficStyles}>{internetTrafic} ГБ</p>
         <p className={mobileTrafficStyles}>{mobileTraffic} минут</p>
         <div className="tariff-card__benefits">
@@ -54,7 +64,7 @@ const TariffCard = ({
           </p>
           <div className="tariff-card__connect-btns-container">
             <PrimaryButton
-              text="Подключить"
+              text="Подробнее"
               onClick={() => onConnectHandler()}
             />
           </div>
