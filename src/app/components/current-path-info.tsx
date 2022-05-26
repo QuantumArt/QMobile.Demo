@@ -29,8 +29,7 @@ const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
 
   return (
     <div className="path-info">
-      <p className="path-info__item">Главная</p>
-      {pathnames.map(el => {
+      {pathnames.map((el, index) => {
         const key = el;
         const lastElem = pathnames.length - 1;
 
@@ -38,11 +37,13 @@ const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
 
         return (
           <React.Fragment key={el}>
-            <img
-              src={RightArrow}
-              alt="right arrow"
-              className="path-info__right-arrow"
-            />
+            {index !== 0 && (
+              <img
+                src={RightArrow}
+                alt="right arrow"
+                className="path-info__right-arrow"
+              />
+            )}
             <p
               className={`path-info__item ${
                 key === pathnames[lastElem] ? 'path-info__item--active' : ''
@@ -51,7 +52,6 @@ const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
               {Object.keys(PathNames).includes(value)
                 ? PathNames[value].toString()
                 : el}
-              {/* {el} */}
             </p>
           </React.Fragment>
         );

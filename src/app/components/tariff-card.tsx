@@ -52,15 +52,11 @@ const TariffCard = ({
               За 30 дней
             </span>
           </p>
-          <p className="tariff-card__connect-container-abon">
-            Доступен абонемент
-          </p>
           <div className="tariff-card__connect-btns-container">
             <PrimaryButton
               text="Подключить"
               onClick={() => onConnectHandler()}
             />
-            <ConnectDetails link="" />
           </div>
         </div>
       </div>

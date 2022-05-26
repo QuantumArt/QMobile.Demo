@@ -31,14 +31,6 @@ const TariffsPageContent = (): JSX.Element => {
           />
         </div>
         <div className="tariffs-page-content__container">
-          <div className="tariffs-page-content__form-container">
-            <TariffSearch
-              onSubmit={searchHandler}
-              sizeStyles="tariffs-page-content__tariff-search-input"
-              placeholder="Поиск тарифа"
-            />
-            <MakeTariffLink />
-          </div>
           <TariffCardsContainer
             cardsGroup={tariffsStore.tariffsCardsGroup}
             bootState={tariffsStore.bootStateTariffCards}

@@ -19,14 +19,4 @@ export const headerNavRoutes: NavigationRoutesGroup = [
   },
 ];
 
-export const footerNavRoutes: NavigationRoutesGroup = [
-  ...headerNavRoutes,
-  {
-    name: 'О компании',
-    linkTo: 'about',
-  },
-  {
-    name: 'Контакты',
-    linkTo: 'contacts',
-  },
-];
+export const footerNavRoutes: NavigationRoutesGroup = [...headerNavRoutes];

@@ -14,7 +14,6 @@ export const MonthPaidHeader = ({
       <p className="connect-form__month-paid-title">{title}</p>
       <p className="connect-form__price">{currentPrice} ₽</p>
     </div>
-    <p className=" connect-form__header-days">За 30 дней</p>
   </header>
 );
 
