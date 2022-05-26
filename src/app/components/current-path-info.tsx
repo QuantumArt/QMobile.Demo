@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import RightArrow from '../../assets/icons/Right_arrow.svg';
 
@@ -27,6 +27,12 @@ const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
     .concat(lastElementName)
     .filter(route => route.length > 0 && !Number(route));
 
+  const navigate = useNavigate();
+
+  const onClickHandler = (navigateTo: string): void => {
+    if (Object.keys(PathNames).includes(navigateTo)) navigate(`/${navigateTo}`);
+  };
+
   return (
     <div className="path-info">
       {pathnames.map((el, index) => {
@@ -48,6 +54,8 @@ const CurrentPathInfo = ({ elementName }: Props): JSX.Element => {
               className={`path-info__item ${
                 key === pathnames[lastElem] ? 'path-info__item--active' : ''
               }`}
+              onClick={() => onClickHandler(key)}
+              role="presentation"
             >
               {Object.keys(PathNames).includes(value)
                 ? PathNames[value].toString()
