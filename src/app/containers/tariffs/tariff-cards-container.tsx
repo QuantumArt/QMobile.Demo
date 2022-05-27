@@ -47,13 +47,20 @@ const TariffCardsContainer = ({
     <div className="tariffs-page-content__tariff-cards-container">
       {cardsGroup.map(tariffData => {
         const parameters = getParametersByNames(tariffData);
-
+        let isHit = false;
+        const isHitModificator =
+          tariffData?.Modifiers?.find(
+            modificator => modificator.Alias === 'Recommend',
+          ) ?? false;
+        if (isHitModificator) {
+          isHit = true;
+        }
         return (
           <TariffCard
             key={tariffData.Id}
             title={tariffData.MarketingProduct.Title}
             image={tariffData.MarketingProduct.ListImage}
-            isHit={Math.random() > 0.5}
+            isHit={isHit}
             mobileTraffic={parameters?.['8488']?.NumValue}
             internetTrafic={parameters?.['8487']?.NumValue}
             tariffPrice={parameters?.['8476']?.NumValue}

@@ -99,4 +99,11 @@ export type IMarketingProduct = {
   ServicesOnTariff?: Array<IServiceOnTariff>;
   Images?: Array<Image>;
   Type: 'Tariff' | 'Device' | 'Kit' | 'Service';
+  Modifiers?: {
+    HideInRegionalProducts: boolean;
+    Alias: string;
+    HideInMarketingProducts: boolean;
+    Title: string;
+    Id: 19628;
+  }[];
 };

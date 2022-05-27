@@ -63,7 +63,7 @@ Accordion.defaultProps = {
       src={Arrow}
       alt="icon"
       style={{
-        transform: 'rotate(90deg)',
+        transform: 'rotate(-90deg)',
         width: '7px',
         height: '12px',
       }}
@@ -74,7 +74,7 @@ Accordion.defaultProps = {
       src={Arrow}
       alt="icon"
       style={{
-        transform: 'rotate(-90deg)',
+        transform: 'rotate(90deg)',
         width: '7px',
         height: '12px',
       }}

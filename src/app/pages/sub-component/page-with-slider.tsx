@@ -10,7 +10,6 @@ type Props = {
   pageContentElem: JSX.Element;
   sliderProps?: ISliderProps;
   currentPathProps?: ICurrentPathProps;
-  styles?: CSSProperties;
 };
 
 const PageWithSlider = ({

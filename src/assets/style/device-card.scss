@@ -8,6 +8,11 @@
     border-radius: 6px;
     padding-top: 20px;
 
+    &:hover,
+    &:focus {
+        border: 1px solid #2C5BDE
+    }
+
     &__image {
         max-height: 191px;
         min-height: 200px;
@@ -15,12 +20,26 @@
         display: flex;
         margin-bottom: 17px;
         cursor: pointer;
+        justify-content: center;
 
         img {
             justify-content: center;
             align-items: center;
-            object-fit: cover;
-            margin: auto;
+            object-fit: contain;
+        }
+
+        &-hit {
+            position: absolute;
+            top: -14px;
+            right: 7px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            background: $primary_blue;
+            border-radius: 6px;
+            color: white;
+
+            padding: 4px 13px;
         }
     }
 

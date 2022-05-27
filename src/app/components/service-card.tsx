@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import NewService from '../../assets/images/NewService.png';
+import NewService from '../../assets/images/NewService.svg';
 
 type Props = {
   title: string;

@@ -18,19 +18,29 @@ const PackagesPageContent = (): JSX.Element => {
 
   return useObserver(() => (
     <>
-      {packagesStore.packagesList.map(packageItem => (
-        <ServiceCard
-          key={packageItem.Id}
-          title={packageItem.MarketingProduct.Title}
-          description={packageItem.MarketingProduct.Description}
-          image={
-            packageItem.Images?.find(image => image.Type.Alias === 'list')
-              ?.Image ?? ''
-          }
-          isNew={Math.random() > 0.5}
-          onClickHandler={() => onClick(packageItem.Id)}
-        />
-      ))}
+      {packagesStore.packagesList.map(packageItem => {
+        let isNew = false;
+        const isNewModififcator =
+          packageItem?.Modifiers?.find(
+            modificator => modificator.Alias === 'IsNew',
+          ) ?? false;
+        if (isNewModififcator) {
+          isNew = true;
+        }
+        return (
+          <ServiceCard
+            key={packageItem.Id}
+            title={packageItem.MarketingProduct.Title}
+            description={packageItem.MarketingProduct.Description}
+            image={
+              packageItem.Images?.find(image => image.Type.Alias === 'list')
+                ?.Image ?? ''
+            }
+            isNew={isNew}
+            onClickHandler={() => onClick(packageItem.Id)}
+          />
+        );
+      })}
     </>
   ));
 };

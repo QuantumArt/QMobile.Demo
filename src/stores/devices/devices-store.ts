@@ -67,7 +67,7 @@ export class DevicesStore {
   async init(): Promise<void> {
     try {
       const response = await fetch(
-        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Device?fields=MarketingProduct,Parameters,Id,Images',
+        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Device?fields=MarketingProduct,Parameters,Id,Images,Modifiers',
       );
       const fetchedData = await response.json();
       runInAction(() => {

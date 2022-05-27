@@ -21,8 +21,13 @@ const TariffDetails = (): JSX.Element => {
       sliderProps={{
         modificatorStyles:
           'slider--tariff-details slider--margin-bottom slider--text-paddings',
-        title: 'Тарифы “Объединяй”!',
-        description: 'Единый счет для домашнего интернета, ТВ и связи',
+        title: `${connectStore.currentTariff?.MarketingProduct.Title}`,
+        description: `${
+          connectStore.currentTariff?.MarketingProduct.Description ?? ''
+        }`,
+        styles: {
+          background: `url(${connectStore.currentTariff?.MarketingProduct?.DetailsImage}) no-repeat`,
+        },
       }}
       currentPathProps={{
         elementName: `${

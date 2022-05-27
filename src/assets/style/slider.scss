@@ -3,6 +3,7 @@
 .slider {
   min-height: 222px;
   border-radius: 10px;
+  margin-top: 20px;
 
   &--tariffs {
     color: white;
@@ -27,7 +28,6 @@
 
   &--tariff-details {
     color: $dark_blue;
-    background-color: $light_gray2;
   }
 
   &--margin-bottom {

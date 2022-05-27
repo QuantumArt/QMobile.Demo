@@ -4,6 +4,8 @@
     &__main-container {
         padding: 19px 22px;
         display: flex;
+        max-height: 418px;
+        
     }
 
     &__photos-container {
@@ -40,9 +42,21 @@
             border-radius: 6px;
             cursor: pointer;
 
-            img {
-                object-fit: cover;
+            &-image {
+                display: flex;
+                max-height: 100%;
+                justify-content: center;
+
+                img {
+                    object-fit: contain;
+                }
             }
         }
+    }
+
+    &__image {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
     }
 }

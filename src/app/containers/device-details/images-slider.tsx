@@ -26,11 +26,13 @@ const ImagesSlider = ({ imagesList }: Props): JSX.Element => {
               onClick={() => setActiveImage(image.Image)}
               role="presentation"
             >
-              <img src={image.Image} alt="device" />
+              <div className="image-slider__photos-container-item-image">
+                <img src={image.Image} alt="device" />
+              </div>
             </div>
           ))}
         </div>
-        <div>
+        <div className="image-slider__image">
           <img src={activeImage} alt="selected" />
         </div>
       </div>

@@ -20,6 +20,15 @@ const DevicesPageContent = (): JSX.Element => {
             parameter => parameter.Title === 'Стоимость',
           );
 
+          let isHit = false;
+          const isHitModificator =
+            device?.Modifiers?.find(
+              modificator => modificator.Alias === 'Recommend',
+            ) ?? false;
+          if (isHitModificator) {
+            isHit = true;
+          }
+
           return (
             <DeviceCard
               key={device.Id}
@@ -31,6 +40,7 @@ const DevicesPageContent = (): JSX.Element => {
               price={priceParameter?.NumValue}
               description={device.MarketingProduct.Description}
               rating={5}
+              isHit={isHit}
               commentsCount={191}
               aboutLink={`/devices/${device.Id}`}
               onConnectHandler={() => {

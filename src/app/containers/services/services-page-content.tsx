@@ -17,16 +17,27 @@ const ServicePageContent = (): JSX.Element => {
 
   return useObserver(() => (
     <>
-      {servicesStore.servicesList.map(service => (
-        <ServiceCard
-          key={service.Id}
-          title={service.MarketingProduct.Title}
-          description={service.MarketingProduct.Description}
-          image={service.MarketingProduct.ListImage}
-          isNew={Math.random() > 0.5}
-          onClickHandler={() => onClick(service.Id)}
-        />
-      ))}
+      {servicesStore.servicesList.map(service => {
+        let isNew = false;
+        const isNewModififcator =
+          service?.Modifiers?.find(
+            modificator => modificator.Alias === 'IsNew',
+          ) ?? false;
+        if (isNewModififcator) {
+          isNew = true;
+        }
+
+        return (
+          <ServiceCard
+            key={service.Id}
+            title={service.MarketingProduct.Title}
+            description={service.MarketingProduct.Description}
+            image={service.MarketingProduct.ListImage}
+            isNew={isNew}
+            onClickHandler={() => onClick(service.Id)}
+          />
+        );
+      })}
     </>
   ));
 };
