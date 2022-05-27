@@ -6,6 +6,7 @@ import ServiceGroupContainer from '../connect-form/service-group-container';
 import MinutesInternetRanges from './minutes-internet-ranges';
 import ParametersList from '../parameters-list/parameters-list';
 import AdditionalInfo from './additional-info';
+import Pdfsvg from '../../../assets/icons/Pdfsvg.svg';
 
 const TariffDetailsPageContent = (): JSX.Element =>
   useObserver(() => (
@@ -25,19 +26,29 @@ const TariffDetailsPageContent = (): JSX.Element =>
             />
           </div>
         </div>
-        <ConnectForm
-          headerType={
-            connectStore.currentTariff?.TariffPackages?.length
-              ? 'package'
-              : 'monthPaid'
-          }
-        >
-          {!connectStore.currentTariff?.TariffPackages?.length && (
-            <ServiceGroupContainer
-              servicesIds={connectStore.services.servicesIds}
-            />
-          )}
-        </ConnectForm>
+        <div>
+          <ConnectForm
+            headerType={
+              connectStore.currentTariff?.TariffPackages?.length
+                ? 'package'
+                : 'monthPaid'
+            }
+          >
+            {!connectStore.currentTariff?.TariffPackages?.length && (
+              <ServiceGroupContainer
+                servicesIds={connectStore.services.servicesIds}
+              />
+            )}
+          </ConnectForm>
+          <div>
+            <button type="button" className="download-pdf-btn">
+              Скачать
+              <div>
+                <img src={Pdfsvg} alt="pdf" />
+              </div>
+            </button>
+          </div>
+        </div>
       </div>
       {connectStore.additionalInfo.size > 0 && (
         <AdditionalInfo paramList={Array.from(connectStore.additionalInfo)} />

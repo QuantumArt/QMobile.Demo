@@ -14,7 +14,7 @@ const MainInfo = ({
     <div className="device-details__main-info-container">
       <h2 className="device-details__main-info-title">{mainTitle}</h2>
       <div className="device-details__price-container">
-        <p>{price}</p>
+        <p>{price} ₽</p>
         <PrimaryButton text="Купить" onClick={() => console.log('Зашлушка')} />
       </div>
       <div className="device-details__delivery-info">

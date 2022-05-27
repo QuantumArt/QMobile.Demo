@@ -1,0 +1,13 @@
+@import './variables/variables';
+
+.download-pdf-btn {
+    background: $primary_blue;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: white;
+    cursor: pointer;
+}
