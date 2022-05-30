@@ -1,8 +1,12 @@
 @import './variables/variables';
 
 .connect-form {
-    border: 1px solid $light_gray2;
-    border-radius: 6px;
+
+    &__container {
+        border: 1px solid $light_gray2;
+        border-radius: 6px;
+    }
+
     height: fit-content;
 
     font-weight: 400;

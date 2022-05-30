@@ -12,7 +12,7 @@ const ServiceConnectForm = ({ price }: Props): JSX.Element => {
   };
 
   return (
-    <form className="connect-form">
+    <form className="connect-form connect-form__container">
       <MonthPaidHeader
         title="Стоимость услуги"
         currentPrice={price ?? ServiceConnectForm.defaultProps.price}

@@ -1,13 +1,22 @@
 @import './variables/variables';
 
 .download-pdf-btn {
-    background: $primary_blue;
-    padding: 8px 16px;
+
+    background: none;
+    outline: none;
     border: none;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    color: white;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 24px 36px 24px;
+
+    gap: 12px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        width: 35px;
+
+    }
 }

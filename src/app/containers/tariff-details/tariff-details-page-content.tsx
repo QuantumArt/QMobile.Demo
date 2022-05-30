@@ -6,10 +6,18 @@ import ServiceGroupContainer from '../connect-form/service-group-container';
 import MinutesInternetRanges from './minutes-internet-ranges';
 import ParametersList from '../parameters-list/parameters-list';
 import AdditionalInfo from './additional-info';
-import Pdfsvg from '../../../assets/icons/Pdfsvg.svg';
+import DownloadPdfButton from '../download-pdf-button/download-pdf-button';
+import generatePdf from '../../utils/generate-pdf.js';
 
-const TariffDetailsPageContent = (): JSX.Element =>
-  useObserver(() => (
+const TariffDetailsPageContent = (): JSX.Element => {
+  const generatePdfHandler = (): void => {
+    generatePdf(
+      Array.from(connectStore.parametersByGroup),
+      connectStore.currentTariff?.MarketingProduct?.Title,
+    );
+  };
+
+  return useObserver(() => (
     <div className="constructor-page-content">
       <p className="page-content-title page-content-title--constructor">
         {connectStore.currentTariff?.MarketingProduct?.Title}
@@ -26,7 +34,7 @@ const TariffDetailsPageContent = (): JSX.Element =>
             />
           </div>
         </div>
-        <div>
+        <div className="connect-form__container">
           <ConnectForm
             headerType={
               connectStore.currentTariff?.TariffPackages?.length
@@ -40,6 +48,7 @@ const TariffDetailsPageContent = (): JSX.Element =>
               />
             )}
           </ConnectForm>
+          <DownloadPdfButton onClickHandler={generatePdfHandler} />
         </div>
       </div>
       {connectStore.additionalInfo.size > 0 && (
@@ -47,5 +56,6 @@ const TariffDetailsPageContent = (): JSX.Element =>
       )}
     </div>
   ));
+};
 
 export default TariffDetailsPageContent;

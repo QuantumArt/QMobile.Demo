@@ -300,6 +300,8 @@ export class ConnectStore {
           }
         });
 
+        console.log(this._parametersByGroup);
+
         this._currentTariff.TariffPackages?.forEach(tariffPackage => {
           let alias = '';
           let subscriptionPrice = 0;
