@@ -35,6 +35,7 @@ const ServicePageContent = (): JSX.Element => {
             image={service.MarketingProduct.ListImage}
             isNew={isNew}
             onClickHandler={() => onClick(service.Id)}
+            additionalInfo=""
           />
         );
       })}

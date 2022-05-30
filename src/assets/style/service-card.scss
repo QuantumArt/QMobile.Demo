@@ -61,4 +61,23 @@
         line-height: 20px;
         color: #2C5BDE;
     }
+
+    &__additional-info-container {
+        display: flex;
+        flex-direction: column;
+
+        &-item-new {
+            width: 55px;
+        }
+
+        &-additional-info {
+            margin-top: auto;
+            font-weight: 500;
+            font-size: 9px;
+            padding: 4px 12px;
+            background-color: $primary_blue;
+            color: white;
+            border-radius: 6px;
+        }
+    }
 }

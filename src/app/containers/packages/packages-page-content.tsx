@@ -20,10 +20,12 @@ const PackagesPageContent = (): JSX.Element => {
     <>
       {packagesStore.packagesList.map(packageItem => {
         let isNew = false;
+
         const isNewModififcator =
           packageItem?.Modifiers?.find(
             modificator => modificator.Alias === 'IsNew',
           ) ?? false;
+
         if (isNewModififcator) {
           isNew = true;
         }
@@ -38,6 +40,7 @@ const PackagesPageContent = (): JSX.Element => {
             }
             isNew={isNew}
             onClickHandler={() => onClick(packageItem.Id)}
+            additionalInfo={packageItem.MarketingProduct.KitType?.Title ?? ''}
           />
         );
       })}

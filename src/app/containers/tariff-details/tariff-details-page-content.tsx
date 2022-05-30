@@ -40,14 +40,6 @@ const TariffDetailsPageContent = (): JSX.Element =>
               />
             )}
           </ConnectForm>
-          <div>
-            <button type="button" className="download-pdf-btn">
-              Скачать
-              <div>
-                <img src={Pdfsvg} alt="pdf" />
-              </div>
-            </button>
-          </div>
         </div>
       </div>
       {connectStore.additionalInfo.size > 0 && (

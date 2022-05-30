@@ -7,6 +7,7 @@ type Props = {
   advantage?: string;
   image: string;
   isNew?: boolean;
+  additionalInfo: string;
   onClickHandler: () => void;
 };
 
@@ -16,6 +17,7 @@ const ServiceCard = ({
   image,
   advantage,
   isNew,
+  additionalInfo,
   onClickHandler,
 }: Props): JSX.Element => {
   return (
@@ -27,7 +29,20 @@ const ServiceCard = ({
       <h5 className="service-card__title">{title}</h5>
       <p className="service-card__description">{description}</p>
       <div className="service-card__flex-container">
-        <div>{isNew && <img src={NewService} alt="new" />}</div>
+        <div className="service-card__additional-info-container">
+          {isNew && (
+            <img
+              src={NewService}
+              alt="new"
+              className="service-card__additional-info-container-item-new"
+            />
+          )}
+          {additionalInfo.length > 0 && (
+            <p className="service-card__additional-info-container-additional-info">
+              {additionalInfo}
+            </p>
+          )}
+        </div>
         <div className="service-card__image">
           <img src={image} alt="logo" />
         </div>

@@ -92,6 +92,11 @@ export type IMarketingProduct = {
     Description: string;
     DetailsImage: string;
     Parameters?: Array<IParameters>;
+    KitType?: {
+      Alias: string;
+      Title: string;
+      Id: number;
+    };
   };
   Parameters: Array<IParameters>;
   Id: number;
