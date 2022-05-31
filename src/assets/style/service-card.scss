@@ -65,15 +65,18 @@
     &__additional-info-container {
         display: flex;
         flex-direction: column;
+        position: relative;
 
         &-item-new {
             width: 55px;
         }
 
         &-additional-info {
-            margin-top: auto;
+            position: absolute;
+            bottom: 0;
+            min-width: 150px;
             font-weight: 500;
-            font-size: 9px;
+            font-size: 12px;
             padding: 4px 12px;
             background-color: $primary_blue;
             color: white;

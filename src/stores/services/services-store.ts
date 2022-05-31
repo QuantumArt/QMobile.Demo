@@ -1,6 +1,7 @@
 import { action, computed, observable, runInAction } from 'mobx';
 import { BootState } from '../../app/enums/boot-state';
 import { IMarketingProduct, IParameters } from '../../app/types';
+import pageLoaderStore from '../page-loader/page-loader';
 
 class ServiceStore {
   @observable
@@ -70,21 +71,25 @@ class ServiceStore {
   @action
   async init(): Promise<void> {
     try {
+      pageLoaderStore.setBootState(BootState.Loading);
       const response = await fetch(
         'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Service?fields=Id,MarketingProduct.Title,MarketingProduct.Description,MarketingProduct.ListImage,Modifiers',
       );
       const fetchedData = await response.json();
       runInAction(() => {
         this._servicesList = fetchedData;
+        pageLoaderStore.setBootState(BootState.Success);
       });
     } catch (error) {
       console.log(error);
+      pageLoaderStore.setBootState(BootState.Error);
     }
   }
 
   @action
   async fetchService(serviceId: string): Promise<void> {
     try {
+      pageLoaderStore.setBootState(BootState.Loading);
       this._parametersByGroup = new Map();
       const response = await fetch(
         `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${serviceId}`,
@@ -110,8 +115,9 @@ class ServiceStore {
           });
         }
       });
+      pageLoaderStore.setBootState(BootState.Success);
     } catch (error) {
-      console.log(error);
+      pageLoaderStore.setBootState(BootState.Error);
     }
   }
 

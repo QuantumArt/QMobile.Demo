@@ -5,6 +5,7 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
+
 import { IRoute } from './types';
 
 import Footer from './containers/footer/footer';

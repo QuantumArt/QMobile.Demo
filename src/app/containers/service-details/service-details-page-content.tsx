@@ -1,28 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useObserver } from 'mobx-react-lite';
-
-import Present from '../../../assets/images/present.png';
-import Infinity from '../../../assets/images/infinity.png';
-import MusicIcon from '../../../assets/images/music_icon.png';
 import AdvantageCard from './advantage-card';
 import ServiceConnectForm from './service-connect-form';
 import ParametersList from '../parameters-list/parameters-list';
 import servicesStore from '../../../stores/services/services-store';
-
-const advantagesList = [
-  {
-    description: 'Специальные условия при первом подключении',
-    image: Present,
-  },
-  {
-    description: 'Безлимитный интернет на музыку в приложении',
-    image: Infinity,
-  },
-  {
-    description: 'HD-качество звука, новинки и персональные плейлисты',
-    image: MusicIcon,
-  },
-];
 
 type Props = {
   title?: string;
