@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{data.tariffName}}</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+.pdf__header {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #e3e3e3;
+}
+.pdf__header-start-tariff-date {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+.pdf__tariff-description {
+    padding: 0 18px;
+}
+.pdf__tariff-description-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #2c5bde;
+}
+.pdf__tariff-description-text {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 24px;
+}
+.pdf__table {
+    border-collapse: collapse;
+    border-style: hidden;
+    width: 100%;
+}
+.pdf__table tr {
+    border: 1px solid #e3e3e3;
+    border-top: none;
+}
+.pdf__table td {
+    border: 1px solid #e3e3e3;
+    border-top: none;
+    border-left: none;
+    padding: 10px 18px;
+}
+.pdf__table__section {
+    background: #eff3fb;
+    text-align: center;
+}
+.pdf__table__value {
+    width: 117px;
+    font-weight: 400;
+    font-size: 14px;
+}
+.pdf__table__description {
+    width: 478px;
+    font-weight: 500;
+    font-size: 14px;
+}
+.pdf__table__parameter-description {
+    font-weight: 400;
+    font-size: 14px;
+}
+.pdf__table__parameter-value {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+         <div class="pdf__header"><p class="pdf__header-start-tariff-date">Тариф открыт для перехода с 27.05.2022</p></div>
+     <div class="pdf__tariff-description">
+        <h1 class="pdf__tariff-description-title">{{data.tariffName}}</h1>
+        <p class="pdf__tariff-description-text">Авансовый метод расчетов за месяц</p>
+     </div>
+<table class="pdf__table">
+
+  {{#each data.options}}
+  {{#each this.[1]}}
+  <tr>
+        {{#if @first}}
+            <td class="pdf__table__section" colspan="2">
+        {{this.Group.Title}}
+            </td>
+        {{/if}}
+<tr>            <td class="pdf__table__value pdf__table__parameter-value">
+        {{this.NumValue}} {{this.Unit.Display}}
+            </td>
+            <td class="pdf__table__parameter-description">{{this.Title}}</td>
+</tr>
+  </tr>
+  {{/each}}
+  {{/each}}
+</table>
+</body>
+<html>
