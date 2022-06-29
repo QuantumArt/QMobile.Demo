@@ -93,17 +93,6 @@ export class TariffsStore {
     this._selectedFilter = '';
   }
 
-  // public initForm = (): void => {
-  //   this._form = new FormGroup<FormTariffFilter>({
-  //     group: new FormControl<ITariffFilterGroup>(tariffsFilters[0]),
-  //     search: new FormControl<string>(''),
-  //   });
-  // };
-
-  // public load = async (): Promise<void> => {
-  //   /// fetch
-  // };
-
   @action
   public fetchTariffs = async (): Promise<void> => {
     try {
