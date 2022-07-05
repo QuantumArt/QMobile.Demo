@@ -10,11 +10,10 @@ const TariffDetails = (): JSX.Element => {
   useEffect(() => {
     const tariffId = location.pathname.split('/').slice(-1);
     connectStore.fetchTariff(tariffId[0]);
+    return () => {
+      connectStore.unmount();
+    };
   }, [location.pathname]);
-
-  useEffect(() => () => {
-    connectStore.unmount();
-  });
 
   return useObserver(() => (
     <PageWithSlider

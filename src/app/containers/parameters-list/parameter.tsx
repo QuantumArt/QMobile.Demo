@@ -4,21 +4,21 @@ import { IParameters } from '../../types';
 
 type Props = {
   parameter: IParameters;
-  newPrice?: number;
+  oldPrice?: number;
   contentType: 'numbers' | 'text';
 };
 
 const Parameter = ({
   parameter,
-  newPrice,
+  oldPrice,
   contentType,
 }: Props): JSX.Element => {
   const parameterStyles = cn('parameters-list-container__parameter', {
-    'parameters-list-container__parameter--active': newPrice,
+    'parameters-list-container__parameter--active': oldPrice,
   });
 
   const priceStyles = cn({
-    'parameters-list-container__parameter-price--crossed': newPrice,
+    'parameters-list-container__parameter-price--crossed': oldPrice,
   });
 
   return (
@@ -27,10 +27,12 @@ const Parameter = ({
         <>
           <p>{parameter.Title}</p>
           <p className="parameters-list-container__parameter-price">
-            <span className={priceStyles}>{parameter.NumValue}</span>{' '}
-            {newPrice && (
+            <span className={priceStyles}>
+              {oldPrice ?? parameter.NumValue}
+            </span>{' '}
+            {oldPrice && (
               <span className="parameters-list-container__parameter-new-price">
-                {newPrice}
+                {parameter.NumValue}
               </span>
             )}{' '}
             {parameter?.Unit?.Display}
@@ -44,7 +46,7 @@ const Parameter = ({
 };
 
 Parameter.defaultProps = {
-  newPrice: undefined,
+  oldPrice: undefined,
 };
 
 export default Parameter;

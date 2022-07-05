@@ -1,4 +1,8 @@
+import { connect } from 'http2';
 import React from 'react';
+import connectStore from '../../../stores/connect/connect-store';
+import PriceLoader from '../../components/price-loader';
+import { BootState } from '../../enums/boot-state';
 
 type MonthPaidProps = {
   currentPrice: number;
@@ -12,6 +16,7 @@ export const MonthPaidHeader = ({
   <header className="connect-form__item connect-form__item--main-header-padding">
     <div className="connect-form__header-constructor">
       <p className="connect-form__month-paid-title">{title}</p>
+
       <p className="connect-form__price">{currentPrice} ₽</p>
     </div>
   </header>

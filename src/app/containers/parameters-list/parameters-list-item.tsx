@@ -16,19 +16,12 @@ const ParametersListItem = ({
   return useObserver(() => (
     <>
       {parameters.map(parameter => {
-        const priceFromServices = connectStore.activeBaseParameters
-          .filter(baseParam => baseParam.Id === parameter?.BaseParameter?.Id)
-          .reduce<number>((acc, baseParam) => acc + baseParam.Value, 0);
         return (
           <Parameter
             contentType={contentType}
             key={parameter.Id}
             parameter={parameter}
-            newPrice={
-              priceFromServices > 0
-                ? priceFromServices + parameter.NumValue
-                : undefined
-            }
+            oldPrice={parameter?.OldNumValue}
           />
         );
       })}

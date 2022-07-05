@@ -8,6 +8,7 @@ export type BaseParameter = {
 
 export type ServiceInfo = {
   id: number;
+  fetchId: number;
   alias: string;
   description: string;
   price: number;

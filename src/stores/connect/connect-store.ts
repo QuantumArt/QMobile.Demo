@@ -1,15 +1,19 @@
 /* eslint-disable no-restricted-syntax */
 import { action, computed, observable, runInAction, autorun } from 'mobx';
+import { BootState } from '../../app/enums/boot-state';
 import { IMarketingProduct, IParameters } from '../../app/types';
 import { ITariffPackageParameter } from '../../app/types/marketing-product';
-import { ITariffPackages } from '../tariffs/tariffs-cards-group';
-import {
-  BaseParameter,
-  IConnectServices,
-  ServiceInfo,
-} from './connect-services-groups';
+import { BaseParameter, IConnectServices } from './connect-services-groups';
 
 export class ConnectStore {
+  @observable
+  private _priceBootState: BootState = BootState.Loading;
+
+  @computed
+  public get priceBootState(): BootState {
+    return this._priceBootState;
+  }
+
   @observable
   private _services: IConnectServices = {
     servicesGroup: {},
@@ -141,15 +145,7 @@ export class ConnectStore {
       subscriptionPrice = paramWithSubcriptionPrice?.NumValue ?? 0;
     }
 
-    const servicesPrice = this._services.activeServicesIds.reduce<number>(
-      (acc, id) => {
-        const { price } = this.services.servicesGroup[id];
-        return acc + price;
-      },
-      0,
-    );
-
-    return rangesPrice + subscriptionPrice + servicesPrice;
+    return rangesPrice + subscriptionPrice;
   }
 
   @observable
@@ -180,6 +176,7 @@ export class ConnectStore {
       activeServicesIds: [],
     };
     this._currentTariff?.ServicesOnTariff?.forEach(service => {
+      console.log(service);
       const parametersValues: {
         price: number;
         value: number;
@@ -211,6 +208,7 @@ export class ConnectStore {
 
       this._services.servicesGroup[service.Id] = {
         id: service.Id,
+        fetchId: service.Service.Id,
         alias: service.Service.MarketingProduct.Title,
         description: service.Service.Description,
         ...parametersValues,
@@ -220,8 +218,20 @@ export class ConnectStore {
     });
   }
 
-  private addActiveService(id: number): void {
+  private async addActiveService(id: number): Promise<void> {
     this._services.activeServicesIds.push(id);
+    const requestQuery = this._services.activeServicesIds.reduce(
+      (acc, servId) => {
+        const { fetchId } = this._services.servicesGroup[servId];
+        return `${acc}serviceIds=${fetchId}&`;
+      },
+      '',
+    );
+
+    const requestString = `${this._currentTariff.Id}?${requestQuery}`;
+
+    await this.fetchTariff(requestString);
+
     const baseParameters =
       this._services.servicesGroup[id].baseParameters ?? [];
 
@@ -242,11 +252,11 @@ export class ConnectStore {
   }
 
   @action
-  toggleActiveServices(id: number): void {
+  async toggleActiveServices(id: number): Promise<void> {
     if (this._services.activeServicesIds.includes(id)) {
-      this.removeActiveService(id);
+      await this.removeActiveService(id);
     } else {
-      this.addActiveService(id);
+      await this.addActiveService(id);
     }
   }
 
@@ -254,12 +264,12 @@ export class ConnectStore {
   public fetchTariff = async (tariffId: string): Promise<void> => {
     try {
       const response = await fetch(
-        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${tariffId}`,
+        `https://impact.dpc.dev.qsupport.ru/api/base/${tariffId}?language=invariant&state=live`,
       );
       const fetchedData: IMarketingProduct = await response.json();
       runInAction(() => {
         this._currentTariff = fetchedData;
-        this.initServices();
+        if (this._services.servicesIds.length === 0) this.initServices();
         this._parametersByGroup = new Map();
         this._additionalInfo = new Map();
         const minutes = this.findTariffPackageParameterValues('MinutesPackage');
@@ -353,6 +363,12 @@ export class ConnectStore {
 
   @action unmount(): void {
     this._activeBaseParameters = [];
+    console.log('unmount');
+    this._services = {
+      servicesGroup: {},
+      servicesIds: [],
+      activeServicesIds: [],
+    };
   }
 }
 

@@ -1,5 +1,6 @@
 export type IParameters = {
   NumValue: number;
+  OldNumValue?: number;
   Value?: string;
   Image?: string;
   BaseParameter: {
