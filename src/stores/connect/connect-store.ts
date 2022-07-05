@@ -151,11 +151,6 @@ export class ConnectStore {
   @observable
   private _activeBaseParameters: BaseParameter[] = [];
 
-  @computed
-  public get activeBaseParameters(): BaseParameter[] {
-    return this._activeBaseParameters;
-  }
-
   @observable
   private _activeParametersGroups: number[] = [];
 
@@ -376,18 +371,18 @@ const connectStore = new ConnectStore();
 
 export default connectStore;
 
-autorun(() => {
-  const groupsWithActiveParameter = Array.from(
-    connectStore.parametersByGroup,
-  ).reduce<number[]>((acc, [groupId, parameters]) => {
-    const activesParameters = parameters.find(parameter => {
-      const active = connectStore.activeBaseParameters.find(
-        baseparam => baseparam.Id === parameter?.BaseParameter?.Id,
-      );
-      return active;
-    });
-    return activesParameters ? [...acc, groupId] : acc;
-  }, []);
+// autorun(() => {
+//   const groupsWithActiveParameter = Array.from(
+//     connectStore.parametersByGroup,
+//   ).reduce<number[]>((acc, [groupId, parameters]) => {
+//     const activesParameters = parameters.find(parameter => {
+//       const active = connectStore.activeBaseParameters.find(
+//         baseparam => baseparam.Id === parameter?.BaseParameter?.Id,
+//       );
+//       return active;
+//     });
+//     return activesParameters ? [...acc, groupId] : acc;
+//   }, []);
 
-  connectStore.setActiveParametersGroups(groupsWithActiveParameter);
-});
+//   connectStore.setActiveParametersGroups(groupsWithActiveParameter);
+// });
