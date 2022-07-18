@@ -7,11 +7,11 @@ import { BaseParameter, IConnectServices } from './connect-services-groups';
 
 export class ConnectStore {
   @observable
-  private _priceBootState: BootState = BootState.Loading;
+  private _bootState: BootState = BootState.None;
 
   @computed
-  public get priceBootState(): BootState {
-    return this._priceBootState;
+  public get bootState(): BootState {
+    return this._bootState;
   }
 
   @observable
@@ -171,7 +171,6 @@ export class ConnectStore {
       activeServicesIds: [],
     };
     this._currentTariff?.ServicesOnTariff?.forEach(service => {
-      console.log(service);
       const parametersValues: {
         price: number;
         value: number;
@@ -226,24 +225,24 @@ export class ConnectStore {
     const requestString = `${this._currentTariff.Id}?${requestQuery}`;
 
     await this.fetchTariff(requestString);
-
-    const baseParameters =
-      this._services.servicesGroup[id].baseParameters ?? [];
-
-    this._activeBaseParameters = [
-      ...this._activeBaseParameters,
-      ...baseParameters,
-    ];
   }
 
-  private removeActiveService(id: number): void {
+  private async removeActiveService(id: number): Promise<void> {
     this._services.activeServicesIds = this._services.activeServicesIds.filter(
       el => el !== id,
     );
 
-    this._activeBaseParameters = this._activeBaseParameters.filter(
-      parameter => parameter.ServiceId !== id,
+    const requestQuery = this._services.activeServicesIds.reduce(
+      (acc, servId) => {
+        const { fetchId } = this._services.servicesGroup[servId];
+        return `${acc}serviceIds=${fetchId}&`;
+      },
+      '',
     );
+
+    const requestString = `${this._currentTariff.Id}?${requestQuery}`;
+
+    await this.fetchTariff(requestString);
   }
 
   @action
@@ -258,6 +257,7 @@ export class ConnectStore {
   @action
   public fetchTariff = async (tariffId: string): Promise<void> => {
     try {
+      this._bootState = BootState.Loading;
       const response = await fetch(
         `https://impact.dpc.dev.qsupport.ru/api/base/${tariffId}?language=invariant&state=live`,
       );
@@ -284,9 +284,12 @@ export class ConnectStore {
           const [minValue] = this._rangeInternetValues;
           this._internet = minValue;
         }
-
+        this._activeParametersGroups = [];
         this._currentTariff.Parameters.forEach(parameter => {
           const groupId = parameter.Group.Id;
+          if (parameter?.OldNumValue) {
+            this._activeParametersGroups.push(parameter.Group.Id);
+          }
           if (
             parameter.Group.Title !== 'Дополнительная информация' &&
             parameter.Group.Title !== 'Преимущества'
@@ -323,7 +326,9 @@ export class ConnectStore {
           this._rangesPrice[alias] = subscriptionPrice;
         });
       });
+      this._bootState = BootState.Success;
     } catch (error) {
+      this._bootState = BootState.Error;
       console.log(error);
     }
   };
@@ -358,7 +363,6 @@ export class ConnectStore {
 
   @action unmount(): void {
     this._activeBaseParameters = [];
-    console.log('unmount');
     this._services = {
       servicesGroup: {},
       servicesIds: [],
@@ -370,19 +374,3 @@ export class ConnectStore {
 const connectStore = new ConnectStore();
 
 export default connectStore;
-
-// autorun(() => {
-//   const groupsWithActiveParameter = Array.from(
-//     connectStore.parametersByGroup,
-//   ).reduce<number[]>((acc, [groupId, parameters]) => {
-//     const activesParameters = parameters.find(parameter => {
-//       const active = connectStore.activeBaseParameters.find(
-//         baseparam => baseparam.Id === parameter?.BaseParameter?.Id,
-//       );
-//       return active;
-//     });
-//     return activesParameters ? [...acc, groupId] : acc;
-//   }, []);
-
-//   connectStore.setActiveParametersGroups(groupsWithActiveParameter);
-// });

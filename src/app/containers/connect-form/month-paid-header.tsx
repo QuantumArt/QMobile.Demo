@@ -1,8 +1,4 @@
-import { connect } from 'http2';
 import React from 'react';
-import connectStore from '../../../stores/connect/connect-store';
-import PriceLoader from '../../components/price-loader';
-import { BootState } from '../../enums/boot-state';
 
 type MonthPaidProps = {
   currentPrice: number;

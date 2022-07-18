@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import connectStore from '../../stores/connect/connect-store';
 import PageWithSlider from './sub-component/page-with-slider';
 import TariffDetailsPageContent from '../containers/tariff-details/tariff-details-page-content';
+import { BootState } from '../enums/boot-state';
 
 const TariffDetails = (): JSX.Element => {
   const location = useLocation();
@@ -20,7 +21,7 @@ const TariffDetails = (): JSX.Element => {
       sliderProps={{
         modificatorStyles:
           'slider--tariff-details slider--margin-bottom slider--text-paddings',
-        title: `${connectStore.currentTariff?.MarketingProduct.Title}`,
+        title: `${connectStore.currentTariff?.MarketingProduct.Title ?? ''}`,
         description: `${
           connectStore.currentTariff?.MarketingProduct.Description ?? ''
         }`,

@@ -2,18 +2,19 @@ import React from 'react';
 import Pdf from '../../../assets/icons/Pdf.svg';
 
 type Props = {
-  onClickHandler: () => void;
+  tariffId: number;
 };
 
-const DownloadPdfButton = ({ onClickHandler }: Props): JSX.Element => {
-  const onClick = (): void => {
-    onClickHandler();
-  };
-
+const DownloadPdfButton = ({ tariffId }: Props): JSX.Element => {
   return (
-    <button type="button" className="download-pdf-btn" onClick={onClick}>
+    <a
+      href={`http://mscservices02:55010/api/product/${tariffId}?category=test&customerCode=qmobile_catalog&attachment=true`}
+      className="download-pdf-btn"
+      target="_blank"
+      rel="noreferrer"
+    >
       <img alt="download" src={Pdf} /> Загрузить в формате pdf
-    </button>
+    </a>
   );
 };
 

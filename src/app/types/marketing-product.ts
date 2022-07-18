@@ -20,7 +20,7 @@ export type IParameters = {
     Id: number;
     Title: string;
   };
-
+  Changed?: boolean;
   Parent?: {
     Id: number;
     Title: string;

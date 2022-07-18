@@ -14,7 +14,8 @@ const Parameter = ({
   contentType,
 }: Props): JSX.Element => {
   const parameterStyles = cn('parameters-list-container__parameter', {
-    'parameters-list-container__parameter--active': oldPrice,
+    'parameters-list-container__parameter--active':
+      oldPrice || parameter.Changed,
   });
 
   const priceStyles = cn({
