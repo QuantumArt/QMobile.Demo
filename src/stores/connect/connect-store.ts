@@ -287,7 +287,7 @@ export class ConnectStore {
         this._activeParametersGroups = [];
         this._currentTariff.Parameters.forEach(parameter => {
           const groupId = parameter.Group.Id;
-          if (parameter?.OldNumValue) {
+          if (parameter?.Changed) {
             this._activeParametersGroups.push(parameter.Group.Id);
           }
           if (
