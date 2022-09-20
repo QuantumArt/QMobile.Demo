@@ -1,0 +1,11 @@
+.devices-page-content {
+    margin-top: 60px;
+    padding-bottom: 22px;
+
+
+    &__cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}

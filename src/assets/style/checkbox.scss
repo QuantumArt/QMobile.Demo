@@ -1,0 +1,36 @@
+@import './variables/variables';
+
+.checkbox {
+  appearance: none;
+  height: 22px;
+  min-width: 42px;
+  border-radius: 50px;
+  position: relative;
+  background-color: $light_gray1;
+  ;
+  transition: all 300ms ease-out;
+  cursor: pointer;
+
+  &:checked {
+    background-color: $primary_blue;
+    transition: all 300ms ease-out;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: all 300ms ease-out;
+  }
+
+  &:checked::after {
+    transform: translateX(calc(100% + 2px));
+    transition: all 300ms ease-out;
+  }
+
+}

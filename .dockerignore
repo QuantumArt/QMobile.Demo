@@ -1,0 +1,8 @@
+node_modules
+kubernetes
+dist
+.idea
+.awcache
+.git
+*.7z
+Dockerfile

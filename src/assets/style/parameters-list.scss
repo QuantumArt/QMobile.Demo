@@ -1,0 +1,41 @@
+@import './variables/variables';
+
+.parameters-list-container {
+    border-top: 1px solid $light_gray1;
+    margin-bottom: 80px;
+
+    &__item {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid $light_gray1;
+        font-size: 18px;
+    }
+
+    &__parameter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.02em;
+        color: $dark_gray1;
+
+        margin-top: 11px;
+        margin-bottom: 11px;
+
+        &--active {
+            color: $primary_blue
+        }
+
+        &-price {
+            &--crossed {
+                color: $dark_gray1;
+                text-decoration: line-through;
+            }
+        }
+
+        &-new-price {
+            font-size: 18px;
+        }
+    }
+}

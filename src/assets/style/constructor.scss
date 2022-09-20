@@ -1,0 +1,26 @@
+.constructor-page-content {
+    margin-top: 60px;
+
+    &__ranges-menu {
+        width: 480px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 60px;
+    }
+
+    &__ranges-menu-item {
+        min-height: 112px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 40px;
+    }
+
+    &__item-title {
+        margin-bottom: 24px;
+    }
+
+    &__main-info {
+        width: 780px;
+    }
+}

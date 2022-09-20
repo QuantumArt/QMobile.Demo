@@ -1,0 +1,45 @@
+@import './variables/variables';
+
+.footer {
+    background-color: $background_dark;
+
+    &__separator {
+        height: 1px;
+        background-color: rgba($light_gray4, 0.34);
+    }
+
+    &__nav {
+        height: 126px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__nav-link {
+        color: white;
+    }
+
+    &__info {
+        height: 97px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__rights {
+        font-style: normal;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        font-size: 16px;
+        line-height: 20px;
+        color: white;
+    }
+
+    &__social-icons {
+        width: 190px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

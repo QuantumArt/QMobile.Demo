@@ -1,0 +1,112 @@
+@import './variables/variables';
+
+.device-card {
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 460px;
+    border: 1px solid $light_gray4;
+    border-radius: 6px;
+    padding-top: 20px;
+
+    &:hover,
+    &:focus {
+        border: 1px solid #2C5BDE
+    }
+
+    &__image {
+        max-height: 191px;
+        min-height: 200px;
+        position: relative;
+        display: flex;
+        margin-bottom: 17px;
+        cursor: pointer;
+        justify-content: center;
+
+        img {
+            justify-content: center;
+            align-items: center;
+            object-fit: contain;
+        }
+
+        &-hit {
+            position: absolute;
+            top: -14px;
+            right: 7px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            background: $primary_blue;
+            border-radius: 6px;
+            color: white;
+
+            padding: 4px 13px;
+        }
+    }
+
+    &__container {
+        padding-left: 17px;
+        padding-right: 22px;
+        padding-bottom: 34px;
+    }
+
+    &__info-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+    }
+
+    &__price {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 16px;
+        color: $dark_blue;
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: $dark_blue;
+        overflow: hidden;
+        max-height: 20px;
+        min-height: 20px;
+    }
+
+    &__description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $dark_gray1;
+        overflow: hidden;
+        max-height: 34px;
+        min-height: 34px;
+    }
+
+    &__rating-container {
+        display: flex;
+    }
+
+    &__stars-container {
+        display: flex;
+        gap: 9px;
+        margin-right: 20px;
+    }
+
+    &__comments-count {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    &__buy-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 17px;
+        padding-right: 28px;
+    }
+
+    &__buy-btn {
+        width: 125px;
+    }
+}

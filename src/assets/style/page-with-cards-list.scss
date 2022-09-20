@@ -1,0 +1,32 @@
+@import './variables/variables';
+
+.page-with-cards {
+
+    &__path-wrapper {
+        padding-top: 32px;
+        margin-bottom: 40px;
+    }
+
+    &__page-title {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 44px;
+        color: $dark_blue;
+        margin-bottom: 10px;
+    }
+
+    &__card-background {
+        background-color: $light_gray3;
+        height: 100%;
+    }
+
+    &__сards-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        padding-top: 22px;
+        padding-bottom: 22px;
+        gap: 20px;
+
+    }
+}

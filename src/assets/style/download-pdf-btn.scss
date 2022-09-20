@@ -1,0 +1,22 @@
+@import './variables/variables';
+
+.download-pdf-btn {
+
+    background: none;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0 24px 36px 24px;
+
+    gap: 12px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        width: 35px;
+
+    }
+}

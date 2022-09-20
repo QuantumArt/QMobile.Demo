@@ -1,0 +1,40 @@
+.service-details {
+    &__content-container {
+        margin-top: 64px;
+    }
+
+    &__main-title {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 44px;
+        color: $dark_blue;
+        margin-bottom: 81px;
+    }
+
+    &__advantages-container {
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    &__advantages-card-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 250px;
+        max-width: 250px;
+        margin-bottom: 120px;
+    }
+
+    &__advantages-card-image {
+        height: 82px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__advantages-card-description {
+        height: 40px;
+        overflow: hidden;
+        text-align: center;
+    }
+}

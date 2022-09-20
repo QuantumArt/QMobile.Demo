@@ -1,0 +1,134 @@
+@import './variables/variables';
+
+.tariff-card {
+    min-width: 280px;
+    max-width: 280px;
+    border: 1px solid $light_gray4;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:hover,
+    &:focus {
+        border: 1px solid #2C5BDE
+    }
+
+    &__image {
+        max-height: 134px;
+        min-height: 134px;
+        margin-top: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        position: relative;
+        display: flex;
+        cursor: pointer;
+
+        img {
+            border-radius: 6px 6px 0px 0px;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        padding: 17px;
+        padding-top: 10px;
+
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    &__title {
+        min-height: 50px;
+        max-height: 50px;
+        overflow: hidden;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        cursor: pointer;
+    }
+
+    &__traffic-limit {
+        height: 40px;
+
+        &--editable {
+            font-weight: 400;
+        }
+    }
+
+    &__benefits {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $primary_blue;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 18px;
+    }
+
+    &__connect-container {
+        max-width: 249px;
+        max-height: 122px;
+        background: $light_gray2;
+        border-radius: 6px;
+        padding: 14px;
+        padding-left: 11px;
+    }
+
+    &__connect-container-price {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 16px;
+        color: $dark_blue;
+        text-indent: 9px;
+        margin-bottom: 9px;
+    }
+
+    &__connect-container-days {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $primary_blue;
+        margin-left: 13px;
+    }
+
+    &__connect-container-abon {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $dark_blue;
+        text-indent: 9px;
+        margin-bottom: 20px;
+    }
+
+    &__connect-btns-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__connect-btns {
+        &-details {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: $primary_blue;
+        }
+    }
+
+    &__image-hit {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        background: $primary_blue;
+        border-radius: 6px;
+        color: white;
+
+        padding: 4px 13px;
+    }
+}

@@ -1,0 +1,58 @@
+@import './variables/variables';
+
+.slider {
+  min-height: 222px;
+  border-radius: 10px;
+  margin-top: 20px;
+
+  &--tariffs {
+    color: white;
+    background: url('../images/bubbles.png') no-repeat bottom 13px right 184px, linear-gradient(185.58deg, #73ABEE 5.26%, #70A4F0 50.14%, #6599EF 94.83%), $light_blue;
+  }
+
+  &--services {
+    background: url('../images/couple.png') no-repeat top 0 right 164px $soft_purple;
+    color: white;
+  }
+
+  &--devices {
+    background: url('../images/devices.png') no-repeat top 0 right 190px $soft_blue;
+
+  }
+
+  &--service-details {
+    color: white;
+    background: url('../images/music.png') no-repeat;
+
+  }
+
+  &--tariff-details {
+    color: $dark_blue;
+  }
+
+  &--margin-bottom {
+    margin-bottom: 20px;
+  }
+
+  &--text-paddings {
+    padding-top: 80px;
+    padding-left: 100px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 33px;
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &__info-container {
+    max-width: 511px;
+  }
+}

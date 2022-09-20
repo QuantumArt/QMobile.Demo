@@ -1,0 +1,62 @@
+@import './variables/variables';
+
+.image-slider {
+    &__main-container {
+        padding: 19px 22px;
+        display: flex;
+        max-height: 418px;
+        
+    }
+
+    &__photos-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: 355px;
+        overflow-y: auto;
+        min-width: 157px;
+
+        direction: rtl;
+
+
+        &::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: $light_gray1;
+            border-radius: 100px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 100px;
+            border-left: 0;
+            border-right: 0;
+            background-color: $light_blue;
+        }
+
+        &-item {
+            width: 132px;
+            height: 112px;
+            border: 1px solid $light_gray2;
+            border-radius: 6px;
+            cursor: pointer;
+
+            &-image {
+                display: flex;
+                max-height: 100%;
+                justify-content: center;
+
+                img {
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+
+    &__image {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+    }
+}

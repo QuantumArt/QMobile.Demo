@@ -1,0 +1,72 @@
+@import './variables/variables';
+
+.tariffs-page-content {
+    margin-top: 60px;
+    margin-bottom: 80px;
+
+    &__tariffs-filter-container {
+        min-width: 280px;
+    }
+
+    &__filter-item {
+        height: 64px;
+        width: 280px;
+        border-bottom: 1px solid $light_gray4;
+        padding-top: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__filter-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: $dark_blue;
+        letter-spacing: 0.02em;
+    }
+
+    &__container {
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    &__form-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    &__tariff-cards-container {
+        padding-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    &__tariff-search-input {
+        width: 622px;
+    }
+
+    &__make-tariff-link {
+        background: none;
+        padding: 12px 24px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: $primary_blue;
+        border: 2px solid $primary_blue;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &:hover {
+            background: $primary_blue;
+            color: white;
+        }
+    }
+}
