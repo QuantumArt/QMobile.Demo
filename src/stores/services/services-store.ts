@@ -73,7 +73,7 @@ class ServiceStore {
     try {
       pageLoaderStore.setBootState(BootState.Loading);
       const response = await fetch(
-        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Service?fields=Id,MarketingProduct.Title,MarketingProduct.Description,MarketingProduct.ListImage,Modifiers',
+        `${process.env.REACT_APP_SBER_DPC_HOST}/api/qmobile_catalog/products/Service?fields=Id,MarketingProduct.Title,MarketingProduct.Description,MarketingProduct.ListImage,Modifiers`,
       );
       const fetchedData = await response.json();
       runInAction(() => {
@@ -92,7 +92,7 @@ class ServiceStore {
       pageLoaderStore.setBootState(BootState.Loading);
       this._parametersByGroup = new Map();
       const response = await fetch(
-        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${serviceId}`,
+        `${process.env.REACT_APP_SBER_DPC_HOST}/api/qmobile_catalog/products/${serviceId}`,
       );
       const fetchedData: IMarketingProduct = await response.json();
 

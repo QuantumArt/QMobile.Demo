@@ -54,7 +54,7 @@ export class PackagesStore {
   async init(): Promise<void> {
     try {
       const response = await fetch(
-        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Kit?fields=Id,Modifiers,MarketingProduct.Title,MarketingProduct.Description,MarketingProduct.KitType,Images',
+        `${process.env.REACT_APP_SBER_DPC_HOST}/api/qmobile_catalog/products/Kit?fields=Id,Modifiers,MarketingProduct.Title,MarketingProduct.Description,MarketingProduct.KitType,Images`,
       );
       const fetchedData = await response.json();
 
@@ -70,7 +70,7 @@ export class PackagesStore {
   async fetchPackage(packageId: string): Promise<void> {
     try {
       const response = await fetch(
-        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${packageId}`,
+        `${process.env.REACT_APP_SBER_DPC_HOST}/api/qmobile_catalog/products/${packageId}`,
       );
       const fetchedData: IPackage = await response.json();
 
@@ -83,7 +83,7 @@ export class PackagesStore {
         await delay(500);
         // eslint-disable-next-line no-await-in-loop
         const itemResponse = await fetch(
-          `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/${product.Id}`,
+          `${process.env.REACT_APP_SBER_DPC_HOST}/api/qmobile_catalog/products/${product.Id}`,
         );
 
         // eslint-disable-next-line no-await-in-loop
