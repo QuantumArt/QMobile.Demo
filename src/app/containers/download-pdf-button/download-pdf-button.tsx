@@ -8,7 +8,7 @@ type Props = {
 const DownloadPdfButton = ({ tariffId }: Props): JSX.Element => {
   return (
     <a
-      href={`${process.env.REACT_APP_DOWNLOAD_PDF_HOST}/api/product/${tariffId}?category=test&customerCode=qmobile_catalog&attachment=true`}
+      href={`${window.env.DOWNLOAD_PDF_HOST}/api/product/${tariffId}?category=test&customerCode=qmobile_catalog&attachment=true`}
       className="download-pdf-btn"
       target="_blank"
       rel="noreferrer"

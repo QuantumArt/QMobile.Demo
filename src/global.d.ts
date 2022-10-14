@@ -49,3 +49,12 @@ declare module '*.svg' {
   const content: any;
   export = content;
 }
+
+interface EnvironmentVariables {
+  SBER_DPC_HOST: string;
+  IMPACT_HOST: string;
+  DOWNLOAD_PDF_HOST: string;
+}
+interface Window {
+  env: EnvironmentVariables;
+}
