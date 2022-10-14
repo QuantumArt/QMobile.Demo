@@ -259,7 +259,7 @@ export class ConnectStore {
     try {
       this._bootState = BootState.Loading;
       const response = await fetch(
-        `${process.env.REACT_APP_IMPACT_HOST}/api/base/${tariffId}?language=invariant&state=live`,
+        `${window.env.IMPACT_HOST}/api/base/${tariffId}?language=invariant&state=live`,
       );
       const fetchedData: IMarketingProduct = await response.json();
       runInAction(() => {

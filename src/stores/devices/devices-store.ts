@@ -67,7 +67,7 @@ export class DevicesStore {
   async init(): Promise<void> {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_SBER_DPC_HOST}/api/qmobile_catalog/products/Device?fields=MarketingProduct,Parameters,Id,Images,Modifiers`,
+        `${window.env.SBER_DPC_HOST}/api/qmobile_catalog/products/Device?fields=MarketingProduct,Parameters,Id,Images,Modifiers`,
       );
       const fetchedData = await response.json();
       runInAction(() => {
@@ -82,7 +82,7 @@ export class DevicesStore {
   async fetchDevice(deviceId: string): Promise<void> {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_SBER_DPC_HOST}/api/qmobile_catalog/products/${deviceId}`,
+        `${window.env.SBER_DPC_HOST}/api/qmobile_catalog/products/${deviceId}`,
       );
       const fetchedData: IMarketingProduct = await response.json();
 
