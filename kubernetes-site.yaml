@@ -16,7 +16,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 100
       containers:
-      - image: spbdocker03:5000/qmobile_dpc_demo_site:||version||
+      - image: '||registry||/qmobile_dpc_demo_site:||version||'
         name: qmobile-demo-site
         env:
         - name: NGINX_SERVER_NAME
