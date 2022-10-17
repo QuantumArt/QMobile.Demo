@@ -51,7 +51,7 @@ declare module '*.svg' {
 }
 
 interface EnvironmentVariables {
-  SBER_DPC_HOST: string;
+  DPC_HOST: string;
   IMPACT_HOST: string;
   DOWNLOAD_PDF_HOST: string;
 }
