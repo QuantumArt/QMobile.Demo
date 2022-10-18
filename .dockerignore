@@ -6,3 +6,5 @@ dist
 .git
 *.7z
 Dockerfile
+*.sh
+*.yaml

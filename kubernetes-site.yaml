@@ -16,7 +16,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 100
       containers:
-      - image: '||registry||/qmobile_dpc_demo:||version||'
+      - image: '||registry||/dpc-qmobile-demo:||version||'
         name: qmobile-demo
         env:
         - name: NGINX_SERVER_NAME
@@ -24,27 +24,36 @@ spec:
         ports:
         - containerPort: 3000
         volumeMounts:
-        - mountPath: /etc/localtime
-          name: tz-config
-        - name: configmap-volume
-          mountPath: /app/env.js
-          subPath: env.js          
+          - mountPath: /etc/localtime
+            name: time-config
+            subPathExpr: $(TZ)
+          - mountPath: /etc/timezone
+            name: timezone-config
+            subPath: TZ
+          - mountPath: /app/env.js
+            name: configmap-volume
+            subPath: env.js          
         resources:
           limits:
             memory: "32Mi"
           requests:
             memory: "16Mi"
       volumes:
-      - name: configmap-volume
-        configMap:
-          name: qmobile-demo-config
-          items:
+        - name: configmap-volume
+          configMap:
+            name: qmobile-demo-config
+            items:
             - key: env.js
               path: env.js
-      - hostPath:
-          path: /usr/share/zoneinfo/Europe/Moscow
-          type: ""
-        name: tz-config
+        - name: time-config
+          hostPath:
+            path: /usr/share/zoneinfo
+        - name: timezone-config
+          configMap: 
+            name: dpc-config
+            items:
+            - key: TZ
+              path: TZ
 ---
 apiVersion: v1
 kind: Service
