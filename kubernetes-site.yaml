@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qmobile-demo-site-||env||
+  name: qmobile-demo-||env||
   namespace: "||namespace||"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: qmobile-demo-site-||env||
+      app: qmobile-demo-||env||
   template:
     metadata:
       labels:
-        app: qmobile-demo-site-||env||
+        app: qmobile-demo-||env||
         logging: enabled
     spec:
       terminationGracePeriodSeconds: 100
       containers:
-      - image: '||registry||/qmobile_dpc_demo_site:||version||'
-        name: qmobile-demo-site
+      - image: '||registry||/qmobile_dpc_demo:||version||'
+        name: qmobile-demo
         env:
         - name: NGINX_SERVER_NAME
           value: default
@@ -26,12 +26,21 @@ spec:
         volumeMounts:
         - mountPath: /etc/localtime
           name: tz-config
+        - name: configmap-volume
+          mountPath: /app/env.js
+          subPath: env.js          
         resources:
           limits:
             memory: "32Mi"
           requests:
             memory: "16Mi"
       volumes:
+      - name: configmap-volume
+        configMap:
+          name: qmobile-demo-config
+          items:
+            - key: env.js
+              path: env.js
       - hostPath:
           path: /usr/share/zoneinfo/Europe/Moscow
           type: ""
@@ -40,20 +49,20 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: qmobile-demo-site-||env||
+  name: qmobile-demo-||env||
   namespace: "||namespace||"
 spec:
   ports:
   - port: 80
-    name: qmobile-demo-site
+    name: qmobile-demo
     targetPort: 3000
   selector:
-    app: qmobile-demo-site-||env||
+    app: qmobile-demo-||env||
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: qmobile-demo-site-||env||
+  name: qmobile-demo-||env||
   namespace: "||namespace||"
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
@@ -67,6 +76,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: qmobile-demo-site-||env||
+            name: qmobile-demo-||env||
             port: 
               number: 80
