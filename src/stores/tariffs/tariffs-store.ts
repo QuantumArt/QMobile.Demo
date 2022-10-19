@@ -61,7 +61,7 @@ export class TariffsStore {
       this._bootState = BootState.Loading;
       // this._filtersGroups = tariffsFilters;
       const response = await fetch(
-        'http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Tariff?fields=MarketingProduct.Category.Title,MarketingProduct.Category.Alias',
+        `${window.env.DPC_HOST}/api/qmobile_catalog/products/Tariff?fields=MarketingProduct.Category.Title,MarketingProduct.Category.Alias`,
       );
       const data: Array<IMarketingProduct> = await response.json();
 
@@ -98,7 +98,7 @@ export class TariffsStore {
     try {
       this._bootStateTariffCards = BootState.Loading;
       const response = await fetch(
-        `http://sber-dpc.demo.dev.qsupport.ru/api/qmobile_catalog/products/Tariff?fields=Id,MarketingProduct.ListImage,Modifiers,MarketingProduct.Category.Title,MarketingProduct.Category.Alias,MarketingProduct.Title,Parameters.Title,Parameters.NumValue,Parameters.BaseParameter,Parameters.Unit&MarketingProduct.Category.Alias=${this._selectedFilter}`,
+        `${window.env.DPC_HOST}/api/qmobile_catalog/products/Tariff?fields=Id,MarketingProduct.ListImage,Modifiers,MarketingProduct.Category.Title,MarketingProduct.Category.Alias,MarketingProduct.Title,Parameters.Title,Parameters.NumValue,Parameters.BaseParameter,Parameters.Unit&MarketingProduct.Category.Alias=${this._selectedFilter}`,
       );
       const fetchedData: ITariffsCardsGroup = await response.json();
       runInAction(() => {
