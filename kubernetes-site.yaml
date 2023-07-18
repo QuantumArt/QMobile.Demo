@@ -16,7 +16,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 100
       containers:
-      - image: '||registry||/dpc-qmobile-demo:||version||'
+      - image: '||registry||/||image||:||version||'
         name: qmobile-demo
         envFrom:
           - configMapRef:
