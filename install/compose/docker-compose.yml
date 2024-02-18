@@ -1,0 +1,13 @@
+services:
+  demo:
+    container_name: demo
+    image: "qpcms/dpc-qmobile-demo:${TAG}"
+    restart: always
+    ports:
+     - '8200:3000'
+    deploy:
+      resources:
+        limits:
+          memory: 128MB
+    volumes:
+     - demo.js:/app/env.js               

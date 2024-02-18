@@ -1,0 +1,106 @@
+apiVersion: v1
+data:
+  env.js: |
+    window.env = {
+      DPC_HOST: 'http://localhost:7500',
+      IMPACT_HOST: 'http://localhost:8100',
+      DOWNLOAD_PDF_HOST: 'http://localhost:7900'
+    };
+kind: ConfigMap
+metadata:
+  name: qmobile-demo-config
+  namespace: dpc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qmobile-demo
+  namespace: dpc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qmobile-demo
+  template:
+    metadata:
+      labels:
+        app: qmobile-demo
+        logging: enabled
+    spec:
+      terminationGracePeriodSeconds: 100
+      containers:
+      - image: 'qpcms/dpc-qmobile-demo:||version||'
+        name: qmobile-demo
+        envFrom:
+          - configMapRef:
+              name: dpc-config          
+        env:
+        - name: NGINX_SERVER_NAME
+          value: default
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+          - mountPath: /etc/localtime
+            name: time-config
+            subPathExpr: $(TZ)
+          - mountPath: /etc/timezone
+            name: timezone-config
+            subPath: TZ
+          - mountPath: /app/env.js
+            name: configmap-volume
+            subPath: env.js          
+        resources:
+          limits:
+            memory: "32Mi"
+          requests:
+            memory: "16Mi"
+      volumes:
+        - name: configmap-volume
+          configMap:
+            name: qmobile-demo-config
+            items:
+            - key: env.js
+              path: env.js
+        - name: time-config
+          hostPath:
+            path: /usr/share/zoneinfo
+        - name: timezone-config
+          configMap: 
+            name: dpc-config
+            items:
+            - key: TZ
+              path: TZ
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qmobile-demo
+  namespace: dpc
+spec:
+  ports:
+  - port: 80
+    name: qmobile-demo
+    targetPort: 3000
+  selector:
+    app: qmobile-demo
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qmobile-demo
+  namespace: dpc
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+spec:
+  rules:
+  - host: "dpc-qmobile-demo.test"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: qmobile-demo
+            port: 
+              number: 80
