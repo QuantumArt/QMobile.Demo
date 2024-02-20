@@ -10,4 +10,4 @@ services:
         limits:
           memory: 128MB
     volumes:
-     - demo.js:/app/env.js               
+     - ./demo.js:/app/env.js               
